@@ -134,7 +134,7 @@ print_info "CONFIGURING PACMAN..."
 sed -i 's|.*Color|Color\nILoveCandy|' /etc/pacman.conf
 sed -i 's|.*ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
 
-PACKAGES=$(bash <(curl -fsSL ...))
+PACKAGES=$(bash <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/package-lists.sh))
 
 print_info "INSTALLING ARCH LINUX..."
 pacstrap -K /mnt $PACKAGES --noconfirm
