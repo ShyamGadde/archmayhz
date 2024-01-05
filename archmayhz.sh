@@ -1,37 +1,4 @@
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-LIGHTBLUE='\033[1;34m'
-RESET='\033[0m'
-
-print_info() {
-    message=$1
-    width=$(tput cols)
-    padding=$(((width - ${#message}) / 2))
-
-    printf '\n%*s\n' "${width}" '' | tr ' ' '-'
-    printf "${LIGHTBLUE}%*s%s${RESET}\n" $padding '' "$message"
-    printf '%*s\n\n' "${width}" '' | tr ' ' '-'
-}
-
-print_warning() {
-    message=$1
-    width=$(tput cols)
-    padding=$(((width - ${#message}) / 2))
-
-    printf '\n%*s\n' "${width}" '' | tr ' ' '-'
-    printf "${RED}%*s%s${RESET}\n" $padding '' "$message"
-    printf '%*s\n\n' "${width}" '' | tr ' ' '-'
-}
-
-print_success() {
-    message=$1
-    width=$(tput cols)
-    padding=$(((width - ${#message}) / 2))
-
-    printf '\n%*s\n' "${width}" '' | tr ' ' '-'
-    printf "${GREEN}%*s%s${RESET}\n" $padding '' "$message"
-    printf '%*s\n\n' "${width}" '' | tr ' ' '-'
-}
+source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/utils.sh)
 
 print_info "SETTING UP VCONSOLE..."
 setfont ter-132b # Set the font to Terminus 32pt Bold
@@ -134,9 +101,8 @@ print_info "CONFIGURING PACMAN..."
 sed -i 's|.*Color|Color\nILoveCandy|' /etc/pacman.conf
 sed -i 's|.*ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
 
-PACKAGES=$(bash <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/package-lists.sh))
-
 print_info "INSTALLING ARCH LINUX..."
+PACKAGES=$(bash <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/package-lists.sh))
 pacstrap -K /mnt $PACKAGES --noconfirm
 
 print_info "GENERATING FSTAB..."
