@@ -102,8 +102,8 @@ sed -i 's|.*Color|Color\nILoveCandy|' /etc/pacman.conf
 sed -i 's|.*ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
 
 print_info "INSTALLING ARCH LINUX..."
-PACKAGES=$(bash <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/package-lists.sh))
-pacstrap -K /mnt $PACKAGES --noconfirm
+source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/package-lists.sh)
+pacstrap -K /mnt "${PACKAGES[@]}" --noconfirm
 
 print_info "GENERATING FSTAB..."
 genfstab -U -p /mnt >>/mnt/etc/fstab

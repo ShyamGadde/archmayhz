@@ -20,6 +20,13 @@ FILESYSTEM=(
     ntfs-3g
 )
 
+GRAPHICS_DRIVERS=(
+    intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
+    mesa               # An open-source implementation of the OpenGL specification
+    vulkan-intel
+    onevpl-intel-gpu # For video processing and transcoding
+)
+
 FONTS=(
     noto-fonts
     noto-fonts-emoji
@@ -86,13 +93,6 @@ UTILITIES=(
     util-linux
 )
 
-GRAPHICS_DRIVERS=(
-    intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
-    mesa               # An open-source implementation of the OpenGL specification
-    vulkan-intel
-    onevpl-intel-gpu # For video processing and transcoding
-)
-
 # WAYLAND=(
 #     qt5-wayland
 #     qt6-wayland
@@ -111,14 +111,13 @@ DESKTOP_APPLICATIONS=(
     kitty
 )
 
-PACKAGES="\
-${BASE_SYSTEM[@]} \
-${FILESYSTEM[@]} \
-${NETWORKING[@]} \
-${MULTIMEDIA[@]} \
-${UTILITIES[@]} \
-${FONTS[@]} \
-${GRAPHICS_DRIVERS[@]} \
-${DESKTOP_APPLICATIONS[@]}"
-
-echo $PACKAGES
+PACKAGES=(
+    "${BASE_SYSTEM[@]}"
+    "${FILESYSTEM[@]}"
+    "${GRAPHICS_DRIVERS[@]}"
+    "${FONTS[@]}"
+    "${NETWORKING[@]}"
+    "${MULTIMEDIA[@]}"
+    "${UTILITIES[@]}"
+    "${DESKTOP_APPLICATIONS[@]}"
+)
