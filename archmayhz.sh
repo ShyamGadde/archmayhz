@@ -32,7 +32,7 @@ read -p "User Password: " USER_PASSWORD
 print_info "CREATING PARTITIONS..."
 print_warning "WARNING: This script will erase all data on the selected disk."
 lsblk -d
-echo -e "Please select the disk you want to install Arch Linux on.\nExample: nvme0n1\n"
+echo -e "\nPlease select the disk you want to install Arch Linux on.\nExample: nvme0n1\n"
 read -p "Disk: " DISK
 DISK=/dev/${DISK}
 umount -A --recursive /mnt &>>/dev/null # Unmount all partitions on the selected disk
