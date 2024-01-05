@@ -1,7 +1,7 @@
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/utils.sh)
 
 print_info "SETTING UP VCONSOLE..."
-setfont ter-132b # Set the font to Terminus 32pt Bold
+setfont ter-128n # Set the font to Terminus 32pt Bold
 
 print_info "CHECKING BOOT MODE..."
 if ls /sys/firmware/efi/efivars &>>/dev/null; then

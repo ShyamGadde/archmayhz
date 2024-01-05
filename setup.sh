@@ -29,7 +29,7 @@ echo "%wheel ALL=(ALL) ALL" | EDITOR='tee -a' visudo
 echo "${USERNAME} ALL=(ALL:ALL) ALL" | EDITOR='tee -a' visudo
 
 print_info "CONFIGURING VCONSOLE..."
-FONT="ter-132b"
+FONT="ter-128n"
 echo "FONT=${FONT}" >>/etc/vconsole.conf
 
 print_info "SETTING UP INITRAMFS..."
