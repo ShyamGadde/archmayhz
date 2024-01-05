@@ -16,7 +16,7 @@ while ! ping -c 1 archlinux.org &>>/dev/null; do
     print_info "Scanning for available networks..."
     iwctl station wlan0 scan
     iwctl station wlan0 get-networks
-    print_info "Please enter your wireless network details."
+    echo "Please enter your wireless network details."
     read -p "Network   : " NETWORK
     read -p "Passphrase: " PASSPHRASE
     iwctl station wlan0 connect ${NETWORK} --passphrase ${PASSPHRASE}
@@ -29,10 +29,10 @@ read -p "Root Password: " ROOT_PASSWORD
 read -p "Username     : " USERNAME
 read -p "User Password: " USER_PASSWORD
 
-print_info "PARTITIONING..."
+print_info "CREATING PARTITIONS..."
 print_warning "WARNING: This script will erase all data on the selected disk."
 lsblk -d
-print_info "Please select the disk you want to install Arch Linux on.\nExample: nvme0n1"
+echo -e "Please select the disk you want to install Arch Linux on.\nExample: nvme0n1\n"
 read -p "Disk: " DISK
 DISK=/dev/${DISK}
 umount -A --recursive /mnt &>>/dev/null # Unmount all partitions on the selected disk
