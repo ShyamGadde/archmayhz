@@ -3,32 +3,25 @@ RED='\033[0;31m'
 LIGHTBLUE='\033[1;34m'
 RESET='\033[0m'
 
-print_info() {
-    message=$1
+print_message() {
+    color=$1
+    message=$2
     width=$(tput cols)
     padding=$(((width - ${#message}) / 2))
 
-    printf '\n%*s\n' "${width}" '' | tr ' ' '-'
-    printf "${LIGHTBLUE}%*s%s${RESET}\n" $padding '' "$message"
-    printf '%*s\n\n' "${width}" '' | tr ' ' '-'
+    printf "${color}\n%*s\n" "${width}" '' | tr ' ' '-'
+    printf "%*s%s\n" $padding '' "$message"
+    printf "%*s\n\n${RESET}" "${width}" '' | tr ' ' '-'
+}
+
+print_info() {
+    print_message "${LIGHTBLUE}" "$1"
 }
 
 print_warning() {
-    message=$1
-    width=$(tput cols)
-    padding=$(((width - ${#message}) / 2))
-
-    printf '\n%*s\n' "${width}" '' | tr ' ' '-'
-    printf "${RED}%*s%s${RESET}\n" $padding '' "$message"
-    printf '%*s\n\n' "${width}" '' | tr ' ' '-'
+    print_message "${RED}" "$1"
 }
 
 print_success() {
-    message=$1
-    width=$(tput cols)
-    padding=$(((width - ${#message}) / 2))
-
-    printf '\n%*s\n' "${width}" '' | tr ' ' '-'
-    printf "${GREEN}%*s%s${RESET}\n" $padding '' "$message"
-    printf '%*s\n\n' "${width}" '' | tr ' ' '-'
+    print_message "${GREEN}" "$1"
 }
