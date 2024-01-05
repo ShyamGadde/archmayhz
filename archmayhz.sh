@@ -116,7 +116,7 @@ arch-chroot /mnt /bin/bash -c "
     export ROOT_PASSWORD=${ROOT_PASSWORD}
     export USERNAME=${USERNAME}
     export USER_PASSWORD=${USER_PASSWORD}
-    bash <(curl -fsSL ...)"
+    bash <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/setup.sh)"
 
 read -p "Press any key to reboot..."
 print_info "REBOOTING..."
