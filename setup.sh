@@ -66,6 +66,7 @@ systemctl enable reflector.timer
 # TODO: systemctl enable fstrim.timer
 systemctl enable paccache.timer
 systemctl enable sshd
+systemctl enable gpm
 
 print_success "INSTALLATION COMPLETE!"
 exit

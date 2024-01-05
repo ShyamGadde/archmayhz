@@ -91,6 +91,7 @@ UTILITIES=(
     man-pages
     mc
     util-linux
+    gpm # General Purpose Mouse Interface (for mouse support in the tty)
 )
 
 # WAYLAND=(
