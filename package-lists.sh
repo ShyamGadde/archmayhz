@@ -23,46 +23,46 @@ FILESYSTEM=(
 GRAPHICS_DRIVERS=(
     intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
     mesa               # An open-source implementation of the OpenGL specification
+    onevpl-intel-gpu   # For video processing and transcoding
     vulkan-intel
-    onevpl-intel-gpu # For video processing and transcoding
 )
 
 FONTS=(
+    gnu-free-fonts
     noto-fonts
+    noto-fonts-cjk
     noto-fonts-emoji
     noto-fonts-extra
-    noto-fonts-cjk
     terminus-font
+    ttf-cascadia-code
+    ttf-cascadia-code-nerd
     ttf-dejavu
-    ttf-liberation
-    gnu-free-fonts
     ttf-fira-code
     ttf-fira-mono
     ttf-fira-sans
     ttf-firacode-nerd
-    ttf-cascadia-code
-    ttf-cascadia-code-nerd
     ttf-jetbrains-mono
     ttf-jetbrains-mono-nerd
+    ttf-liberation
     ttf-victor-mono-nerd
 )
 
 NETWORKING=(
     curl
     networkmanager
-    wget
     openssh
+    wget
     whois
 )
 
 MULTIMEDIA=(
     gimp
-    vlc
+    libnotify # ??
     pipewire
     pipewire-jack
-    wireplumber
-    libnotify         # ??
     speech-dispatcher # ??
+    vlc
+    wireplumber
 )
 
 # TODO: Bluetooth support
@@ -70,6 +70,17 @@ MULTIMEDIA=(
 UTILITIES=(
     archlinux-keyring
     git
+    gpm            # General Purpose Mouse Interface (for mouse support in the tty)
+    hunspell-en_US # ??
+    inotify-tools  # ??
+    less
+    lynx
+    man-db
+    man-pages
+    mc
+    nano
+    neofetch
+    pacman-contrib
     reflector # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
     rsync
     sudo
@@ -77,21 +88,11 @@ UTILITIES=(
     ufw # Uncomplicated Firewall
     unrar
     unzip
+    util-linux
     vi
     vim
-    nano
-    xdg-user-dirs  # Creates user directories (e.g. Desktop dir) automatically
-    hunspell-en_US # ??
-    inotify-tools  # ??
+    xdg-user-dirs # Creates user directories (e.g. Desktop dir) automatically
     zsh
-    less
-    neofetch
-    lynx
-    man-db
-    man-pages
-    mc
-    util-linux
-    gpm # General Purpose Mouse Interface (for mouse support in the tty)
 )
 
 # WAYLAND=(
@@ -108,8 +109,8 @@ UTILITIES=(
 DESKTOP_APPLICATIONS=(
     firefox
     flatpak
-    libreoffice-fresh # LibreOffice branch which contains new features and program enhancements
     kitty
+    libreoffice-fresh # LibreOffice branch which contains new features and program enhancements
 )
 
 PACKAGES=(
