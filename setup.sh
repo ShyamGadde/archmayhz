@@ -28,6 +28,15 @@ print_info "CONFIGURING SUDO FOR USER..."
 echo "%wheel ALL=(ALL) ALL" | EDITOR='tee -a' visudo
 echo "${USERNAME} ALL=(ALL:ALL) ALL" | EDITOR='tee -a' visudo
 
+print_info "CONFIGURING VCONSOLE..."
+FONT="ter-132b"
+echo "FONT=${FONT}" >>/etc/vconsole.conf
+
+print_info "SETTING UP INITRAMFS..."
+sed -i 's|MODULES=()|MODULES=(btrfs)|' /etc/mkinitcpio.conf
+sed -i 's|BINARIES=()|BINARIES=(/usr/bin/btrfs)|' /etc/mkinitcpio.conf
+mkinitcpio -P
+
 print_info "SETTING UP GRUB..."
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -48,15 +57,6 @@ cp /etc/xdg/reflector/reflector.conf /etc/xdg/reflector/reflector.conf.bak
 sed -i 's|# --country.*|--country India|' /etc/xdg/reflector/reflector.conf
 sed -i 's|^--latest.*|--latest 10|' /etc/xdg/reflector/reflector.conf
 sed -i 's|^--sort.*|--sort rate|' /etc/xdg/reflector/reflector.conf
-
-print_info "CONFIGURING VCONSOLE..."
-FONT="ter-132b"
-echo "FONT=${FONT}" >>/etc/vconsole.conf
-
-print_info "SETTING UP INITRAMFS..."
-sed -i 's|MODULES=()|MODULES=(btrfs)|' /etc/mkinitcpio.conf
-sed -i 's|BINARIES=()|BINARIES=(/usr/bin/btrfs)|' /etc/mkinitcpio.conf
-mkinitcpio -P
 
 print_info "ENABLING SERVICES..."
 systemctl enable NetworkManager
