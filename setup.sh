@@ -17,12 +17,6 @@ echo "${HOSTNAME}" >/etc/hostname
 print_info "SETTING UP HOSTS FILE..."
 echo -e "127.0.0.1 localhost\n::1 localhost\n127.0.1.1 ${HOSTNAME}.localdomain ${HOSTNAME}" >/etc/hosts
 
-# TODO: Is this required?
-print_info "SETTING UP INITRAMFS..."
-sed -i 's|MODULES=()|MODULES=(btrfs)|' /etc/mkinitcpio.conf
-sed -i 's|BINARIES=()|BINARIES=(/usr/bin/btrfs)|' /etc/mkinitcpio.conf
-mkinitcpio -P
-
 print_info "SETTING ROOT PASSWORD..."
 echo "root:${ROOT_PASSWORD}" | chpasswd
 
@@ -59,9 +53,14 @@ print_info "CONFIGURING VCONSOLE..."
 FONT="ter-132b"
 echo "FONT=${FONT}" >>/etc/vconsole.conf
 
+print_info "SETTING UP INITRAMFS..."
+sed -i 's|MODULES=()|MODULES=(btrfs)|' /etc/mkinitcpio.conf
+sed -i 's|BINARIES=()|BINARIES=(/usr/bin/btrfs)|' /etc/mkinitcpio.conf
+mkinitcpio -P
+
 print_info "ENABLING SERVICES..."
 systemctl enable NetworkManager
-systemctl enable bluetooth
+# TODO: systemctl enable bluetooth
 systemctl enable reflector.timer
 # TODO: systemctl enable fstrim.timer
 systemctl enable paccache.timer
