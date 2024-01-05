@@ -48,12 +48,10 @@ if [[ $DISK =~ nvme ]]; then
     mkfs.vfat -F32 -n EFI ${DISK}p1
     mkfs.btrfs -L LINUX ${DISK}p2 -f
     BTRFS_PARTITION=${DISK}p2
-    MOUNT_OPTIONS="noatime,compress=zstd:1,ssd,commit=120"
 else
     mkfs.vfat -F32 -n EFI ${DISK}1
     mkfs.btrfs -L LINUX ${DISK}2 -f
     BTRFS_PARTITION=${DISK}2
-    MOUNT_OPTIONS="noatime,compress=zstd:1,commit=120"
 fi
 lsblk -f ${DISK}
 
@@ -67,6 +65,11 @@ btrfs subvolume create /mnt/@.snapshots
 umount /mnt
 
 print_info "MOUNTING BTRFS SUBVOLUMES..."
+MOUNT_OPTIONS="noatime,compress=zstd:1,commit=120"
+# Check if the device is an SSD
+if [ $(lsblk -d -o rota $DISK | tail -n 1) -eq 0 ]; then
+    MOUNT_OPTIONS="${MOUNT_OPTIONS},discard=async"
+fi
 mount -t btrfs -o ${MOUNT_OPTIONS},subvol=@ ${BTRFS_PARTITION} /mnt
 mkdir -p /mnt/{boot,home,.snapshots,var/log,var/cache/pacman/pkg}
 mount -t btrfs -o ${MOUNT_OPTIONS},subvol=@home ${BTRFS_PARTITION} /mnt/home
@@ -98,8 +101,8 @@ print_info "INSTALLING ARCH LINUX KEYRING..."
 pacman -S archlinux-keyring --noconfirm
 
 print_info "CONFIGURING PACMAN..."
-sed -i 's|.*Color|Color\nILoveCandy|' /etc/pacman.conf
-sed -i 's|.*ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
+sed -i 's|.*Color|Color\nILoveCandy|' /etc/pacman.conf                   # Enable colored output and pacman logo
+sed -i 's|.*ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf # Enable parallel downloads
 
 print_info "INSTALLING ARCH LINUX..."
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/package-lists.sh)
