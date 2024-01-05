@@ -60,6 +60,7 @@ sed -i 's|^--sort.*|--sort rate|' /etc/xdg/reflector/reflector.conf
 
 print_info "ENABLING SERVICES..."
 systemctl enable NetworkManager
+systemctl enable ufw
 # TODO: systemctl enable bluetooth
 systemctl enable reflector.timer
 # TODO: systemctl enable fstrim.timer
