@@ -61,7 +61,6 @@ echo "FONT=${FONT}" >>/etc/vconsole.conf
 
 print_info "ENABLING SERVICES..."
 systemctl enable NetworkManager
-systemctl enable avahi-daemon # ??
 systemctl enable bluetooth
 systemctl enable reflector.timer
 # TODO: systemctl enable fstrim.timer
