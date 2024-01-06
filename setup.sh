@@ -15,7 +15,7 @@ print_info "SETTING HOSTNAME..."
 echo "${HOSTNAME}" >/etc/hostname
 
 print_info "SETTING UP HOSTS FILE..."
-echo -e "127.0.0.1 localhost\n::1 localhost\n127.0.1.1 ${HOSTNAME}.localdomain ${HOSTNAME}" >/etc/hosts
+echo -e "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t${HOSTNAME}.localdomain\t${HOSTNAME}" >/etc/hosts
 
 print_info "SETTING ROOT PASSWORD..."
 echo "root:${ROOT_PASSWORD}" | chpasswd
