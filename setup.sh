@@ -40,8 +40,12 @@ sed -i 's|MODULES=()|MODULES=(btrfs)|' /etc/mkinitcpio.conf
 sed -i 's|BINARIES=()|BINARIES=(/usr/bin/btrfs)|' /etc/mkinitcpio.conf
 mkinitcpio -P
 
-print_info "SETTING UP GRUB..."
+print_info "INSTALLING UP GRUB..."
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+
+print_info "CONFIGURING GRUB..."
+sed -i 's|GRUB_GFXMODE=auto|GRUB_GFXMODE=1920x1080x32,1280x720x32,auto|' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 print_info "SETTING UP USER DIRECTORIES..."
