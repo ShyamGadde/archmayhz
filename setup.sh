@@ -63,7 +63,7 @@ systemctl enable NetworkManager
 systemctl enable ufw
 # TODO: systemctl enable bluetooth
 systemctl enable reflector.timer
-# TODO: systemctl enable fstrim.timer
+systemctl enable fstrim.timer
 systemctl enable paccache.timer
 systemctl enable sshd
 systemctl enable gpm
