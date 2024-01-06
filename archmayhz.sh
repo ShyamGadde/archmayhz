@@ -45,14 +45,14 @@ partprobe ${DISK}                       # Inform the OS of partition table chang
 
 print_info "FORMATTING PARTITIONS..."
 if [[ $DISK =~ nvme ]]; then
-    mkfs.vfat -F32 -n EFI ${DISK}p1
-    mkfs.btrfs -L LINUX ${DISK}p2 -f
+    BOOT_PARTITION=${DISK}p1
     BTRFS_PARTITION=${DISK}p2
 else
-    mkfs.vfat -F32 -n EFI ${DISK}1
-    mkfs.btrfs -L LINUX ${DISK}2 -f
+    BOOT_PARTITION=${DISK}1
     BTRFS_PARTITION=${DISK}2
 fi
+mkfs.vfat -F32 -n EFI ${BOOT_PARTITION}
+mkfs.btrfs -L LINUX ${BTRFS_PARTITION} -f
 lsblk -f ${DISK}
 
 print_info "CREATING BTRFS SUBVOLUMES..."
@@ -75,11 +75,7 @@ mount -t btrfs -o ${MOUNT_OPTIONS},subvol=@pkg ${BTRFS_PARTITION} /mnt/var/cache
 lsblk -f ${DISK}
 
 print_info "MOUNTING BOOT PARTITION..."
-if [[ $DISK =~ nvme ]]; then
-    mount ${DISK}p1 /mnt/boot
-else
-    mount ${DISK}1 /mnt/boot
-fi
+mount ${BOOT_PARTITION} /mnt/boot
 lsblk -f ${DISK}
 
 # TODO: Setup zram?
