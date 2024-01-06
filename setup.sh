@@ -6,6 +6,9 @@ ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 print_info "SETTING HARDWARE CLOCK..."
 hwclock --systohc --utc
 
+print_info "SETTING NTP..."
+timedatectl set-ntp true
+
 print_info "SETTING LOCALE..."
 sed -i 's|.*en_US.UTF-8 UTF-8|en_US.UTF-8 UTF-8|g' /etc/locale.gen
 locale-gen
