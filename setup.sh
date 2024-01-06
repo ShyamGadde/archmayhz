@@ -24,7 +24,7 @@ print_info "SETTING ROOT PASSWORD..."
 echo "root:${ROOT_PASSWORD}" | chpasswd
 
 print_info "CREATING USER..."
-useradd -m -G wheel,audio,video,optical,storage,sys,log,network,power,rfkill,users,adm -s /bin/zsh $USERNAME
+useradd -m -G wheel,audio,video,input,optical,storage,sys,log,network,power,rfkill,users,adm -s /bin/zsh $USERNAME
 echo "${USERNAME}:${USER_PASSWORD}" | chpasswd
 
 print_info "CONFIGURING SUDO FOR USER..."
