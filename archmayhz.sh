@@ -65,16 +65,16 @@ btrfs subvolume create /mnt/@.snapshots
 umount /mnt
 
 print_info "MOUNTING BTRFS SUBVOLUMES..."
-MOUNT_OPTIONS="noatime,compress=zstd:1,commit=120"
-mount -t btrfs -o ${MOUNT_OPTIONS},subvol=@ ${BTRFS_PARTITION} /mnt
-mkdir -p /mnt/{boot,home,.snapshots,var/log,var/cache/pacman/pkg}
-mount -t btrfs -o ${MOUNT_OPTIONS},subvol=@home ${BTRFS_PARTITION} /mnt/home
-mount -t btrfs -o ${MOUNT_OPTIONS},subvol=@.snapshots ${BTRFS_PARTITION} /mnt/.snapshots
-mount -t btrfs -o ${MOUNT_OPTIONS},subvol=@log ${BTRFS_PARTITION} /mnt/var/log
-mount -t btrfs -o ${MOUNT_OPTIONS},subvol=@pkg ${BTRFS_PARTITION} /mnt/var/cache/pacman/pkg
+MOUNT_OPTIONS="defaults,x-mount.mkdir,noatime,compress=zstd:1,commit=120"
+mount -t btrfs -o subvol=@,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt
+mount -t btrfs -o subvol=@home,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/home
+mount -t btrfs -o subvol=@.snapshots,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/.snapshots
+mount -t btrfs -o subvol=@log,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/log
+mount -t btrfs -o subvol=@pkg,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/cache/pacman/pkg
 lsblk -f ${DISK}
 
 print_info "MOUNTING BOOT PARTITION..."
+mkdir /mnt/boot
 mount ${BOOT_PARTITION} /mnt/boot
 lsblk -f ${DISK}
 
