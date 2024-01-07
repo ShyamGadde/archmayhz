@@ -99,6 +99,7 @@ UTILITIES=(
     acpid     # Advanced Configuration and Power Interface event daemon
     archlinux-keyring
     bash-completion
+    bat
     git
     gpm # General Purpose Mouse Interface (for mouse support in the tty)
     grub-btrfs
@@ -125,9 +126,10 @@ UTILITIES=(
 )
 
 EXTRA=(
-    firefox
-    kitty
     dolphin
+    firefox
+    foot
+    kitty
 )
 
 FUN=(
