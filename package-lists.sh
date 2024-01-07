@@ -68,9 +68,7 @@ FONTS=(
 )
 
 HYPRLAND=(
-    dolphin
     hyprland
-    kitty
     qt5-wayland
     qt6-wayland
     sddm
@@ -129,6 +127,7 @@ UTILITIES=(
 EXTRA=(
     firefox
     kitty
+    dolphin
 )
 
 FUN=(
