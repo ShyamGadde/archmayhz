@@ -65,7 +65,7 @@ btrfs subvolume create /mnt/@.snapshots
 umount /mnt
 
 print_info "MOUNTING BTRFS SUBVOLUMES..."
-MOUNT_OPTIONS="defaults,x-mount.mkdir,noatime,compress=zstd:1,commit=120"
+MOUNT_OPTIONS="defaults,x-mount.mkdir,noatime,compress=zstd,commit=120"
 mount -t btrfs -o subvol=@,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt
 mount -t btrfs -o subvol=@home,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/home
 mount -t btrfs -o subvol=@.snapshots,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/.snapshots
