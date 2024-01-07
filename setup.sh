@@ -28,8 +28,11 @@ useradd -m -G wheel,audio,video,input,optical,storage,sys,log,network,power,rfki
 echo "${USERNAME}:${USER_PASSWORD}" | chpasswd
 
 print_info "CONFIGURING SUDO FOR USER..."
-echo "%wheel ALL=(ALL) ALL" | EDITOR='tee -a' visudo
-echo "${USERNAME} ALL=(ALL:ALL) ALL" | EDITOR='tee -a' visudo
+# Granting the user the ability to run any command as any user or any group on any host.
+# The first ALL specifies all hosts, the (ALL:ALL) specifies all users and all groups, and the final ALL specifies all commands.
+echo "${USERNAME} ALL=(ALL:ALL) ALL" > /etc/sudoers.d/$USERNAME
+# Setting the permissions of the file to read-only for owner and group for security reasons.
+chmod 0440 /etc/sudoers.d/$USERNAME
 
 print_info "CONFIGURING VCONSOLE..."
 FONT="ter-128n"
