@@ -75,6 +75,7 @@ systemctl enable gpm
 systemctl enable NetworkManager
 systemctl enable paccache.timer
 systemctl enable reflector.timer
+systemctl enable sddm
 systemctl enable smartd
 systemctl enable sshd
 systemctl enable tlp
