@@ -111,11 +111,12 @@ UTILITIES=(
 )
 
 EXTRA=(
+    bitwarden
+    bitwarden-cli
     dolphin
     firefox
     foot
     kitty
-    # TODO: Add Bitwarden desktop and cli
 )
 
 FUN=(
