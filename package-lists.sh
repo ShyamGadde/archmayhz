@@ -11,7 +11,6 @@ BASE_SYSTEM=(
     linux-lts-headers
     linux-zen
     linux-zen-headers
-    mkinitcpio
 )
 
 FILESYSTEM=(
@@ -24,20 +23,19 @@ FILESYSTEM=(
 
 GRAPHICS_DRIVERS=(
     intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
-    mesa               # An open-source implementation of the OpenGL specification
-    onevpl-intel-gpu   # runtime for Tiger Lake and newer GPUs
+    libva-mesa-driver
+    mesa             # An open-source implementation of the OpenGL specification
+    onevpl-intel-gpu # runtime for Tiger Lake and newer GPUs
     vulkan-intel
 )
 
 NETWORKING=(
-    curl
     iwd
     network-manager-applet # System tray applet for connecting to Internet
     networkmanager
-    nm-connection-editor # NetworkManager GUI connection editor and widgets
-    openssh
     wget
     whois
+    wireless_tools
 )
 
 BLUETOOTH=(
@@ -47,8 +45,6 @@ BLUETOOTH=(
 )
 
 FONTS=(
-    adobe-source-code-pro-fonts
-    gnu-free-fonts
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
@@ -78,16 +74,10 @@ HYPRLAND=(
 )
 
 MULTIMEDIA=(
-    ffmpeg
-    gimp
     gst-plugin-pipewire
-    gst-plugins-base
-    gstreamer
-    imagemagick # Kitty image support
     mpv
     pipewire
     pipewire-alsa
-    pipewire-audio
     pipewire-jack
     pipewire-pulse
     wireplumber
@@ -97,8 +87,6 @@ UTILITIES=(
     acpi      # Client for battery, power, and thermal readings
     acpi_call # A linux kernel module that enables calls to ACPI methods through /proc/acpi/call
     acpid     # Advanced Configuration and Power Interface event daemon
-    archlinux-keyring
-    bash-completion
     bat
     git
     gpm # General Purpose Mouse Interface (for mouse support in the tty)
@@ -109,19 +97,16 @@ UTILITIES=(
     man-pages
     nano
     neofetch
+    neovim
     pacman-contrib
-    reflector # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
-    rsync
+    reflector     # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
     smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
-    sudo
-    tar
-    tlp # Advanced power management tool for Linux
-    ufw # Uncomplicated Firewall
-    upower
-    util-linux
+    tlp           # Advanced power management tool for Linux
+    ufw           # Uncomplicated Firewall
     vi
     vim
     xdg-user-dirs # Creates user directories (e.g. Desktop dir) automatically
+    xdg-utils     # Command line tools that assist applications with a variety of desktop integration tasks
     zsh
 )
 
@@ -130,6 +115,7 @@ EXTRA=(
     firefox
     foot
     kitty
+    # TODO: Add Bitwarden desktop and cli
 )
 
 FUN=(
