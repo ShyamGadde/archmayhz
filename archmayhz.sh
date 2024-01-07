@@ -97,7 +97,7 @@ sed -i 's|#ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
 sed -i 's|#VerbosePkgLists|VerbosePkgLists|' /etc/pacman.conf
 
 print_info "INSTALLING ARCH LINUX..."
-source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/package-lists.sh)
+source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/pacman-package-lists.sh)
 pacstrap /mnt "${PACKAGES[@]}" --noconfirm
 
 print_info "GENERATING FSTAB..."
