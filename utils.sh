@@ -25,3 +25,17 @@ print_warning() {
 print_success() {
     print_message "${GREEN}" "$1"
 }
+
+is_vm() {
+    if (lscpu | grep -q "Hypervisor vendor"); then
+        return 0
+    elif (dmesg | grep -q "Booting paravirtualized kernel on bare hardware"); then
+        return 1
+    elif (systemd-detect-virt --quiet --container); then
+        return 1
+    elif (systemd-detect-virt --quiet); then
+        return 0
+    else
+        return 1
+    fi
+}

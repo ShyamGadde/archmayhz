@@ -81,5 +81,9 @@ systemctl enable sshd
 systemctl enable tlp
 systemctl enable ufw
 
+if is_vm; then
+    sed -i 's|Exec=Hyprland|Exec=env WLR_RENDERER_ALLOW_SOFTWARE=1 WLR_NO_HARDWARE_CURSORS=1 Hyprland|' /usr/share/wayland-sessions/hyprland.desktop
+fi
+
 print_success "INSTALLATION COMPLETE!"
 exit
