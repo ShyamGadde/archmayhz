@@ -11,35 +11,55 @@ BASE_SYSTEM=(
     linux-lts-headers
     linux-zen
     linux-zen-headers
+    mkinitcpio
 )
 
 FILESYSTEM=(
     btrfs-progs
     dosfstools
     exfatprogs
+    mtools # Tools to access MS-DOS disks
     ntfs-3g
 )
 
 GRAPHICS_DRIVERS=(
     intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
     mesa               # An open-source implementation of the OpenGL specification
-    onevpl-intel-gpu   # For video processing and transcoding
+    onevpl-intel-gpu   # runtime for Tiger Lake and newer GPUs
     vulkan-intel
 )
 
+NETWORKING=(
+    curl
+    iwd
+    network-manager-applet # System tray applet for connecting to Internet
+    networkmanager
+    nm-connection-editor # NetworkManager GUI connection editor and widgets
+    openssh
+    wget
+    whois
+)
+
+BLUETOOTH=(
+    bluez
+    bluez-utils
+    blueman
+)
+
 FONTS=(
+    adobe-source-code-pro-fonts
     gnu-free-fonts
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
     noto-fonts-extra
+    otf-font-awesome
     terminus-font
     ttf-cascadia-code
     ttf-cascadia-code-nerd
     ttf-dejavu
+    ttf-droid
     ttf-fira-code
-    ttf-fira-mono
-    ttf-fira-sans
     ttf-firacode-nerd
     ttf-jetbrains-mono
     ttf-jetbrains-mono-nerd
@@ -47,47 +67,56 @@ FONTS=(
     ttf-victor-mono-nerd
 )
 
-NETWORKING=(
-    curl
-    networkmanager
-    openssh
-    wget
-    whois
+HYPRLAND=(
+    hyprland
+    xdg-desktop-portal-hyprland
+    swaync
+    kitty
+    dolphin
+    wofi
+    qt5-wayland
+    qt6-wayland
 )
 
 MULTIMEDIA=(
+    ffmpeg
     gimp
-    libnotify # ??
+    gst-plugin-pipewire
+    gst-plugins-base
+    gstreamer
+    imagemagick # Kitty image support
+    mpv
     pipewire
+    pipewire-alsa
+    pipewire-audio
     pipewire-jack
-    speech-dispatcher # ??
-    vlc
+    pipewire-pulse
     wireplumber
 )
 
-# TODO: Bluetooth support
-
 UTILITIES=(
+    acpi      # Client for battery, power, and thermal readings
+    acpi_call # A linux kernel module that enables calls to ACPI methods through /proc/acpi/call
+    acpid     # Advanced Configuration and Power Interface event daemon
     archlinux-keyring
+    bash-completion
     git
-    gpm            # General Purpose Mouse Interface (for mouse support in the tty)
-    hunspell-en_US # ??
-    inotify-tools  # ??
+    gpm # General Purpose Mouse Interface (for mouse support in the tty)
     less
     lynx
     man-db
     man-pages
-    mc
     nano
     neofetch
     pacman-contrib
     reflector # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
     rsync
+    smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
     sudo
     tar
+    tlp # Advanced power management tool for Linux
     ufw # Uncomplicated Firewall
-    unrar
-    unzip
+    upower
     util-linux
     vi
     vim
@@ -95,31 +124,28 @@ UTILITIES=(
     zsh
 )
 
-# WAYLAND=(
-#     qt5-wayland
-#     qt6-wayland
-#     sway
-#     waybar
-#     wlroots
-#     xorg-server-xwayland
-#     xdg-desktop-portal
-#     xdg-desktop-portal-impl
-# )
-
-DESKTOP_APPLICATIONS=(
+EXTRA=(
     firefox
-    flatpak
     kitty
-    libreoffice-fresh # LibreOffice branch which contains new features and program enhancements
+)
+
+FUN=(
+    cmatrix
+    cowsay
+    figlet
+    sl
 )
 
 PACKAGES=(
     "${BASE_SYSTEM[@]}"
     "${FILESYSTEM[@]}"
     "${GRAPHICS_DRIVERS[@]}"
-    "${FONTS[@]}"
     "${NETWORKING[@]}"
+    "${BLUETOOTH[@]}"
+    "${FONTS[@]}"
+    "${HYPRLAND[@]}"
     "${MULTIMEDIA[@]}"
     "${UTILITIES[@]}"
-    "${DESKTOP_APPLICATIONS[@]}"
+    "${EXTRA[@]}"
+    "${FUN[@]}"
 )
