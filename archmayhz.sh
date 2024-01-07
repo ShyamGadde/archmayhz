@@ -27,6 +27,7 @@ print_info "GATHERING SETUP INFORMATION..."
 read -p "Hostname     : " HOSTNAME
 read -p "Root Password: " ROOT_PASSWORD
 read -p "Username     : " USERNAME
+read -p "Full Name    : " FULLNAME
 read -p "User Password: " USER_PASSWORD
 
 print_info "CREATING PARTITIONS..."
@@ -109,6 +110,7 @@ arch-chroot /mnt /bin/bash -c "
     export HOSTNAME=${HOSTNAME}
     export ROOT_PASSWORD=${ROOT_PASSWORD}
     export USERNAME=${USERNAME}
+    export FULLNAME=${FULLNAME}
     export USER_PASSWORD=${USER_PASSWORD}
     bash <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/setup.sh)"
 
