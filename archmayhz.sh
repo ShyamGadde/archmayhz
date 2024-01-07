@@ -80,8 +80,6 @@ lsblk -f ${DISK}
 
 # TODO: Setup zram?
 
-# TODO: Maybe create a swap file just for hibernation?
-
 print_info "UPDATE SYSTEM CLOCK..."
 timedatectl set-ntp true
 
@@ -99,7 +97,7 @@ sed -i 's|#VerbosePkgLists|VerbosePkgLists|' /etc/pacman.conf
 
 print_info "INSTALLING ARCH LINUX..."
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/package-lists.sh)
-pacstrap -K /mnt "${PACKAGES[@]}" --noconfirm
+pacstrap /mnt "${PACKAGES[@]}" --noconfirm
 
 print_info "GENERATING FSTAB..."
 genfstab -U -p /mnt >>/mnt/etc/fstab
