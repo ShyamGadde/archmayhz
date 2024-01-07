@@ -68,14 +68,15 @@ FONTS=(
 )
 
 HYPRLAND=(
-    hyprland
-    xdg-desktop-portal-hyprland
-    swaync
-    kitty
     dolphin
-    wofi
+    hyprland
+    kitty
     qt5-wayland
     qt6-wayland
+    sddm
+    swaync
+    wofi
+    xdg-desktop-portal-hyprland
 )
 
 MULTIMEDIA=(
@@ -102,6 +103,7 @@ UTILITIES=(
     bash-completion
     git
     gpm # General Purpose Mouse Interface (for mouse support in the tty)
+    grub-btrfs
     less
     lynx
     man-db
