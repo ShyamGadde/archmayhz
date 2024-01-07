@@ -68,14 +68,17 @@ sed -i 's|^--latest.*|--latest 10|' /etc/xdg/reflector/reflector.conf
 sed -i 's|^--sort.*|--sort rate|' /etc/xdg/reflector/reflector.conf
 
 print_info "ENABLING SERVICES..."
-systemctl enable NetworkManager
-systemctl enable ufw
+systemctl enable acpid
 systemctl enable bluetooth
-systemctl enable reflector.timer
 systemctl enable fstrim.timer
-systemctl enable paccache.timer
-systemctl enable sshd
 systemctl enable gpm
+systemctl enable NetworkManager
+systemctl enable paccache.timer
+systemctl enable reflector.timer
+systemctl enable smartd
+systemctl enable sshd
+systemctl enable tlp
+systemctl enable ufw
 
 print_success "INSTALLATION COMPLETE!"
 exit
