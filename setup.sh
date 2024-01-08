@@ -51,7 +51,7 @@ FONT="ter-128n"
 echo "FONT=${FONT}" >>/etc/vconsole.conf
 
 print_info "SETTING UP INITRAMFS FOR BTRFS..."
-sed -i 's|MODULES=()|MODULES=(btrfs)|' /etc/mkinitcpio.conf
+sed -i 's|MODULES=()|MODULES=(crc32c-intel btrfs)|' /etc/mkinitcpio.conf
 sed -i 's|BINARIES=()|BINARIES=(/usr/bin/btrfs)|' /etc/mkinitcpio.conf
 mkinitcpio -P
 
