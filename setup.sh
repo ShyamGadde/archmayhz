@@ -6,8 +6,8 @@ ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 print_info "SETTING HARDWARE CLOCK..."
 hwclock --systohc --utc
 
-print_info "SETTING NTP..."
-timedatectl set-ntp true
+print_info "SETTING UP TIME SYNCHRONIZATION USING NTP..."
+timedatectl set-ntp on
 
 print_info "SETTING LOCALE..."
 sed -i 's|.*en_US.UTF-8 UTF-8|en_US.UTF-8 UTF-8|g' /etc/locale.gen
@@ -38,7 +38,7 @@ print_info "CONFIGURING VCONSOLE..."
 FONT="ter-128n"
 echo "FONT=${FONT}" >>/etc/vconsole.conf
 
-print_info "SETTING UP INITRAMFS..."
+print_info "SETTING UP INITRAMFS FOR BTRFS..."
 sed -i 's|MODULES=()|MODULES=(btrfs)|' /etc/mkinitcpio.conf
 sed -i 's|BINARIES=()|BINARIES=(/usr/bin/btrfs)|' /etc/mkinitcpio.conf
 mkinitcpio -P
@@ -48,6 +48,17 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 
 print_info "CONFIGURING GRUB..."
 sed -i 's|GRUB_GFXMODE=auto|GRUB_GFXMODE=1920x1080x32,1280x720x32,auto|' /etc/default/grub
+cat <<EOF >/boot/grub/custom.cfg
+menuentry "System shutdown" --class shutdown {
+	echo "System shutting down..."
+	halt
+}
+
+menuentry "System restart" --class restart {
+	echo "System rebooting..."
+	reboot
+}
+EOF
 
 print_info "CREATING ZRAM SWAP..."
 echo 0 >/sys/module/zswap/parameters/enabled
