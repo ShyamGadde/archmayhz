@@ -1,5 +1,4 @@
 AUR_PACKAGES=(
-    # snapper-support
     duf # Disk Usage/Free Utility
     google-chrome
     lf-bin
