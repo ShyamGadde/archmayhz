@@ -25,6 +25,7 @@ for package in "${AUR_PACKAGES[@]}"; do
 done
 
 print_info "SETTING UP SSH KEYS..."
+read -p "Enter your Bitwarden email: " BITWARDEN_EMAIL
 export BW_SESSION=$(bw login $BITWARDEN_EMAIL --raw)
 bw get notes 79984437-d2f8-4483-804f-b0eb00720fca > ~/.ssh/github_ed25519
 chmod 600 ~/.ssh/github_ed25519
