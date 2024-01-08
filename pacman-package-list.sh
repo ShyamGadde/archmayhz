@@ -65,7 +65,6 @@ HYPRLAND=(
     qt5-wayland
     qt6-wayland
     sddm
-    swaync
     wofi
     xdg-desktop-portal-hyprland
 )
