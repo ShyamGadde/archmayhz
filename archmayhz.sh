@@ -1,5 +1,8 @@
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/utils.sh)
 
+# ---------------------------- #
+# ------- Basic Setup -------- #
+# ---------------------------- #
 print_info "SETTING UP VCONSOLE..."
 setfont ter-128n # Set the font to Terminus 32pt Bold
 
@@ -23,6 +26,9 @@ while ! ping -c 1 archlinux.org &>>/dev/null; do
 done
 print_success "INTERNET CONNECTION ESTABLISHED"
 
+# ---------------------------- #
+# ------- Check Packages ----- #
+# ---------------------------- #
 print_info "UPDATING MIRRORLIST..."
 reflector --country 'India' --latest 10 --fastest 5 --sort rate --verbose --save /etc/pacman.d/mirrorlist
 pacman -Syy --noconfirm
@@ -42,6 +48,9 @@ if ! pacman -Sp "${PACMAN_PACKAGES[@]}" >/dev/null; then
 fi
 print_success "ALL PACKAGES FOUND IN REPOSITORIES. CONTINUING..."
 
+# ---------------------------- #
+# ------- User Setup --------- #
+# ---------------------------- #
 print_info "GATHERING SETUP INFORMATION..."
 read -p "Hostname     : " HOSTNAME
 read -p "Root Password: " ROOT_PASSWORD
@@ -49,6 +58,9 @@ read -p "Username     : " USERNAME
 read -p "Full Name    : " FULLNAME
 read -p "User Password: " USER_PASSWORD
 
+# ---------------------------- #
+# ------- Disk Setup --------- #
+# ---------------------------- #
 print_info "PARTIONING THE DISKS..."
 print_warning "WARNING: This script will erase all data on the selected disk."
 lsblk -d
@@ -75,13 +87,16 @@ mkfs.vfat -F32 -n EFI ${BOOT_PARTITION}
 mkfs.btrfs -L LINUX ${BTRFS_PARTITION} -f
 lsblk -f ${DISK}
 
+# ----------------------------- #
+# ------- BTRFS Setup --------- #
+# ----------------------------- #
 print_info "CREATING BTRFS SUBVOLUMES..."
 mount -t btrfs ${BTRFS_PARTITION} /mnt
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
 btrfs subvolume create /mnt/@pkg
 btrfs subvolume create /mnt/@log
-btrfs subvolume create /mnt/@.snapshots
+btrfs subvolume create /mnt/@.snapshots # TODO: @.snapshots or just @snapshots?
 umount /mnt
 
 print_info "MOUNTING BTRFS SUBVOLUMES..."
@@ -98,6 +113,9 @@ mkdir /mnt/boot
 mount ${BOOT_PARTITION} /mnt/boot
 lsblk -f ${DISK}
 
+# ---------------------------- #
+# ------- Installation ------- #
+# ---------------------------- #
 print_info "INSTALLING ARCH LINUX..."
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/pacman-package-list.sh)
 pacstrap /mnt "${PACMAN_PACKAGES[@]}" --noconfirm
@@ -107,6 +125,9 @@ genfstab -U -p /mnt >>/mnt/etc/fstab
 sed -i 's/,subvolid=[0-9]*//g' /mnt/etc/fstab # Remove subvolid from fstab
 cat /mnt/etc/fstab
 
+# ---------------------------- #
+# ------- System Setup ------- #
+# ---------------------------- #
 print_info "CHROOTING INTO THE NEW SYSTEM..."
 arch-chroot /mnt /bin/bash -c "
     export HOSTNAME=${HOSTNAME}
@@ -116,6 +137,9 @@ arch-chroot /mnt /bin/bash -c "
     export USER_PASSWORD=${USER_PASSWORD}
     bash <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/setup.sh)"
 
+# ---------------------------- #
+# ------- Rebooting ---------- #
+# ---------------------------- #
 read -p "Press any key to reboot..."
 print_info "REBOOTING..."
 umount -R /mnt
