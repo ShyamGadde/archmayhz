@@ -62,6 +62,7 @@ print_info "INSTALLING UP GRUB..."
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 
 print_info "CONFIGURING GRUB..."
+sed -i 's|GRUB_CMDLINE_LINUX="\(.*\)"|GRUB_CMDLINE_LINUX="\1 rootfstype=btrfs"|' /etc/default/grub
 sed -i 's|GRUB_GFXMODE=auto|GRUB_GFXMODE=1920x1080x32,1280x720x32,auto|' /etc/default/grub
 cat <<EOF >/boot/grub/custom.cfg
 menuentry "System shutdown" --class shutdown {
