@@ -23,3 +23,5 @@ print_info "INSTALLING AUR PACKAGES..."
 for package in "${AUR_PACKAGES[@]}"; do
     paru -S "${package}"
 done
+
+echo "DONE!" | figlet -f slant
