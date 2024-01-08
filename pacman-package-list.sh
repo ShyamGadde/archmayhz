@@ -47,6 +47,7 @@ FONTS=(
     noto-fonts-extra
     otf-font-awesome
     terminus-font
+    fontconfig
     ttf-cascadia-code
     ttf-cascadia-code-nerd
     ttf-dejavu
