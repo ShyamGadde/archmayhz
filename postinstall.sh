@@ -33,4 +33,4 @@ chmod 600 ~/.ssh/github_ed25519
 bw get notes 6bd9e32b-0c2d-4273-925e-b0eb00724b7b > ~/.ssh/github_ed25519.pub
 chmod 644 ~/.ssh/github_ed25519.pub
 
-echo "DONE!" | figlet -f slant
+echo "DONE!" | figlet -f slant | lolcat
