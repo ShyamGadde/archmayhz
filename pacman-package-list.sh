@@ -124,10 +124,11 @@ EXTRA=(
 )
 
 FUN=(
-    cmatrix
+    cmatrix # Terminal based "Matrix" screensaver
     cowsay
-    figlet
-    sl
+    figlet # Make large character ASCII banners out of ordinary text
+    lolcat # Rainbows and unicorns!
+    sl     # Steam Locomotive
 )
 
 PACMAN_PACKAGES=(
