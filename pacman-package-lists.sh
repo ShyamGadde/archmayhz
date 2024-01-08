@@ -1,16 +1,12 @@
 BASE_SYSTEM=(
     base
-    base-devel
     efibootmgr
     grub
     intel-ucode
     linux
     linux-firmware
-    linux-headers
     linux-lts
-    linux-lts-headers
     linux-zen
-    linux-zen-headers
 )
 
 FILESYSTEM=(
@@ -88,11 +84,9 @@ UTILITIES=(
     acpi_call # A linux kernel module that enables calls to ACPI methods through /proc/acpi/call
     acpid     # Advanced Configuration and Power Interface event daemon
     bat
-    git
     gpm # General Purpose Mouse Interface (for mouse support in the tty)
     grub-btrfs
     less
-    lynx
     man-db
     man-pages
     nano
@@ -101,6 +95,7 @@ UTILITIES=(
     pacman-contrib
     reflector     # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
     smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
+    speedtest-cli # Command line interface for testing internet bandwidth using speedtest.net
     tlp           # Advanced power management tool for Linux
     ufw           # Uncomplicated Firewall
     vi
@@ -110,6 +105,14 @@ UTILITIES=(
     zsh
 )
 
+DEVELOPMENT=(
+    base-devel
+    git
+    linux-headers
+    linux-lts-headers
+    linux-zen-headers
+)
+
 EXTRA=(
     bitwarden
     bitwarden-cli
@@ -117,6 +120,7 @@ EXTRA=(
     firefox
     foot
     kitty
+    lynx
 )
 
 FUN=(
@@ -136,6 +140,7 @@ PACKAGES=(
     "${HYPRLAND[@]}"
     "${MULTIMEDIA[@]}"
     "${UTILITIES[@]}"
+    "${DEVELOPMENT[@]}"
     "${EXTRA[@]}"
     "${FUN[@]}"
 )
