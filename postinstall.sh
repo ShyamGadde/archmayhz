@@ -27,6 +27,7 @@ done
 print_info "SETTING UP SSH KEYS..."
 read -p "Enter your Bitwarden email: " BITWARDEN_EMAIL
 export BW_SESSION=$(bw login $BITWARDEN_EMAIL --raw)
+mkdir -p ~/.ssh
 bw get notes 79984437-d2f8-4483-804f-b0eb00720fca > ~/.ssh/github_ed25519
 chmod 600 ~/.ssh/github_ed25519
 bw get notes 6bd9e32b-0c2d-4273-925e-b0eb00724b7b > ~/.ssh/github_ed25519.pub
