@@ -30,7 +30,7 @@ print_success "INTERNET CONNECTION ESTABLISHED"
 # ------- Check Packages ----- #
 # ---------------------------- #
 print_info "UPDATING MIRRORLIST..."
-reflector --country 'India' --latest 10 --fastest 5 --sort rate --verbose --save /etc/pacman.d/mirrorlist
+reflector --country 'India' --latest 10 --sort rate --verbose --save /etc/pacman.d/mirrorlist
 pacman -Syy --noconfirm
 
 print_info "INSTALLING ARCH LINUX KEYRING..."
