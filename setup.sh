@@ -150,7 +150,7 @@ fi
 
 # ---------------------------- #
 # ------- Eye Candy ---------- #
-
+# ---------------------------- #
 print_info "SETTING UP USER DIRECTORIES..."
 xdg-user-dirs-update
 
