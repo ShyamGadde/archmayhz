@@ -102,6 +102,7 @@ UTILITIES=(
     vim
     xdg-user-dirs # Creates user directories (e.g. Desktop dir) automatically
     xdg-utils     # Command line tools that assist applications with a variety of desktop integration tasks
+    zram-generator
     zsh
 )
 

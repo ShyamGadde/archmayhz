@@ -45,10 +45,23 @@ mkinitcpio -P
 
 print_info "INSTALLING UP GRUB..."
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
 
 print_info "CONFIGURING GRUB..."
 sed -i 's|GRUB_GFXMODE=auto|GRUB_GFXMODE=1920x1080x32,1280x720x32,auto|' /etc/default/grub
+
+print_info "CREATING ZRAM SWAP..."
+echo 0 >/sys/module/zswap/parameters/enabled
+# Add 'zswap.enabled=0' to kernel parameters
+sed -i 's|GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"|GRUB_CMDLINE_LINUX_DEFAULT="\1 zswap.enabled=0"|' /etc/default/grub
+cat <<EOF >/etc/systemd/zram-generator.conf
+[zram0]
+zram-size = ram / 2
+compression-algorithm = zstd
+swap-priority = 100
+fs-type = swap
+EOF
+
+print_info "GENERATING GRUB CONFIG..."
 grub-mkconfig -o /boot/grub/grub.cfg
 
 print_info "SETTING UP USER DIRECTORIES..."
