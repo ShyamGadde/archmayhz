@@ -12,8 +12,8 @@ systemctl --user enable --now pipewire-pulse
 systemctl --user enable --now wireplumber
 
 print_info "INSTALLING PARU..."
-git clone https://aur.archlinux.org/paru-bin.git /tmp/paru-bin
-cd /tmp/paru-bin
+git clone https://aur.archlinux.org/paru-bin.git ~/repos/paru-bin
+cd ~/repos/paru-bin
 makepkg -si --noconfirm
 cd ~
 
