@@ -98,8 +98,8 @@ UTILITIES=(
     smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
     speedtest-cli # Command line interface for testing internet bandwidth using speedtest.net
     text-info
-    tlp           # Advanced power management tool for Linux
-    ufw           # Uncomplicated Firewall
+    tlp # Advanced power management tool for Linux
+    ufw # Uncomplicated Firewall
     vi
     vim
     xdg-user-dirs # Creates user directories (e.g. Desktop dir) automatically
@@ -123,7 +123,6 @@ EXTRA=(
     firefox
     foot
     kitty
-    lynx
 )
 
 FUN=(
