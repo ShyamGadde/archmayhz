@@ -101,9 +101,6 @@ EOF
 print_info "GENERATING GRUB CONFIG..."
 grub-mkconfig -o /boot/grub/grub.cfg
 
-print_info "SETTING UP USER DIRECTORIES..."
-xdg-user-dirs-update
-
 # ---------------------------- #
 # ------- Pacman ------------- #
 # ---------------------------- #
@@ -149,6 +146,12 @@ if is_vm; then
 	print_info "VIRTUAL MACHINE DETECTED. ADDING ENVIRONMENT VARIABLES TO HYPRLAND DESKTOP ENTRY..."
 	sed -i 's|Exec=Hyprland|Exec=env WLR_RENDERER_ALLOW_SOFTWARE=1 WLR_NO_HARDWARE_CURSORS=1 Hyprland|' /usr/share/wayland-sessions/hyprland.desktop
 fi
+
+# ---------------------------- #
+# ------- Eye Candy ---------- #
+
+print_info "SETTING UP USER DIRECTORIES..."
+xdg-user-dirs-update
 
 # TODO: Setup Plymouth and Plymouth theme
 # Note: Add plymouth after base and udev in the hooks array in /etc/mkinitcpio.conf
