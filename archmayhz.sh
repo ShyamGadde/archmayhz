@@ -23,6 +23,25 @@ while ! ping -c 1 archlinux.org &>>/dev/null; do
 done
 print_success "INTERNET CONNECTION ESTABLISHED"
 
+print_info "UPDATING MIRRORLIST..."
+reflector --country 'India' --latest 10 --fastest 5 --sort rate --verbose --save /etc/pacman.d/mirrorlist
+pacman -Syy --noconfirm
+
+print_info "INSTALLING ARCH LINUX KEYRING..."
+pacman -S archlinux-keyring --noconfirm
+
+print_info "CONFIGURING PACMAN..."
+sed -i 's|#Color|Color\nILoveCandy|' /etc/pacman.conf
+sed -i 's|#ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
+sed -i 's|#VerbosePkgLists|VerbosePkgLists|' /etc/pacman.conf
+
+print_info "CHECKING PACMAN PACKAGES..."
+if ! pacman -Sp "${PACMAN_PACKAGES[@]}" >/dev/null; then
+    print_warning "One or more packages in the list do not exist. Please check the package names and try again."
+    exit 1
+fi
+print_success "ALL PACKAGES FOUND IN REPOSITORIES. CONTINUING..."
+
 print_info "GATHERING SETUP INFORMATION..."
 read -p "Hostname     : " HOSTNAME
 read -p "Root Password: " ROOT_PASSWORD
@@ -30,7 +49,7 @@ read -p "Username     : " USERNAME
 read -p "Full Name    : " FULLNAME
 read -p "User Password: " USER_PASSWORD
 
-print_info "CREATING PARTITIONS..."
+print_info "PARTIONING THE DISKS..."
 print_warning "WARNING: This script will erase all data on the selected disk."
 lsblk -d
 echo -e "\nPlease select the disk you want to install Arch Linux on.\nExample: nvme0n1\n"
@@ -44,7 +63,7 @@ sgdisk -n 2:0:0 -t 2:8300 ${DISK}       # Create a new Linux partition with the 
 sgdisk -p ${DISK}                       # Print the partition table
 partprobe ${DISK}                       # Inform the OS of partition table changes
 
-print_info "FORMATTING PARTITIONS..."
+print_info "FORMATTING THE PARTITIONS..."
 if [[ $DISK =~ nvme ]]; then
     BOOT_PARTITION=${DISK}p1
     BTRFS_PARTITION=${DISK}p2
@@ -78,23 +97,6 @@ print_info "MOUNTING BOOT PARTITION..."
 mkdir /mnt/boot
 mount ${BOOT_PARTITION} /mnt/boot
 lsblk -f ${DISK}
-
-# TODO: Setup zram?
-
-print_info "UPDATE SYSTEM CLOCK..."
-timedatectl set-ntp true
-
-print_info "UPDATING MIRRORLIST..."
-reflector --country 'India' --latest 10 --fastest 5 --sort rate --verbose --save /etc/pacman.d/mirrorlist
-pacman -Syy --noconfirm
-
-print_info "INSTALLING ARCH LINUX KEYRING..."
-pacman -S archlinux-keyring --noconfirm
-
-print_info "CONFIGURING PACMAN..."
-sed -i 's|#Color|Color\nILoveCandy|' /etc/pacman.conf
-sed -i 's|#ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
-sed -i 's|#VerbosePkgLists|VerbosePkgLists|' /etc/pacman.conf
 
 print_info "INSTALLING ARCH LINUX..."
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/pacman-package-list.sh)
