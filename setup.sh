@@ -61,6 +61,14 @@ swap-priority = 100
 fs-type = swap
 EOF
 
+print_info "OPTIMIZING SWAP ON ZRAM..."
+cat <<EOF >/etc/sysctl.d/99-vm-zram-parameters.conf
+vm.swappiness = 180
+vm.watermark_boost_factor = 0
+vm.watermark_scale_factor = 125
+vm.page-cluster = 0
+EOF
+
 print_info "GENERATING GRUB CONFIG..."
 grub-mkconfig -o /boot/grub/grub.cfg
 
