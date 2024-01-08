@@ -98,7 +98,7 @@ sed -i 's|#VerbosePkgLists|VerbosePkgLists|' /etc/pacman.conf
 
 print_info "INSTALLING ARCH LINUX..."
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/pacman-package-list.sh)
-pacstrap /mnt "${PACKAGES[@]}" --noconfirm
+pacstrap /mnt "${PACMAN_PACKAGES[@]}" --noconfirm
 
 print_info "GENERATING FSTAB..."
 genfstab -U -p /mnt >>/mnt/etc/fstab

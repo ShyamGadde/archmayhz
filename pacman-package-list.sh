@@ -130,7 +130,7 @@ FUN=(
     sl
 )
 
-PACKAGES=(
+PACMAN_PACKAGES=(
     "${BASE_SYSTEM[@]}"
     "${FILESYSTEM[@]}"
     "${GRAPHICS_DRIVERS[@]}"
