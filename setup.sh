@@ -81,7 +81,7 @@ EOF
 print_info "CREATING ZRAM SWAP..."
 echo 0 >/sys/module/zswap/parameters/enabled # Disable zswap
 # Add 'zswap.enabled=0' to kernel parameters
-sed -i 's|GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"|GRUB_CMDLINE_LINUX_DEFAULT="\1 zswap.enabled=0"|' /etc/default/grub
+sed -i 's|GRUB_CMDLINE_LINUX="\(.*\)"|GRUB_CMDLINE_LINUX="\1 zswap.enabled=0"|' /etc/default/grub
 cat <<EOF >/etc/systemd/zram-generator.conf
 [zram0]
 zram-size = ram / 2
