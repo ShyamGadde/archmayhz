@@ -84,6 +84,7 @@ UTILITIES=(
     acpi_call # A linux kernel module that enables calls to ACPI methods through /proc/acpi/call
     acpid     # Advanced Configuration and Power Interface event daemon
     bat
+    fzf
     gpm # General Purpose Mouse Interface (for mouse support in the tty)
     grub-btrfs
     less
