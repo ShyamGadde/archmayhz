@@ -30,7 +30,7 @@ echo "${USERNAME}:${USER_PASSWORD}" | chpasswd
 print_info "CONFIGURING SUDO FOR USER..."
 # Granting the user the ability to run any command as any user or any group on any host.
 # The first ALL specifies all hosts, the (ALL:ALL) specifies all users and all groups, and the final ALL specifies all commands.
-echo "${USERNAME} ALL=(ALL:ALL) ALL" > /etc/sudoers.d/$USERNAME
+echo "${USERNAME} ALL=(ALL:ALL) ALL" >/etc/sudoers.d/$USERNAME
 # Setting the permissions of the file to read-only for owner and group for security reasons.
 chmod 0440 /etc/sudoers.d/$USERNAME
 
@@ -69,6 +69,8 @@ cp /etc/xdg/reflector/reflector.conf /etc/xdg/reflector/reflector.conf.bak
 sed -i 's|# --country.*|--country India|' /etc/xdg/reflector/reflector.conf
 sed -i 's|^--latest.*|--latest 10|' /etc/xdg/reflector/reflector.conf
 sed -i 's|^--sort.*|--sort rate|' /etc/xdg/reflector/reflector.conf
+echo "/n# Return the n fastest mirrors that meet the other criteria" >>/etc/xdg/reflector/reflector.conf
+echo "--fastest 5" >>/etc/xdg/reflector/reflector.conf
 
 print_info "ENABLING SERVICES..."
 systemctl enable acpid

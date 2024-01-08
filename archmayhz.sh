@@ -85,7 +85,7 @@ print_info "UPDATE SYSTEM CLOCK..."
 timedatectl set-ntp true
 
 print_info "UPDATING MIRRORLIST..."
-reflector --country 'India' --latest 10 --sort rate --save /etc/pacman.d/mirrorlist --verbose
+reflector --country 'India' --latest 10 --fastest 5 --sort rate --verbose --save /etc/pacman.d/mirrorlist
 pacman -Syy --noconfirm
 
 print_info "INSTALLING ARCH LINUX KEYRING..."
