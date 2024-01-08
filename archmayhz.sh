@@ -27,33 +27,6 @@ done
 print_success "INTERNET CONNECTION ESTABLISHED"
 
 # ---------------------------- #
-# ------- Check Packages ----- #
-# ---------------------------- #
-print_info "SETTING UP TIME SYNCHRONIZATION USING NTP..."
-timedatectl set-ntp on
-
-print_info "UPDATING MIRRORLIST..."
-reflector --country 'India' --latest 10 --sort rate --verbose --save /etc/pacman.d/mirrorlist
-pacman -Syy --noconfirm
-
-print_info "INSTALLING ARCH LINUX KEYRING..."
-pacman -S archlinux-keyring --noconfirm
-
-print_info "CONFIGURING PACMAN..."
-sed -i 's|#Color|Color\nILoveCandy|' /etc/pacman.conf
-sed -i 's|#ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
-sed -i 's|#VerbosePkgLists|VerbosePkgLists|' /etc/pacman.conf
-
-print_info "CHECKING PACMAN PACKAGES..."
-for pkg in "${PACMAN_PACKAGES[@]}"; do
-    if ! pacman -Sp "$pkg" >/dev/null; then
-        echo "Failed to resolve package: $pkg"
-        exit 1
-    fi
-done
-print_success "ALL PACKAGES FOUND IN REPOSITORIES. CONTINUING..."
-
-# ---------------------------- #
 # ------- User Setup --------- #
 # ---------------------------- #
 print_info "GATHERING SETUP INFORMATION..."
@@ -121,6 +94,21 @@ lsblk -f ${DISK}
 # ---------------------------- #
 # ------- Installation ------- #
 # ---------------------------- #
+print_info "SETTING UP TIME SYNCHRONIZATION USING NTP..."
+timedatectl set-ntp on
+
+print_info "UPDATING MIRRORLIST..."
+reflector --country 'India' --latest 10 --sort rate --verbose --save /etc/pacman.d/mirrorlist
+pacman -Syy --noconfirm
+
+print_info "INSTALLING ARCH LINUX KEYRING..."
+pacman -S archlinux-keyring --noconfirm
+
+print_info "CONFIGURING PACMAN..."
+sed -i 's|#Color|Color\nILoveCandy|' /etc/pacman.conf
+sed -i 's|#ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
+sed -i 's|#VerbosePkgLists|VerbosePkgLists|' /etc/pacman.conf
+
 print_info "INSTALLING ARCH LINUX..."
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/pacman-package-list.sh)
 pacstrap /mnt "${PACMAN_PACKAGES[@]}" --noconfirm
