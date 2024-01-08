@@ -42,10 +42,12 @@ sed -i 's|#ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
 sed -i 's|#VerbosePkgLists|VerbosePkgLists|' /etc/pacman.conf
 
 print_info "CHECKING PACMAN PACKAGES..."
-if ! pacman -Sp "${PACMAN_PACKAGES[@]}" >/dev/null; then
-    print_warning "One or more packages in the list do not exist. Please check the package names and try again."
-    exit 1
-fi
+for pkg in "${PACMAN_PACKAGES[@]}"; do
+    if ! pacman -Sp "$pkg" >/dev/null; then
+        echo "Failed to resolve package: $pkg"
+        exit 1
+    fi
+done
 print_success "ALL PACKAGES FOUND IN REPOSITORIES. CONTINUING..."
 
 # ---------------------------- #
