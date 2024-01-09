@@ -121,9 +121,11 @@ print_info "INSTALLING ARCH LINUX KEYRING..."
 pacman -S archlinux-keyring --noconfirm
 
 print_info "CONFIGURING PACMAN..."
-sed -i 's|#Color|Color\nILoveCandy|' /etc/pacman.conf
-sed -i 's|#ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
-sed -i 's|#VerbosePkgLists|VerbosePkgLists|' /etc/pacman.conf
+sed -i 's/^#\(UseSyslog\)/\1/' /etc/pacman.conf
+sed -i 's/^#\(Color\)/\1\nILoveCandy/' /etc/pacman.conf
+sed -i 's/^#\(ParallelDownloads.*\)/\1 = 5/' /etc/pacman.conf
+sed -i 's/^#\(VerbosePkgLists\)/\1/' /etc/pacman.conf
+sed -i 's/^#\(CheckSpace\)/\1/' /etc/pacman.conf
 
 print_info "INSTALLING ARCH LINUX..."
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/pacman-package-list.sh)
