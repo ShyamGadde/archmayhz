@@ -105,7 +105,7 @@ print_info "UPDATING MIRRORLIST..."
 reflector --country 'India' --latest 15 --sort rate --verbose --save /etc/pacman.d/mirrorlist
 pacman -Syy --noconfirm
 
-print_info "INSTALLING ARCH LINUX KEYRING..."
+print_info "UPDATING ARCH LINUX KEYRING..."
 pacman -S archlinux-keyring --noconfirm
 
 print_info "CONFIGURING PACMAN..."
