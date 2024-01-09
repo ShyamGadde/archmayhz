@@ -24,7 +24,11 @@ print_info "SETTING HOSTNAME..."
 echo "${HOSTNAME}" >/etc/hostname
 
 print_info "SETTING UP HOSTS FILE..."
-echo -e "127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\t${HOSTNAME}.localdomain\t${HOSTNAME}" >/etc/hosts
+cat << EOF > /etc/hosts
+127.0.0.1   localhost
+::1         localhost
+127.0.1.1   ${HOSTNAME}.localdomain   ${HOSTNAME}
+EOF
 
 # ---------------------------- #
 # ------- User Accounts ------ #
