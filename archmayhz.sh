@@ -44,12 +44,11 @@ read -p "User Password: " USER_PASSWORD
 print_info "PARTIONING THE DISKS..."
 print_warning "WARNING: This script will erase all data on the selected disk."
 
-set -x
 lsblk -d
 echo -e "\nPlease select the disk you want to install Arch Linux on.\nExample: nvme0n1\n"
 read -p "Disk: " DISK
 DISK=/dev/${DISK}
-umount -A --recursive /mnt &>>/dev/null # Unmount all partitions on the selected disk
+set -x
 sgdisk -Z ${DISK}                       # zap all on disk
 sgdisk -a 2048 -o ${DISK}               # Create a new GPT disklabel (partition table) and align partitions to 2048 sectors
 sgdisk -n 1:0:+4G -t 1:ef00 ${DISK}     # Create a new EFI partition of 4GB
