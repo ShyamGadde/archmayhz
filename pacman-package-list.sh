@@ -119,7 +119,7 @@ DEVELOPMENT=(
 EXTRA=(
     bitwarden
     bitwarden-cli
-    dolphin
+    thunar
     firefox
     foot
     kitty
