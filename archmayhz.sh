@@ -43,6 +43,8 @@ read -p "User Password: " USER_PASSWORD
 # ---------------------------- #
 print_info "PARTIONING THE DISKS..."
 print_warning "WARNING: This script will erase all data on the selected disk."
+
+set -x
 lsblk -d
 echo -e "\nPlease select the disk you want to install Arch Linux on.\nExample: nvme0n1\n"
 read -p "Disk: " DISK
@@ -54,6 +56,7 @@ sgdisk -n 1:0:+4G -t 1:ef00 ${DISK}     # Create a new EFI partition of 4GB
 sgdisk -n 2:0:0 -t 2:8300 ${DISK}       # Create a new Linux partition with the rest of the space
 sgdisk -p ${DISK}                       # Print the partition table
 partprobe ${DISK}                       # Inform the OS of partition table changes
+set +x
 
 print_info "FORMATTING THE PARTITIONS..."
 if [[ $DISK =~ nvme ]]; then
@@ -63,6 +66,7 @@ else
     BOOT_PARTITION=${DISK}1
     BTRFS_PARTITION=${DISK}2
 fi
+set -x
 mkfs.vfat -F32 -n EFI ${BOOT_PARTITION}
 mkfs.btrfs -L LINUX ${BTRFS_PARTITION} -f
 lsblk -f ${DISK}
@@ -129,6 +133,8 @@ print_info "GENERATING FSTAB..."
 genfstab -U -p /mnt >>/mnt/etc/fstab
 sed -i 's/,subvolid=[0-9]*//g' /mnt/etc/fstab # Remove subvolid from fstab
 cat /mnt/etc/fstab
+
+set +x
 
 # ---------------------------- #
 # ------- System Setup ------- #
