@@ -59,7 +59,7 @@ EOF
 print_info "CONFIGURING MKINITCPIO..."
 cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
 sed -i '/^MODULES/s/)$/ crc32c-intel btrfs)/' /etc/mkinitcpio.conf
-sed -i '/^BINARIES/s/)$/ /usr/bin/btrfs)/' /etc/mkinitcpio.conf
+sed -i '/^BINARIES/s/)$/ \/usr\/bin\/btrfs)/' /etc/mkinitcpio.conf
 sed -i 's/^#\(COMPRESSION="lz4"\)/\1/' /etc/mkinitcpio.conf
 sed -i 's/^#\(MODULES_DECOMPRESS="yes"\)/\1/' /etc/mkinitcpio.conf # Decompress kernel modules to speedup boot
 
