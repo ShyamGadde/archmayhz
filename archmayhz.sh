@@ -15,19 +15,6 @@ else
     print_warning "Stopping the script. UEFI mode not detected." && exit 1
 fi
 
-print_info "CHECKING INTERNET CONNECTION..."
-while ! ping -c 1 archlinux.org &>>/dev/null; do
-    print_warning "NO INTERNET CONNECTION DETECTED"
-    print_info "SCANNING FOR AVAILABLE NETWORKS..."
-    iwctl station wlan0 scan
-    iwctl station wlan0 get-networks
-    echo "\nPlease enter your wireless network details."
-    read -p "Network   : " NETWORK
-    read -p "Passphrase: " PASSPHRASE
-    iwctl station wlan0 connect ${NETWORK} --passphrase ${PASSPHRASE}
-done
-print_success "INTERNET CONNECTION ESTABLISHED"
-
 # ---------------------------- #
 # ------- User Setup --------- #
 # ---------------------------- #
