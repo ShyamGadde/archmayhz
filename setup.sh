@@ -111,13 +111,12 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # ------- Pacman ------------- #
 # ---------------------------- #
 print_info "CONFIGURING PACMAN..."
-sed -i 's|#Color|Color\nILoveCandy|' /etc/pacman.conf
-sed -i 's|#ParallelDownloads.*|ParallelDownloads = 5|' /etc/pacman.conf
-sed -i 's|#VerbosePkgLists|VerbosePkgLists|' /etc/pacman.conf
-sed -i 's|#CheckSpace|CheckSpace|' /etc/pacman.conf
-
-print_info "ENABLING MULTILIB..."
-sed -i '/#\[\multilib\]/,/Include/s|^#||' /etc/pacman.conf
+sed -i 's/^#\(UseSyslog\)/\1/' /etc/pacman.conf
+sed -i 's/^#\(Color\)/\1\nILoveCandy/' /etc/pacman.conf
+sed -i 's/^#\(ParallelDownloads.*\)/\1 = 5/' /etc/pacman.conf
+sed -i 's/^#\(VerbosePkgLists\)/\1/' /etc/pacman.conf
+sed -i 's/^#\(CheckSpace\)/\1/' /etc/pacman.conf
+sed -i '/#\[\multilib\]/,/Include/s/^#//' /etc/pacman.conf
 pacman -Syy --noconfirm
 
 print_info "CONFIGURING REFLECTOR..."
