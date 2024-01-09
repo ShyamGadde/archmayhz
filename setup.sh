@@ -47,6 +47,7 @@ chmod 0440 /etc/sudoers.d/$USERNAME
 # ------- Initramfs ---------- #
 # ---------------------------- #
 print_info "CONFIGURING VCONSOLE..."
+echo "KEYMAP=us" >/etc/vconsole.conf
 FONT="ter-128n"
 echo "FONT=${FONT}" >>/etc/vconsole.conf
 
