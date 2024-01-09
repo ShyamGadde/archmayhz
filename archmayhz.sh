@@ -49,12 +49,15 @@ echo -e "\nPlease select the disk you want to install Arch Linux on.\nExample: n
 read -p "Disk: " DISK
 DISK=/dev/${DISK}
 set -x
-sgdisk -Z ${DISK}                       # zap all on disk
-sgdisk -a 2048 -o ${DISK}               # Create a new GPT disklabel (partition table) and align partitions to 2048 sectors
-sgdisk -n 1:0:+4G -t 1:ef00 ${DISK}     # Create a new EFI partition of 4GB
-sgdisk -n 2:0:0 -t 2:8300 ${DISK}       # Create a new Linux partition with the rest of the space
-sgdisk -p ${DISK}                       # Print the partition table
-partprobe ${DISK}                       # Inform the OS of partition table changes
+if mount | grep /mnt >/dev/null; then
+    umount -A --recursive /mnt # Unmount all partitions on the disk
+fi
+sgdisk -Z ${DISK}                   # zap all on disk
+sgdisk -a 2048 -o ${DISK}           # Create a new GPT disklabel (partition table) and align partitions to 2048 sectors
+sgdisk -n 1:0:+4G -t 1:ef00 ${DISK} # Create a new EFI partition of 4GB
+sgdisk -n 2:0:0 -t 2:8300 ${DISK}   # Create a new Linux partition with the rest of the space
+sgdisk -p ${DISK}                   # Print the partition table
+partprobe ${DISK}                   # Inform the OS of partition table changes
 set +x
 
 print_info "FORMATTING THE PARTITIONS..."
