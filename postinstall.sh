@@ -17,6 +17,11 @@ systemctl --user enable --now pipewire
 systemctl --user enable --now pipewire-pulse
 systemctl --user enable --now wireplumber
 
+print_info "UPDATING PLOCATE DATABASE..."
+cp /etc/updatedb.conf /etc/updatedb.conf.bak
+sudo sed -i '/^PRUNENAMES/s/"$/ .snapshots"/' /etc/updatedb.conf # Ignore BTRFS snapshots
+sudo updatedb
+
 # ---------------------------- #
 # ---------- AUR ------------- #
 # ---------------------------- #
