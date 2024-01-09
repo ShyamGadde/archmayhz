@@ -53,7 +53,7 @@ chmod 0440 /etc/sudoers.d/$USERNAME
 print_info "CONFIGURING VCONSOLE..."
 cat <<EOF >/etc/vconsole.conf
 KEYMAP=us
-FONT=ter-128n
+FONT=ter-128b
 EOF
 
 print_info "CONFIGURING MKINITCPIO..."
