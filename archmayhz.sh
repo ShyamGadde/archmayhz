@@ -86,7 +86,17 @@ mount -t btrfs -o subvol=@log,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/log
 mount -t btrfs -o subvol=@pkg,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/cache/pacman/pkg
 lsblk -f ${DISK}
 
-print_info "MOUNTING BOOT PARTITION..."
+# TODO: Create Swapfile
+#truncate -s 0 /mnt/.swapvol/swapfile
+#chattr +C /mnt/.swapvol/swapfile
+#btrfs property set /mnt/.swapvol/swapfile compression none
+#fallocate -l 16G /mnt/.swapvol/swapfile
+#chmod 600 /mnt/.swapvol/swapfile
+#mkswap /mnt/.swapvol/swapfile
+#swapon /mnt/.swapvol/swapfile
+# TODO: Get offset and resume for BTRFS swapfile
+
+print_info "MOUNTING EFI PARTITION..."
 mkdir /mnt/boot
 mount ${BOOT_PARTITION} /mnt/boot
 lsblk -f ${DISK}

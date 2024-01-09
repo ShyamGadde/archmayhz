@@ -9,11 +9,8 @@ ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 print_info "SETTING HARDWARE CLOCK..."
 hwclock --systohc --utc
 
-print_info "SETTING UP TIME SYNCHRONIZATION USING NTP..."
-systemctl enable systemd-timesyncd
-
 print_info "SETTING LOCALE..."
-sed -i 's|.*en_US.UTF-8 UTF-8|en_US.UTF-8 UTF-8|g' /etc/locale.gen
+echo "en_US.UTF-8 UTF-8" >>/etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >>/etc/locale.conf
 
@@ -24,7 +21,7 @@ print_info "SETTING HOSTNAME..."
 echo "${HOSTNAME}" >/etc/hostname
 
 print_info "SETTING UP HOSTS FILE..."
-cat << EOF > /etc/hosts
+cat <<EOF >/etc/hosts
 127.0.0.1   localhost
 ::1         localhost
 127.0.1.1   ${HOSTNAME}.localdomain   ${HOSTNAME}
@@ -51,9 +48,10 @@ chmod 0440 /etc/sudoers.d/$USERNAME
 # ------- Initramfs ---------- #
 # ---------------------------- #
 print_info "CONFIGURING VCONSOLE..."
-echo "KEYMAP=us" >/etc/vconsole.conf
-FONT="ter-128n"
-echo "FONT=${FONT}" >>/etc/vconsole.conf
+cat <<EOF >/etc/vconsole.conf
+KEYMAP=us
+FONT=ter-128n
+EOF
 
 print_info "SETTING UP INITRAMFS FOR BTRFS..."
 sed -i 's|MODULES=()|MODULES=(crc32c-intel btrfs)|' /etc/mkinitcpio.conf
@@ -67,8 +65,9 @@ print_info "INSTALLING UP GRUB..."
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 
 print_info "CONFIGURING GRUB..."
-sed -i 's|GRUB_CMDLINE_LINUX="\(.*\)"|GRUB_CMDLINE_LINUX="\1 rootfstype=btrfs"|' /etc/default/grub
-sed -i 's|GRUB_GFXMODE=auto|GRUB_GFXMODE=1920x1080x32,1280x720x32,auto|' /etc/default/grub
+cp /etc/default/grub /etc/default/grub.bak
+sed -i '/^GRUB_CMDLINE_LINUX=/s/"$/ rootfstype=btrfs"/' /etc/default/grub
+sed -i 's|^\(GRUB_GFXMODE\)|\1=1920x1080x32,1280x720x32,auto|' /etc/default/grub
 cat <<EOF >/boot/grub/custom.cfg
 menuentry "System shutdown" --class shutdown {
 	echo "System shutting down..."
@@ -84,10 +83,11 @@ EOF
 # ---------------------------- #
 # ------- ZRAM Swap ---------- #
 # ---------------------------- #
-print_info "CREATING ZRAM SWAP..."
-echo 0 >/sys/module/zswap/parameters/enabled # Disable zswap
-# Add 'zswap.enabled=0' to kernel parameters
-sed -i 's|GRUB_CMDLINE_LINUX="\(.*\)"|GRUB_CMDLINE_LINUX="\1 zswap.enabled=0"|' /etc/default/grub
+print_info "SETTING UP ZRAM SWAP..."
+# Disable zswap
+echo 0 >/sys/module/zswap/parameters/enabled
+sed -i '/^GRUB_CMDLINE_LINUX=/s/"$/ zswap.enabled=0"/' /etc/default/grub
+# Enable zram
 cat <<EOF >/etc/systemd/zram-generator.conf
 [zram0]
 zram-size = ram / 2
@@ -95,8 +95,7 @@ compression-algorithm = zstd
 swap-priority = 100
 fs-type = swap
 EOF
-
-print_info "OPTIMIZING SWAP ON ZRAM..."
+# Optimizing zram parameters
 cat <<EOF >/etc/sysctl.d/99-vm-zram-parameters.conf
 vm.swappiness = 180
 vm.watermark_boost_factor = 0
@@ -139,6 +138,7 @@ systemctl enable reflector.timer
 systemctl enable sddm
 systemctl enable smartd
 systemctl enable sshd
+systemctl enable systemd-timesyncd # For time synchronization using NTP
 systemctl enable tlp
 systemctl enable ufw
 
@@ -151,7 +151,7 @@ if is_vm; then
 fi
 
 # ---------------------------- #
-# ------- Eye Candy ---------- #
+# --------- Misc ------------- #
 # ---------------------------- #
 print_info "SETTING UP USER DIRECTORIES..."
 xdg-user-dirs-update
@@ -159,5 +159,5 @@ xdg-user-dirs-update
 # TODO: Setup Plymouth and Plymouth theme
 # Note: Add plymouth after base and udev in the hooks array in /etc/mkinitcpio.conf
 
-print_success "INSTALLATION COMPLETE!"
+echo "INSTALLATION COMPLETE!" | figlet -f slant | lolcat
 exit
