@@ -123,7 +123,7 @@ print_info "CONFIGURING PACMAN..."
 cp /etc/pacman.conf /etc/pacman.conf.bak
 sed -i 's/^#\(UseSyslog\)/\1/' /etc/pacman.conf
 sed -i 's/^#\(Color\)/\1\nILoveCandy/' /etc/pacman.conf
-sed -i 's/^#\(ParallelDownloads.*\)/\1 = 5/' /etc/pacman.conf
+sed -i 's/^#\(ParallelDownloads\).*/\1 = 5/' /etc/pacman.conf
 sed -i 's/^#\(VerbosePkgLists\)/\1/' /etc/pacman.conf
 sed -i 's/^#\(CheckSpace\)/\1/' /etc/pacman.conf
 
