@@ -91,8 +91,6 @@ EOF
 # ------- ZRAM Swap ---------- #
 # ---------------------------- #
 print_info "SETTING UP ZRAM SWAP..."
-# Disable zswap
-echo 0 >/sys/module/zswap/parameters/enabled
 sed -i '/^GRUB_CMDLINE_LINUX=/s/"$/ zswap.enabled=0"/' /etc/default/grub
 # Enable zram
 cat <<EOF >/etc/systemd/zram-generator.conf
