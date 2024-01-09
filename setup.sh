@@ -10,7 +10,7 @@ print_info "SETTING HARDWARE CLOCK..."
 hwclock --systohc --utc
 
 print_info "SETTING UP TIME SYNCHRONIZATION USING NTP..."
-timedatectl set-ntp on
+systemctl enable systemd-timesyncd
 
 print_info "SETTING LOCALE..."
 sed -i 's|.*en_US.UTF-8 UTF-8|en_US.UTF-8 UTF-8|g' /etc/locale.gen
