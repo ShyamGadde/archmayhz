@@ -56,9 +56,13 @@ KEYMAP=us
 FONT=ter-128n
 EOF
 
-print_info "SETTING UP INITRAMFS FOR BTRFS..."
-sed -i 's|MODULES=()|MODULES=(crc32c-intel btrfs)|' /etc/mkinitcpio.conf
-sed -i 's|BINARIES=()|BINARIES=(/usr/bin/btrfs)|' /etc/mkinitcpio.conf
+print_info "CONFIGURING MKINITCPIO..."
+cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
+sed -i '/^MODULES/s/)$/ crc32c-intel btrfs)/' /etc/mkinitcpio.conf
+sed -i '/^BINARIES/s/)$/ /usr/bin/btrfs)/' /etc/mkinitcpio.conf
+sed -i 's/^#\(COMPRESSION="lz4"\)/\1/' /etc/mkinitcpio.conf
+sed -i 's/^#\(MODULES_DECOMPRESS="yes"\)/\1/' /etc/mkinitcpio.conf # Decompress kernel modules to speedup boot
+
 mkinitcpio -P
 
 # ---------------------------- #
