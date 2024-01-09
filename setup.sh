@@ -165,7 +165,7 @@ xdg-user-dirs-update
 # TODO: Setup Plymouth and Plymouth theme
 # Note: Add plymouth after base and udev in the hooks array in /etc/mkinitcpio.conf
 
-+e
+set +e
 
 echo "INSTALLATION COMPLETE!" | figlet -f slant | lolcat
 exit
