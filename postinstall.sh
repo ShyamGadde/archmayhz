@@ -2,7 +2,6 @@ set -e
 
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/utils.sh)
 
-set -x
 # ---------------------------- #
 # ------- Services ----------- #
 # ---------------------------- #

@@ -3,8 +3,7 @@ RED='\033[0;31m'
 LIGHTBLUE='\033[1;34m'
 RESET='\033[0m'
 
-print_message() {
-    set +x
+print_message() {s
     color=$1
     message=$2
     width=$(tput cols)
@@ -14,7 +13,6 @@ print_message() {
     message_line=$(printf "%*s%s" "$padding" '' "$message")
     output="${color}\n${line}\n${message_line}\n${line}\n\n${RESET}"
     printf "$output"
-    set -x
 }
 
 print_info() {
