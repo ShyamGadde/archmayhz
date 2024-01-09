@@ -121,6 +121,7 @@ print_info "INSTALLING ARCH LINUX KEYRING..."
 pacman -S archlinux-keyring --noconfirm
 
 print_info "CONFIGURING PACMAN..."
+cp /etc/pacman.conf /etc/pacman.conf.bak
 sed -i 's/^#\(UseSyslog\)/\1/' /etc/pacman.conf
 sed -i 's/^#\(Color\)/\1\nILoveCandy/' /etc/pacman.conf
 sed -i 's/^#\(ParallelDownloads.*\)/\1 = 5/' /etc/pacman.conf
@@ -133,6 +134,9 @@ pacstrap /mnt "${PACMAN_PACKAGES[@]}" --noconfirm
 
 print_info "GENERATING FSTAB..."
 genfstab -U -p /mnt >>/mnt/etc/fstab
+cat /mnt/etc/fstab
+
+cp /mnt/etc/fstab /mnt/etc/fstab.bak
 sed -i 's/,subvolid=[0-9]*//g' /mnt/etc/fstab # Remove subvolid from fstab
 cat /mnt/etc/fstab
 

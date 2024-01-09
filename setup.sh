@@ -117,6 +117,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # ------- Pacman ------------- #
 # ---------------------------- #
 print_info "CONFIGURING PACMAN..."
+cp /etc/pacman.conf /etc/pacman.conf.bak
 sed -i 's/^#\(UseSyslog\)/\1/' /etc/pacman.conf
 sed -i 's/^#\(Color\)/\1\nILoveCandy/' /etc/pacman.conf
 sed -i 's/^#\(ParallelDownloads.*\)/\1 = 5/' /etc/pacman.conf
@@ -154,6 +155,7 @@ systemctl enable ufw
 # ---------------------------- #
 if is_vm; then
 	print_info "VIRTUAL MACHINE DETECTED. ADDING ENVIRONMENT VARIABLES TO HYPRLAND DESKTOP ENTRY..."
+	cp /usr/share/wayland-sessions/hyprland.desktop /usr/share/wayland-sessions/hyprland.desktop.bak
 	sed -i 's|Exec=Hyprland|Exec=env WLR_RENDERER_ALLOW_SOFTWARE=1 WLR_NO_HARDWARE_CURSORS=1 Hyprland|' /usr/share/wayland-sessions/hyprland.desktop
 fi
 
