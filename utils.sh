@@ -9,9 +9,10 @@ print_message() {
     width=$(tput cols)
     padding=$(((width - ${#message}) / 2))
 
-    printf "${color}\n%*s\n" "${width}" '' | tr ' ' '-'
-    printf "%*s%s\n" $padding '' "$message"
-    printf "%*s\n\n${RESET}" "${width}" '' | tr ' ' '-'
+    line=$(printf "%*s" "${width}" '' | tr ' ' '-')
+    message_line=$(printf "%*s%s" "$padding" '' "$message")
+    output="${color}\n${line}\n${message_line}\n${line}\n\n${RESET}"
+    printf "$output"
 }
 
 print_info() {
