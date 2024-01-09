@@ -98,7 +98,7 @@ print_info "SETTING UP TIME SYNCHRONIZATION USING NTP..."
 timedatectl set-ntp on
 
 print_info "UPDATING MIRRORLIST..."
-reflector --country 'India' --latest 10 --sort rate --verbose --save /etc/pacman.d/mirrorlist
+reflector --country 'India' --latest 15 --sort rate --verbose --save /etc/pacman.d/mirrorlist
 pacman -Syy --noconfirm
 
 print_info "INSTALLING ARCH LINUX KEYRING..."

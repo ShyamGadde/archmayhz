@@ -122,9 +122,9 @@ pacman -Syy --noconfirm
 
 print_info "CONFIGURING REFLECTOR..."
 cp /etc/xdg/reflector/reflector.conf /etc/xdg/reflector/reflector.conf.bak
-sed -i 's|# --country.*|--country India|' /etc/xdg/reflector/reflector.conf
-sed -i 's|^--latest.*|--latest 10|' /etc/xdg/reflector/reflector.conf
-sed -i 's|^--sort.*|--sort rate|' /etc/xdg/reflector/reflector.conf
+sed -i 's/^# \(--country\).*/\1 India/' /etc/xdg/reflector/reflector.conf
+sed -i 's/^\(--latest\).*/\1 15/' /etc/xdg/reflector/reflector.conf
+sed -i 's/^\(--sort\).*/\1 rate/' /etc/xdg/reflector/reflector.conf
 
 # ---------------------------- #
 # ------- Services ----------- #
