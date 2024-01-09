@@ -1,3 +1,5 @@
+set -e
+
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/utils.sh)
 
 # ---------------------------- #
@@ -158,6 +160,8 @@ xdg-user-dirs-update
 
 # TODO: Setup Plymouth and Plymouth theme
 # Note: Add plymouth after base and udev in the hooks array in /etc/mkinitcpio.conf
+
+set +x +e
 
 echo "INSTALLATION COMPLETE!" | figlet -f slant | lolcat
 exit

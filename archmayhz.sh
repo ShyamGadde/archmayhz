@@ -1,3 +1,5 @@
+set -e
+
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/utils.sh)
 
 # ---------------------------- #
@@ -139,6 +141,8 @@ arch-chroot /mnt /bin/bash -c "
     export FULLNAME=${FULLNAME}
     export USER_PASSWORD=${USER_PASSWORD}
     bash <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/setup.sh)"
+
+set +e
 
 # ---------------------------- #
 # ------- Rebooting ---------- #
