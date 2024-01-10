@@ -128,6 +128,9 @@ xdg-user-dirs-update
 # TODO: Setup Plymouth and Plymouth theme
 # Note: Add plymouth after base and udev in the hooks array in /etc/mkinitcpio.conf
 
+# TODO: Setup Snapper
+# TODO: Make base system snapshot of root and home
+
 set +e
 
 echo "INSTALLATION COMPLETE!" | figlet -f slant | lolcat

@@ -68,8 +68,10 @@ btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
 btrfs subvolume create /mnt/@pkg
 btrfs subvolume create /mnt/@log
-btrfs subvolume create /mnt/@.snapshots # TODO: @.snapshots or just @snapshots?
-# I think snapper-rollback needs it to be @snapshots
+btrfs subvolume create /mnt/@snapshots
+btrfs subvolume create /mnt/@swap
+brfs subvolume list /mnt
+btrfs subvolume set-default $(btrfs subvolume list /mnt | grep '@' | awk '{print $2}') /mnt
 umount /mnt
 
 print_info "MOUNTING BTRFS SUBVOLUMES..."
@@ -79,17 +81,9 @@ mount -t btrfs -o subvol=@home,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/home
 mount -t btrfs -o subvol=@.snapshots,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/.snapshots
 mount -t btrfs -o subvol=@log,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/log
 mount -t btrfs -o subvol=@pkg,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/cache/pacman/pkg
+mount -t btrfs -o subvol=@swap,x-mount.mkdir,compress=no ${BTRFS_PARTITION} /mnt/swap
+mount -t btrfs -o subvol=/,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/btrfsroot
 lsblk -f ${DISK}
-
-# TODO: Create Swapfile
-#truncate -s 0 /mnt/.swapvol/swapfile
-#chattr +C /mnt/.swapvol/swapfile
-#btrfs property set /mnt/.swapvol/swapfile compression none
-#fallocate -l 16G /mnt/.swapvol/swapfile
-#chmod 600 /mnt/.swapvol/swapfile
-#mkswap /mnt/.swapvol/swapfile
-#swapon /mnt/.swapvol/swapfile
-# TODO: Get offset and resume for BTRFS swapfile
 
 print_info "MOUNTING EFI PARTITION..."
 mkdir /mnt/efi
