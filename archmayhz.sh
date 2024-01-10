@@ -39,12 +39,12 @@ DISK=/dev/${DISK}
 if mount | grep /mnt >/dev/null; then
     umount -A --recursive /mnt # Unmount all partitions on the disk
 fi
-sgdisk -Z ${DISK}                   # zap all on disk
-sgdisk -a 2048 -o ${DISK}           # Create a new GPT disklabel (partition table) and align partitions to 2048 sectors
-sgdisk -n 1:0:+4G -t 1:ef00 ${DISK} # Create a new EFI partition of 4GB
-sgdisk -n 2:0:0 -t 2:8300 ${DISK}   # Create a new Linux partition with the rest of the space
-sgdisk -p ${DISK}                   # Print the partition table
-partprobe ${DISK}                   # Inform the OS of partition table changes
+sgdisk -Z ${DISK}                     # zap all on disk
+sgdisk -a 2048 -o ${DISK}             # Create a new GPT disklabel (partition table) and align partitions to 2048 sectors
+sgdisk -n 1:0:+512M -t 1:ef00 ${DISK} # Create a new EFI partition of 512MB
+sgdisk -n 2:0:0 -t 2:8300 ${DISK}     # Create a new Linux partition with the rest of the space
+sgdisk -p ${DISK}                     # Print the partition table
+partprobe ${DISK}                     # Inform the OS of partition table changes
 
 print_info "FORMATTING THE PARTITIONS..."
 if [[ $DISK =~ nvme ]]; then
@@ -56,7 +56,7 @@ else
 fi
 
 mkfs.vfat -F32 -n EFI ${BOOT_PARTITION}
-mkfs.btrfs -L LINUX ${BTRFS_PARTITION} -f
+mkfs.btrfs -L ROOT ${BTRFS_PARTITION} -f
 lsblk -f ${DISK}
 
 # ----------------------------- #
@@ -92,8 +92,8 @@ lsblk -f ${DISK}
 # TODO: Get offset and resume for BTRFS swapfile
 
 print_info "MOUNTING EFI PARTITION..."
-mkdir /mnt/boot
-mount ${BOOT_PARTITION} /mnt/boot
+mkdir /mnt/efi
+mount ${BOOT_PARTITION} /mnt/efi
 lsblk -f ${DISK}
 
 # ---------------------------- #

@@ -64,7 +64,7 @@ mkinitcpio -P
 # ------- Bootloader --------- #
 # ---------------------------- #
 print_info "INSTALLING UP GRUB..."
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --removable --recheck
+grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB --removable --recheck
 
 # ---------------------------- #
 # ------- ZRAM Swap ---------- #
