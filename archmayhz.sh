@@ -5,15 +5,15 @@ source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/
 # ---------------------------- #
 # ------- Basic Setup -------- #
 # ---------------------------- #
-print_info "SETTING UP VCONSOLE..."
-setfont ter-128b # Set the font to Terminus 128 Bold
+    print_info "SETTING UP VCONSOLE..."
+    setfont ter-128b # Set the font to Terminus 128 Bold
 
-print_info "CHECKING BOOT MODE..."
-if ls /sys/firmware/efi/efivars &>>/dev/null; then
-    print_success "UEFI mode detected."
-else
-    print_warning "Stopping the script. UEFI mode not detected." && exit 1
-fi
+    print_info "CHECKING BOOT MODE..."
+    if ls /sys/firmware/efi/efivars &>>/dev/null; then
+        print_success "UEFI mode detected."
+    else
+        print_warning "Stopping the script. UEFI mode not detected." && exit 1
+    fi
 
 # ---------------------------- #
 # ------- User Setup --------- #
@@ -70,15 +70,15 @@ btrfs subvolume create /mnt/@pkg
 btrfs subvolume create /mnt/@log
 btrfs subvolume create /mnt/@snapshots
 btrfs subvolume create /mnt/@swap
-brfs subvolume list /mnt
-btrfs subvolume set-default $(btrfs subvolume list /mnt | grep '@' | awk '{print $2}') /mnt
+btrfs subvolume list /mnt
+btrfs subvolume set-default $(btrfs subvolume list /mnt | grep '@$' | awk '{print $2}') /mnt
 umount /mnt
 
 print_info "MOUNTING BTRFS SUBVOLUMES..."
 MOUNT_OPTIONS="defaults,x-mount.mkdir,noatime,compress=zstd,commit=120"
 mount -t btrfs -o subvol=@,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt
 mount -t btrfs -o subvol=@home,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/home
-mount -t btrfs -o subvol=@.snapshots,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/.snapshots
+mount -t btrfs -o subvol=@snapshots,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/.snapshots
 mount -t btrfs -o subvol=@log,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/log
 mount -t btrfs -o subvol=@pkg,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/cache/pacman/pkg
 mount -t btrfs -o subvol=@swap,x-mount.mkdir,compress=no ${BTRFS_PARTITION} /mnt/swap
