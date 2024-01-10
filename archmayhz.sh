@@ -69,6 +69,7 @@ btrfs subvolume create /mnt/@home
 btrfs subvolume create /mnt/@pkg
 btrfs subvolume create /mnt/@log
 btrfs subvolume create /mnt/@.snapshots # TODO: @.snapshots or just @snapshots?
+# I think snapper-rollback needs it to be @snapshots
 umount /mnt
 
 print_info "MOUNTING BTRFS SUBVOLUMES..."
@@ -110,11 +111,7 @@ pacman -S archlinux-keyring --noconfirm
 
 print_info "CONFIGURING PACMAN..."
 cp /etc/pacman.conf /etc/pacman.conf.bak
-sed -i 's/^#\(UseSyslog\)/\1/' /etc/pacman.conf
-sed -i 's/^#\(Color\)/\1\nILoveCandy/' /etc/pacman.conf
-sed -i 's/^#\(ParallelDownloads\).*/\1 = 5/' /etc/pacman.conf
-sed -i 's/^#\(VerbosePkgLists\)/\1/' /etc/pacman.conf
-sed -i 's/^#\(CheckSpace\)/\1/' /etc/pacman.conf
+curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/pacman.conf >/etc/pacman.conf
 
 print_info "INSTALLING ARCH LINUX..."
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/pacman-package-list.sh)
@@ -125,7 +122,7 @@ genfstab -U -p /mnt >>/mnt/etc/fstab
 cat /mnt/etc/fstab
 
 cp /mnt/etc/fstab /mnt/etc/fstab.bak
-sed -i 's/,subvolid=[0-9]*//g' /mnt/etc/fstab # Remove subvolid from fstab
+sed -i 's/,subvolid=[0-9]*//g' /mnt/etc/fstab # Remove subvolid from fstab to work with snapper
 cat /mnt/etc/fstab
 
 # ---------------------------- #

@@ -50,18 +50,14 @@ chmod 0440 /etc/sudoers.d/$USERNAME
 # ------- Initramfs ---------- #
 # ---------------------------- #
 print_info "CONFIGURING VCONSOLE..."
-cat <<EOF >/etc/vconsole.conf
-KEYMAP=us
-FONT=ter-128b
-EOF
+if [ -f /etc/vconsole.conf ]; then
+	cp /etc/vconsole.conf /etc/vconsole.conf.bak
+fi
+curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/vconsole.conf >/etc/vconsole.conf
 
 print_info "CONFIGURING MKINITCPIO..."
 cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
-sed -i '/^MODULES/s/)$/ crc32c-intel btrfs)/' /etc/mkinitcpio.conf
-sed -i '/^BINARIES/s/)$/ \/usr\/bin\/btrfs)/' /etc/mkinitcpio.conf
-sed -i 's/^#\(COMPRESSION="lz4"\)/\1/' /etc/mkinitcpio.conf
-sed -i 's/^#\(MODULES_DECOMPRESS="yes"\)/\1/' /etc/mkinitcpio.conf # Decompress kernel modules to speedup boot
-
+curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/mkinitcpio.conf >/etc/mkinitcpio.conf
 mkinitcpio -P
 
 # ---------------------------- #
@@ -70,44 +66,19 @@ mkinitcpio -P
 print_info "INSTALLING UP GRUB..."
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 
-print_info "CONFIGURING GRUB..."
-cp /etc/default/grub /etc/default/grub.bak
-sed -i '/^GRUB_CMDLINE_LINUX=/s/"$/ rootfstype=btrfs"/' /etc/default/grub
-sed -i 's|^\(GRUB_GFXMODE\)|\1=1920x1080x32,1280x720x32,auto|' /etc/default/grub
-cat <<EOF >/boot/grub/custom.cfg
-menuentry "System shutdown" --class shutdown {
-	echo "System shutting down..."
-	halt
-}
-
-menuentry "System restart" --class restart {
-	echo "System rebooting..."
-	reboot
-}
-EOF
-
 # ---------------------------- #
 # ------- ZRAM Swap ---------- #
 # ---------------------------- #
 print_info "SETTING UP ZRAM SWAP..."
-sed -i '/^GRUB_CMDLINE_LINUX=/s/"$/ zswap.enabled=0"/' /etc/default/grub
-# Enable zram
-cat <<EOF >/etc/systemd/zram-generator.conf
-[zram0]
-zram-size = ram / 2
-compression-algorithm = zstd
-swap-priority = 100
-fs-type = swap
-EOF
-# Optimizing zram parameters
-cat <<EOF >/etc/sysctl.d/99-vm-zram-parameters.conf
-vm.swappiness = 180
-vm.watermark_boost_factor = 0
-vm.watermark_scale_factor = 125
-vm.page-cluster = 0
-EOF
+# For enabling zram
+curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/zram-generator.conf >/etc/systemd/zram-generator.conf
+# For Optimizing zram parameters (Arch Wiki)
+curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/99-vm-zram-parameters.conf >/etc/sysctl.d/99-vm-zram-parameters.conf
 
-print_info "GENERATING GRUB CONFIG..."
+print_info "CONFIGURING GRUB..."
+cp /etc/default/grub /etc/default/grub.bak
+curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/grub >/etc/default/grub
+curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/custom.cfg >/boot/grub/custom.cfg
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # ---------------------------- #
@@ -115,19 +86,12 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # ---------------------------- #
 print_info "CONFIGURING PACMAN..."
 cp /etc/pacman.conf /etc/pacman.conf.bak
-sed -i 's/^#\(UseSyslog\)/\1/' /etc/pacman.conf
-sed -i 's/^#\(Color\)/\1\nILoveCandy/' /etc/pacman.conf
-sed -i 's/^#\(ParallelDownloads\).*/\1 = 5/' /etc/pacman.conf
-sed -i 's/^#\(VerbosePkgLists\)/\1/' /etc/pacman.conf
-sed -i 's/^#\(CheckSpace\)/\1/' /etc/pacman.conf
-sed -i '/#\[\multilib\]/,/Include/s/^#//' /etc/pacman.conf
+curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/pacman.conf >/etc/pacman.conf
 pacman -Syy --noconfirm
 
 print_info "CONFIGURING REFLECTOR..."
 cp /etc/xdg/reflector/reflector.conf /etc/xdg/reflector/reflector.conf.bak
-sed -i 's/^# \(--country\).*/\1 India/' /etc/xdg/reflector/reflector.conf
-sed -i 's/^\(--latest\).*/\1 15/' /etc/xdg/reflector/reflector.conf
-sed -i 's/^\(--sort\).*/\1 rate/' /etc/xdg/reflector/reflector.conf
+curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/reflector.conf >/etc/xdg/reflector/reflector.conf
 
 # ---------------------------- #
 # ------- Services ----------- #
@@ -152,8 +116,7 @@ systemctl enable ufw
 # ---------------------------- #
 if is_vm; then
 	print_info "VIRTUAL MACHINE DETECTED. ADDING ENVIRONMENT VARIABLES TO HYPRLAND DESKTOP ENTRY..."
-	cp /usr/share/wayland-sessions/hyprland.desktop /usr/share/wayland-sessions/hyprland.desktop.bak
-	sed -i 's|Exec=Hyprland|Exec=env WLR_RENDERER_ALLOW_SOFTWARE=1 WLR_NO_HARDWARE_CURSORS=1 Hyprland|' /usr/share/wayland-sessions/hyprland.desktop
+	curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/hyprland-vm.desktop >/usr/share/wayland-sessions/hyprland-vm.desktop
 fi
 
 # ---------------------------- #
