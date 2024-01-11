@@ -5,15 +5,15 @@ source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/
 # ---------------------------- #
 # ------- Basic Setup -------- #
 # ---------------------------- #
-    print_info "SETTING UP VCONSOLE..."
-    setfont ter-128b # Set the font to Terminus 128 Bold
+print_info "SETTING UP VCONSOLE..."
+setfont ter-128b # Set the font to Terminus 128 Bold
 
-    print_info "CHECKING BOOT MODE..."
-    if ls /sys/firmware/efi/efivars &>>/dev/null; then
-        print_success "UEFI mode detected."
-    else
-        print_warning "Stopping the script. UEFI mode not detected." && exit 1
-    fi
+print_info "CHECKING BOOT MODE..."
+if ls /sys/firmware/efi/efivars &>>/dev/null; then
+    print_success "UEFI mode detected."
+else
+    print_warning "Stopping the script. UEFI mode not detected." && exit 1
+fi
 
 # ---------------------------- #
 # ------- User Setup --------- #
