@@ -86,7 +86,6 @@ UTILITIES=(
     bat
     fzf
     gpm # General Purpose Mouse Interface (for mouse support in the tty)
-    grub-btrfs
     less
     man-db
     man-pages
