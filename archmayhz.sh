@@ -42,7 +42,8 @@ fi
 sgdisk -Z ${DISK}                     # zap all on disk
 sgdisk -a 2048 -o ${DISK}             # Create a new GPT disklabel (partition table) and align partitions to 2048 sectors
 sgdisk -n 1:0:+512M -t 1:ef00 ${DISK} # Create a new EFI partition of 512MB
-sgdisk -n 2:0:0 -t 2:8300 ${DISK}     # Create a new Linux partition with the rest of the space
+sgdisk -n 2:0:+900G -t 2:8300 ${DISK} # Create a new Linux partition of 900G
+#sgdisk -n 2:0:0 -t 2:8300 ${DISK}    # Create a new Linux partition with the rest of the space
 sgdisk -p ${DISK}                     # Print the partition table
 partprobe ${DISK}                     # Inform the OS of partition table changes
 
@@ -66,23 +67,27 @@ print_info "CREATING BTRFS SUBVOLUMES..."
 mount -t btrfs ${BTRFS_PARTITION} /mnt
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
-btrfs subvolume create /mnt/@pkg
+btrfs subvolume create /mnt/@cache
 btrfs subvolume create /mnt/@log
-btrfs subvolume create /mnt/@snapshots
+btrfs subvolume create /mnt/@tmp
+btrfs subvolume create /mnt/@docker
+btrfs subvolume create /mnt/@libvirt
 btrfs subvolume create /mnt/@swap
 btrfs subvolume list /mnt
-btrfs subvolume set-default $(btrfs subvolume list /mnt | grep '@$' | awk '{print $2}') /mnt
+#btrfs subvolume set-default 256 /mnt
 umount /mnt
 
 print_info "MOUNTING BTRFS SUBVOLUMES..."
 MOUNT_OPTIONS="defaults,x-mount.mkdir,noatime,compress=zstd,commit=120"
 mount -t btrfs -o subvol=@,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt
 mount -t btrfs -o subvol=@home,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/home
-mount -t btrfs -o subvol=@snapshots,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/.snapshots
+mount -t btrfs -o subvol=@cache,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/cache
 mount -t btrfs -o subvol=@log,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/log
-mount -t btrfs -o subvol=@pkg,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/cache/pacman/pkg
-mount -t btrfs -o subvol=@swap,x-mount.mkdir,compress=no ${BTRFS_PARTITION} /mnt/swap
-mount -t btrfs -o subvol=/,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/btrfsroot
+mount -t btrfs -o subvol=@tmp,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/tmp
+mount -t btrfs -o subvol=@docker,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/lib/docker
+mount -t btrfs -o subvol=@libvirt,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/lib/libvirt
+mount -t btrfs -o subvol=@swap,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/swap
+#mount -t btrfs -o subvol=/,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/btrfsroot
 lsblk -f ${DISK}
 
 print_info "MOUNTING EFI PARTITION..."
