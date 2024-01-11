@@ -93,6 +93,7 @@ UTILITIES=(
     neofetch
     neovim
     pacman-contrib
+    pkgfile
     plocate       # A much faster locate(1) implementation
     reflector     # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
     smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
