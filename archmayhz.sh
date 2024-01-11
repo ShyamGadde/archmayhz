@@ -15,6 +15,8 @@ else
     print_warning "Stopping the script. UEFI mode not detected." && exit 1
 fi
 
+read -p "Press enter to continue..."
+
 # ---------------------------- #
 # ------- User Setup --------- #
 # ---------------------------- #
@@ -60,6 +62,8 @@ mkfs.vfat -F32 -n EFI ${BOOT_PARTITION}
 mkfs.btrfs -L ROOT ${BTRFS_PARTITION} -f
 lsblk -f ${DISK}
 
+read -p "Press enter to continue..."
+
 # ----------------------------- #
 # ------- BTRFS Setup --------- #
 # ----------------------------- #
@@ -77,6 +81,8 @@ btrfs subvolume list /mnt
 #btrfs subvolume set-default 256 /mnt
 umount /mnt
 
+read -p "Press enter to continue..."
+
 print_info "MOUNTING BTRFS SUBVOLUMES..."
 MOUNT_OPTIONS="defaults,x-mount.mkdir,noatime,compress=zstd,commit=120"
 mount -t btrfs -o subvol=@,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt
@@ -89,6 +95,8 @@ mount -t btrfs -o subvol=@libvirt,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/l
 mount -t btrfs -o subvol=@swap,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/swap
 #mount -t btrfs -o subvol=/,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/btrfsroot
 lsblk -f ${DISK}
+
+read -p "Press enter to continue..."
 
 print_info "MOUNTING EFI PARTITION..."
 mkdir /mnt/efi
@@ -120,9 +128,13 @@ print_info "GENERATING FSTAB..."
 genfstab -U -p /mnt >>/mnt/etc/fstab
 cat /mnt/etc/fstab
 
+read -p "Press enter to continue..."
+
 cp /mnt/etc/fstab /mnt/etc/fstab.bak
 sed -i 's/,subvolid=[0-9]*//g' /mnt/etc/fstab # Remove subvolid from fstab to work with snapper
 cat /mnt/etc/fstab
+
+read -p "Press enter to continue..."
 
 # ---------------------------- #
 # ------- System Setup ------- #
@@ -141,7 +153,7 @@ set +e
 # ---------------------------- #
 # ------- Rebooting ---------- #
 # ---------------------------- #
-read -p "Press any key to reboot..."
+read -p "Press enter to reboot..."
 print_info "REBOOTING..."
 umount -R /mnt
 reboot
