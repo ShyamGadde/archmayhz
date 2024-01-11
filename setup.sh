@@ -103,6 +103,7 @@ systemctl enable fstrim.timer
 systemctl enable gpm
 systemctl enable NetworkManager
 systemctl enable paccache.timer
+systemctl enable pkgfile-update.timer
 systemctl enable reflector.timer
 systemctl enable sddm
 systemctl enable smartd
@@ -127,9 +128,6 @@ xdg-user-dirs-update
 
 # TODO: Setup Plymouth and Plymouth theme
 # Note: Add plymouth after base and udev in the hooks array in /etc/mkinitcpio.conf
-
-# TODO: Setup Snapper
-# TODO: Make base system snapshot of root and home
 
 set +e
 
