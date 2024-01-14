@@ -109,6 +109,7 @@ print_info "SETTING UP TIME SYNCHRONIZATION USING NTP..."
 timedatectl set-ntp on
 
 print_info "UPDATING MIRRORLIST..."
+backup_file /etc/pacman.d/mirrorlist
 reflector --latest 50 --age 24 --fastest 20 --verbose --save /etc/pacman.d/mirrorlist
 pacman -Syy --noconfirm
 
@@ -116,8 +117,8 @@ print_info "UPDATING ARCH LINUX KEYRING..."
 pacman -S archlinux-keyring --noconfirm
 
 print_info "CONFIGURING PACMAN..."
-cp /etc/pacman.conf /etc/pacman.conf.bak
-curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/pacman.conf >/etc/pacman.conf
+backup_file /etc/pacman.conf
+apply_config /etc/pacman.conf
 
 print_info "INSTALLING ARCH LINUX..."
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/pacman-package-list.sh)
@@ -127,13 +128,9 @@ print_info "GENERATING FSTAB..."
 genfstab -U -p /mnt >>/mnt/etc/fstab
 cat /mnt/etc/fstab
 
-read -p "Press enter to continue..."
-
-cp /mnt/etc/fstab /mnt/etc/fstab.bak
-sed -i 's/,subvolid=[0-9]*//g' /mnt/etc/fstab # Remove subvolid from fstab to work with snapper
+backup_file /mnt/etc/fstab
+sed -i 's/,subvolid=[0-9]*//g' /mnt/etc/fstab # Remove subvolid from fstab to work with snapper rollbacks
 cat /mnt/etc/fstab
-
-read -p "Press enter to continue..."
 
 # ---------------------------- #
 # ------- System Setup ------- #

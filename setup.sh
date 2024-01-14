@@ -43,21 +43,24 @@ print_info "CONFIGURING SUDO FOR USER..."
 # Granting the user the ability to run any command as any user or any group on any host.
 # The first ALL specifies all hosts, the (ALL:ALL) specifies all users and all groups, and the final ALL specifies all commands.
 echo "${USERNAME} ALL=(ALL:ALL) ALL" >/etc/sudoers.d/$USERNAME
+#echo "${USERNAME} ALL=(ALL:ALL) NOPASSWD ALL" >/etc/sudoers.d/$USERNAME
 # Setting the permissions of the file to read-only for owner and group for security reasons.
 chmod 0440 /etc/sudoers.d/$USERNAME
+echo "Defaults pwfeedback" >>/etc/sudoers.d/pwfeedback
+echo "Defaults insults" >>/etc/sudoers.d/insults
 
 # ---------------------------- #
 # ------- Initramfs ---------- #
 # ---------------------------- #
 print_info "CONFIGURING VCONSOLE..."
 if [ -f /etc/vconsole.conf ]; then
-	cp /etc/vconsole.conf /etc/vconsole.conf.bak
+	backup_file /etc/vconsole.conf
 fi
-curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/vconsole.conf >/etc/vconsole.conf
+apply_config /etc/vconsole.conf
 
 print_info "CONFIGURING MKINITCPIO..."
-cp /etc/mkinitcpio.conf /etc/mkinitcpio.conf.bak
-curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/mkinitcpio.conf >/etc/mkinitcpio.conf
+backup_file /etc/mkinitcpio.conf
+apply_config /etc/mkinitcpio.conf
 mkinitcpio -P
 
 # ---------------------------- #
@@ -71,27 +74,27 @@ grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB --rem
 # ---------------------------- #
 print_info "SETTING UP ZRAM SWAP..."
 # For enabling zram
-curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/zram-generator.conf >/etc/systemd/zram-generator.conf
+apply_config /etc/systemd/zram-generator.conf
 # For Optimizing zram parameters (Arch Wiki)
-curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/99-vm-zram-parameters.conf >/etc/sysctl.d/99-vm-zram-parameters.conf
+apply_config /etc/sysctl.d/99-vm-zram-parameters.conf
 
 print_info "CONFIGURING GRUB..."
-cp /etc/default/grub /etc/default/grub.bak
-curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/grub >/etc/default/grub
-curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/custom.cfg >/boot/grub/custom.cfg
+backup_file /etc/default/grub
+apply_config /etc/default/grub
+apply_config /boot/grub/custom.cfg
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # ---------------------------- #
 # ------- Pacman ------------- #
 # ---------------------------- #
 print_info "CONFIGURING PACMAN..."
-cp /etc/pacman.conf /etc/pacman.conf.bak
-curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/pacman.conf >/etc/pacman.conf
+backup_file /etc/pacman.conf
+apply_config /etc/pacman.conf
 pacman -Syy --noconfirm
 
 print_info "CONFIGURING REFLECTOR..."
-cp /etc/xdg/reflector/reflector.conf /etc/xdg/reflector/reflector.conf.bak
-curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/reflector.conf >/etc/xdg/reflector/reflector.conf
+backup_file /etc/xdg/reflector/reflector.conf
+apply_config /etc/xdg/reflector/reflector.conf
 
 # ---------------------------- #
 # ------- Services ----------- #
@@ -117,7 +120,7 @@ systemctl enable ufw
 # ---------------------------- #
 if is_vm; then
 	print_info "VIRTUAL MACHINE DETECTED. ADDING ENVIRONMENT VARIABLES TO HYPRLAND DESKTOP ENTRY..."
-	curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs/hyprland-vm.desktop >/usr/share/wayland-sessions/hyprland-vm.desktop
+	apply_config /usr/share/wayland-sessions/hyprland.desktop
 fi
 
 # ---------------------------- #
