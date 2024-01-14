@@ -39,3 +39,15 @@ is_vm() {
         return 1
     fi
 }
+
+backup_file() {
+    if [ -f "$1" ]; then
+        cp "$1" "$1.bak"
+    fi
+}
+
+apply_config() {
+    local filename = $1
+    local url = "https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs${filename}"
+    curl -fsSL $url >$filename
+}
