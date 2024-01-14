@@ -131,7 +131,6 @@ EXTRA=(
     foot
     kitty
     obsidian
-    telegram-desktop
     thunar
     zsh-autosuggestions
     zsh-completions
