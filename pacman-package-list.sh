@@ -48,13 +48,10 @@ FONTS=(
     otf-font-awesome
     terminus-font
     fontconfig
-    ttf-cascadia-code
     ttf-cascadia-code-nerd
     ttf-dejavu
     ttf-droid
-    ttf-fira-code
     ttf-firacode-nerd
-    ttf-jetbrains-mono
     ttf-jetbrains-mono-nerd
     ttf-liberation
     ttf-victor-mono-nerd
@@ -62,9 +59,11 @@ FONTS=(
 
 HYPRLAND=(
     hyprland
+    polkit-kde-agent
     qt5-wayland
     qt6-wayland
     sddm
+    waybar
     wofi
     xdg-desktop-portal-hyprland
 )
@@ -72,10 +71,12 @@ HYPRLAND=(
 MULTIMEDIA=(
     gst-plugin-pipewire
     mpv
+    pavucontrol
     pipewire
     pipewire-alsa
     pipewire-jack
     pipewire-pulse
+    sof-firmware # Sound Open Firmware
     wireplumber
 )
 
@@ -84,8 +85,12 @@ UTILITIES=(
     acpi_call # A linux kernel module that enables calls to ACPI methods through /proc/acpi/call
     acpid     # Advanced Configuration and Power Interface event daemon
     bat
+    brightnessctl
+    btop
+    duf # Disk Usage/Free Utility
     fzf
-    gpm # General Purpose Mouse Interface (for mouse support in the tty)
+    gnome-keyring # Stores passwords and encryption keys
+    gpm           # General Purpose Mouse Interface (for mouse support in the tty)
     less
     man-db
     man-pages
@@ -104,6 +109,7 @@ UTILITIES=(
     vim
     xdg-user-dirs # Creates user directories (e.g. Desktop dir) automatically
     xdg-utils     # Command line tools that assist applications with a variety of desktop integration tasks
+    xorg-xeyes    # A follow the mouse X demo
     zram-generator
     zsh
 )
@@ -114,15 +120,29 @@ DEVELOPMENT=(
     linux-headers
     linux-lts-headers
     linux-zen-headers
+    wev # A tool for debugging and observing input events
 )
 
 EXTRA=(
+    bash-completion
     bitwarden
     bitwarden-cli
-    thunar
     firefox
     foot
     kitty
+    obsidian
+    telegram-desktop
+    thunar
+    zsh-autosuggestions
+    zsh-completions
+    zsh-history-substring-search
+    zsh-syntax-highlighting
+)
+
+EYE_CANDY=(
+    papirus-icon-theme
+    qt5ct
+    starship
 )
 
 FUN=(
@@ -145,5 +165,6 @@ PACMAN_PACKAGES=(
     "${UTILITIES[@]}"
     "${DEVELOPMENT[@]}"
     "${EXTRA[@]}"
+    "${EYE_CANDY[@]}"
     "${FUN[@]}"
 )

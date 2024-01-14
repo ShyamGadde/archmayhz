@@ -1,11 +1,20 @@
 AUR_PACKAGES=(
     #iwgtk # GUI for iwctl
+    anki-bin
     btrfs-assistant
-    duf # Disk Usage/Free Utility
+    catppuccin-cursors-mocha
+    catppuccin-gtk-theme-mocha
+    github-cli-git
+    hollywood
     lf-bin
     microsoft-edge-stable-bin
+    notion-app-electron
+    nwg-look-bin
+    papirus-folders-catppuccin-git
+    pfetch-rs-bin
     reflector-simple
+    selectdefaultapplication-git
     snapper-support
-    snapper-tools
+    ttf-recursive
     visual-studio-code-bin
 )
