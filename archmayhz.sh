@@ -15,8 +15,6 @@ else
     print_warning "Stopping the script. UEFI mode not detected." && exit 1
 fi
 
-read -p "Press enter to continue..."
-
 # ---------------------------- #
 # ------- User Setup --------- #
 # ---------------------------- #
@@ -71,8 +69,6 @@ mkfs.vfat -F32 -n EFI ${BOOT_PARTITION}
 mkfs.btrfs -L ROOT ${BTRFS_PARTITION} -f
 lsblk -f ${DISK}
 
-read -p "Press enter to continue..."
-
 # ----------------------------- #
 # ------- BTRFS Setup --------- #
 # ----------------------------- #
@@ -87,10 +83,7 @@ btrfs subvolume create /mnt/@docker
 btrfs subvolume create /mnt/@libvirt
 btrfs subvolume create /mnt/@swap
 btrfs subvolume list /mnt
-#btrfs subvolume set-default 256 /mnt
 umount /mnt
-
-read -p "Press enter to continue..."
 
 print_info "MOUNTING BTRFS SUBVOLUMES..."
 MOUNT_OPTIONS="defaults,x-mount.mkdir,noatime,compress=zstd,commit=120"
@@ -102,10 +95,7 @@ mount -t btrfs -o subvol=@tmp,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/tmp
 mount -t btrfs -o subvol=@docker,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/lib/docker
 mount -t btrfs -o subvol=@libvirt,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/var/lib/libvirt
 mount -t btrfs -o subvol=@swap,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/swap
-#mount -t btrfs -o subvol=/,${MOUNT_OPTIONS} ${BTRFS_PARTITION} /mnt/btrfsroot
 lsblk -f ${DISK}
-
-read -p "Press enter to continue..."
 
 print_info "MOUNTING EFI PARTITION..."
 mkdir /mnt/efi
@@ -119,12 +109,8 @@ print_info "SETTING UP TIME SYNCHRONIZATION USING NTP..."
 timedatectl set-ntp on
 
 print_info "UPDATING MIRRORLIST..."
-reflector --country 'India' --latest 15 --sort rate --verbose --save /etc/pacman.d/mirrorlist
+reflector --latest 50 --age 24 --fastest 20 --verbose --save /etc/pacman.d/mirrorlist
 pacman -Syy --noconfirm
-read -p "Press enter to continue..."
-
-cat /etc/pacman.d/mirrorlist
-read -p "Press enter to continue..."
 
 print_info "UPDATING ARCH LINUX KEYRING..."
 pacman -S archlinux-keyring --noconfirm
