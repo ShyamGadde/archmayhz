@@ -44,10 +44,19 @@ fi
 sgdisk -Z ${DISK}                     # zap all on disk
 sgdisk -a 2048 -o ${DISK}             # Create a new GPT disklabel (partition table) and align partitions to 2048 sectors
 sgdisk -n 1:0:+512M -t 1:ef00 ${DISK} # Create a new EFI partition of 512MB
-sgdisk -n 2:0:+900G -t 2:8300 ${DISK} # Create a new Linux partition of 900G
-#sgdisk -n 2:0:0 -t 2:8300 ${DISK}    # Create a new Linux partition with the rest of the space
-sgdisk -p ${DISK}                     # Print the partition table
-partprobe ${DISK}                     # Inform the OS of partition table changes
+
+echo -e "\nEnter the size of the root partition (e.g., 900G for 900 Gigabytes)"
+read -p "Root Size (default=full): " ROOT_SIZE
+if [ -z "$ROOT_SIZE" ]; then
+    echo "Creating a root partition with the entire remaining disk space..."
+    sgdisk -n 2:0:0 -t 2:8300 ${DISK} # Create a new Linux partition with the rest of the space
+else
+    echo "Creating a root partition of size ${ROOT_SIZE}..."
+    sgdisk -n 2:0:+${ROOT_SIZE} -t 2:8300 ${DISK} # Create a new Linux partition of specified size
+fi
+
+sgdisk -p ${DISK} # Print the partition table
+partprobe ${DISK} # Inform the OS of partition table changes
 
 print_info "FORMATTING THE PARTITIONS..."
 if [[ $DISK =~ nvme ]]; then
