@@ -119,8 +119,8 @@ systemctl enable ufw
 # ------- VM Specific -------- #
 # ---------------------------- #
 if is_vm; then
-	print_info "VIRTUAL MACHINE DETECTED. ADDING ENVIRONMENT VARIABLES TO HYPRLAND DESKTOP ENTRY..."
-	apply_config /usr/share/wayland-sessions/hyprland.desktop
+	print_info "VIRTUAL MACHINE DETECTED. ADDING ENVIRONMENT VARIABLES TO HYPRLAND SESSION..."
+	apply_config /usr/share/wayland-sessions/hyprland-vm.desktop
 fi
 
 # ---------------------------- #
@@ -129,8 +129,10 @@ fi
 print_info "SETTING UP USER DIRECTORIES..."
 xdg-user-dirs-update
 
+# TODO: Apply SDDM theme
+
 # TODO: Setup Plymouth and Plymouth theme
-# Note: Add plymouth after base and udev in the hooks array in /etc/mkinitcpio.conf
+# Note: Add plymouth hook after base and udev in the hooks array in /etc/mkinitcpio.conf
 
 set +e
 

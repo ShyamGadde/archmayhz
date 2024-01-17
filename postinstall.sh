@@ -61,6 +61,8 @@ sed -i 's|Exec=/usr/bin/microsoft-edge-stable\(.*\)|Exec=microsoft-edge-stable\1
 # TODO: Downlaod dotfiles
 
 # TODO: Setup GitHub CLI
+# 1. GitHub Copilot CLI
+# 2. GH Download
 
 # Theming
 papirus-folders -C cat-mocha-blue --theme Papirus-Dark
