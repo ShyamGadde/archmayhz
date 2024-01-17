@@ -15,6 +15,7 @@ AUR_PACKAGES=(
     reflector-simple
     selectdefaultapplication-git
     snapper-support
+    swww
     ttf-recursive
     visual-studio-code-bin
 )

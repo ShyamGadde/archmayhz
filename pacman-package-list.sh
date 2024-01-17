@@ -91,6 +91,7 @@ UTILITIES=(
     fzf
     gnome-keyring # Stores passwords and encryption keys
     gpm           # General Purpose Mouse Interface (for mouse support in the tty)
+    gvfs          # Virtual filesystem implementation for GIO (for mounting USB drives in Thunar)
     less
     man-db
     man-pages
@@ -99,8 +100,9 @@ UTILITIES=(
     neovim
     pacman-contrib
     pkgfile
-    plocate       # A much faster locate(1) implementation
-    reflector     # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
+    plocate   # A much faster locate(1) implementation
+    reflector # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
+    ripgrep
     smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
     speedtest-cli # Command line interface for testing internet bandwidth using speedtest.net
     tlp           # Advanced power management tool for Linux
@@ -110,6 +112,7 @@ UTILITIES=(
     xdg-user-dirs # Creates user directories (e.g. Desktop dir) automatically
     xdg-utils     # Command line tools that assist applications with a variety of desktop integration tasks
     xorg-xeyes    # A follow the mouse X demo
+    zoxide
     zram-generator
     zsh
 )
@@ -140,6 +143,9 @@ EXTRA=(
 
 EYE_CANDY=(
     papirus-icon-theme
+    qt5-graphicaleffects
+    qt5-quickcontrols2
+    qt5-svg
     qt5ct
     starship
 )
