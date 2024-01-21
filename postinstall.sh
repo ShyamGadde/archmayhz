@@ -39,20 +39,19 @@ for package in "${AUR_PACKAGES[@]}"; do
     paru -S "${package}"
 done
 
+print_info "INSTALLING PYENV AND FRIENDS..."
+curl https://pyenv.run | bash # The pyenv package in the Arch Linux repositories doesn't install shell completions for some reason
+
+print_info "SETTING UP NVM..."
+git clone https://github.com/lukechilds/zsh-nvm.git $HOME/.config/zsh/plugins/zsh-nvm
+
 print_info "CONFIGURING APPLICATIONS..."
-# Fix Anki text pixelated on qt6 with wayland by using xwayland
+# Fix Anki text pixelated on wayland by using xwayland (Probably a problem with QT apps on wayland, having similar problems with Telegram-Desktop)
 apply_config /usr/local/bin/anki
 chmod +x /usr/local/bin/anki
 
-# Make applications run on wayland instead.
-# Obsidian
-apply_config /usr/local/bin/obsidian
-chmod +x /usr/local/bin/obsidian
-sed -i 's|Exec=/usr/bin/obsidian\(.*\)|Exec=obsidian\1|g' /usr/share/applications/obsidian.desktop
-# Microsoft Edge
-apply_config /usr/local/bin/microsoft-edge-stable
-chmod +x /usr/local/bin/microsoft-edge-stable
-sed -i 's|Exec=/usr/bin/microsoft-edge-stable\(.*\)|Exec=microsoft-edge-stable\1|g' /usr/share/applications/microsoft-edge.desktop
+# Theming
+papirus-folders -C cat-mocha-blue --theme Papirus-Dark
 
 # TODO: Configure Snapper
 # 1. Root config
@@ -63,9 +62,6 @@ sed -i 's|Exec=/usr/bin/microsoft-edge-stable\(.*\)|Exec=microsoft-edge-stable\1
 # TODO: Setup GitHub CLI
 # 1. GitHub Copilot CLI
 # 2. GH Download
-
-# Theming
-papirus-folders -C cat-mocha-blue --theme Papirus-Dark
 
 # TODO: Create root and home snapshots of **Base System Installation**
 
