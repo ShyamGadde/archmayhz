@@ -89,9 +89,11 @@ UTILITIES=(
     btop
     duf # Disk Usage/Free Utility
     fzf
+    github-cli
     gnome-keyring # Stores passwords and encryption keys
     gpm           # General Purpose Mouse Interface (for mouse support in the tty)
     gvfs          # Virtual filesystem implementation for GIO (for mounting USB drives in Thunar)
+    lazygit
     less
     man-db
     man-pages
@@ -107,6 +109,7 @@ UTILITIES=(
     speedtest-cli # Command line interface for testing internet bandwidth using speedtest.net
     tlp           # Advanced power management tool for Linux
     ufw           # Uncomplicated Firewall
+    unzip
     vi
     vim
     xdg-user-dirs # Creates user directories (e.g. Desktop dir) automatically
@@ -123,6 +126,8 @@ DEVELOPMENT=(
     linux-headers
     linux-lts-headers
     linux-zen-headers
+    python-pip
+    tk # A basic toolkit extension to Tcl (for python tkinter)
     wev # A tool for debugging and observing input events
 )
 

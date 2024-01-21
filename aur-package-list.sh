@@ -4,7 +4,6 @@ AUR_PACKAGES=(
     btrfs-assistant
     catppuccin-cursors-mocha
     catppuccin-gtk-theme-mocha
-    github-cli-git
     hollywood
     lf-bin
     microsoft-edge-stable-bin
