@@ -128,6 +128,8 @@ fi
 # ---------------------------- #
 print_info "SETTING UP USER DIRECTORIES..."
 xdg-user-dirs-update
+# Add figlet font
+curl -fsS https://raw.githubusercontent.com/xero/figlet-fonts/master/ANSI%20Shadow.flf >/usr/share/figlet/fonts/ansi-shadow.flf
 
 # TODO: Apply SDDM theme
 
