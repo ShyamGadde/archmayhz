@@ -128,8 +128,12 @@ fi
 # ---------------------------- #
 print_info "SETTING UP USER DIRECTORIES..."
 xdg-user-dirs-update
+
 # Add figlet font
 curl -fsS https://raw.githubusercontent.com/xero/figlet-fonts/master/ANSI%20Shadow.flf >/usr/share/figlet/fonts/ansi-shadow.flf
+
+# So that I can open a file with neovim from the file manager context menu without getting an error
+ln -s /usr/bin/kitty /usr/bin/xdg-terminal-exec
 
 # TODO: Apply SDDM theme
 
@@ -138,5 +142,5 @@ curl -fsS https://raw.githubusercontent.com/xero/figlet-fonts/master/ANSI%20Shad
 
 set +e
 
-echo "INSTALLATION COMPLETE!" | figlet -f slant | lolcat
+echo "INSTALLATION COMPLETE!" | figlet -f ansi-shadow | lolcat
 exit
