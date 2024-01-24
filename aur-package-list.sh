@@ -4,6 +4,8 @@ AUR_PACKAGES=(
     btrfs-assistant
     catppuccin-cursors-mocha
     catppuccin-gtk-theme-mocha
+    evremap-git # A keyboard input remapper for Linux/Wayland systems
+    fontpreview
     hollywood
     lf-bin
     microsoft-edge-stable-bin
@@ -14,7 +16,6 @@ AUR_PACKAGES=(
     reflector-simple
     selectdefaultapplication-git
     snapper-support
-    swww
     ttf-recursive
     visual-studio-code-bin
 )

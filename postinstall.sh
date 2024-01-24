@@ -16,11 +16,6 @@ systemctl --user enable --now pipewire
 systemctl --user enable --now pipewire-pulse
 systemctl --user enable --now wireplumber
 
-print_info "UPDATING PLOCATE DATABASE..."
-backup_file /etc/updatedb.conf
-sudo sed -i '/^PRUNENAMES/s/"$/ .snapshots"/' /etc/updatedb.conf # Ignore BTRFS snapshots
-sudo updatedb
-
 # ---------------------------- #
 # ---------- AUR ------------- #
 # ---------------------------- #
@@ -50,6 +45,19 @@ print_info "CONFIGURING APPLICATIONS..."
 apply_config /usr/local/bin/anki
 chmod +x /usr/local/bin/anki
 
+# `locate` database
+backup_file /etc/updatedb.conf
+sudo sed -i '/^PRUNENAMES/s/"$/ .snapshots"/' /etc/updatedb.conf # Ignore BTRFS snapshots
+sudo updatedb
+
+# Setup tldr database
+tldr --update
+
+# Make CapsLock useful (Single tap for Escape, hold for Left Control)
+apply_config /etc/evremap.toml
+sudo systemctl daemon-reload
+sudo systemctl enable --now evremap
+
 # Theming
 papirus-folders -C cat-mocha-blue --theme Papirus-Dark
 
@@ -65,4 +73,4 @@ papirus-folders -C cat-mocha-blue --theme Papirus-Dark
 
 # TODO: Create root and home snapshots of **Base System Installation**
 
-echo "DONE!" | figlet -f slant | lolcat
+echo "DONE!" | figlet -f ansi-shadow | lolcat
