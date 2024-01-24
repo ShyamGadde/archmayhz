@@ -58,11 +58,13 @@ FONTS=(
 )
 
 HYPRLAND=(
+    cliphist
     hyprland
     polkit-kde-agent
     qt5-wayland
     qt6-wayland
     sddm
+    swaybg
     waybar
     wofi
     xdg-desktop-portal-hyprland
@@ -92,7 +94,6 @@ UTILITIES=(
     github-cli
     gnome-keyring # Stores passwords and encryption keys
     gpm           # General Purpose Mouse Interface (for mouse support in the tty)
-    gvfs          # Virtual filesystem implementation for GIO (for mounting USB drives in Thunar)
     lazygit
     less
     man-db
@@ -110,6 +111,7 @@ UTILITIES=(
     tlp           # Advanced power management tool for Linux
     ufw           # Uncomplicated Firewall
     unzip
+    unrar # The RAR uncompression program
     vi
     vim
     xdg-user-dirs # Creates user directories (e.g. Desktop dir) automatically
@@ -127,7 +129,7 @@ DEVELOPMENT=(
     linux-lts-headers
     linux-zen-headers
     python-pip
-    tk # A basic toolkit extension to Tcl (for python tkinter)
+    tk  # A basic toolkit extension to Tcl (for python tkinter)
     wev # A tool for debugging and observing input events
 )
 
@@ -135,11 +137,20 @@ EXTRA=(
     bash-completion
     bitwarden
     bitwarden-cli
+    ffmpegthumbnailer # Lightweight video thumbnailer that can be used by file managers (for Thunar)
     firefox
     foot
+    gvfs # Virtual filesystem implementation for GIO (for mounting USB drives in Thunar)
     kitty
+    libxcrypt-compat # For fixing error with the sourcery extension in VSCode
     obsidian
+    tealdeer
     thunar
+    thunar-archive-plugin    # Create and extract archives in Thunar
+    thunar-media-tags-plugin # Adds special features for media files to the Thunar File Manager
+    thunar-volman            # Automatic management of removeable devices in Thunar
+    tumbler                  # D-Bus service for applications to request thumbnails (for Thunar)
+    xarchiver                # GTK+ frontend for most used compression formats (for Thunar)
     zsh-autosuggestions
     zsh-completions
     zsh-history-substring-search
