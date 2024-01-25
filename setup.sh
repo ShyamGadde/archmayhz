@@ -135,6 +135,9 @@ curl -fsS https://raw.githubusercontent.com/xero/figlet-fonts/master/ANSI%20Shad
 # So that I can open a file with neovim from the file manager context menu without getting an error
 ln -s /usr/bin/kitty /usr/bin/xdg-terminal-exec
 
+# Make wireless mouse work
+apply_config /etc/modprobe.d/psmouse.conf
+
 # TODO: Apply SDDM theme
 
 # TODO: Setup Plymouth and Plymouth theme
