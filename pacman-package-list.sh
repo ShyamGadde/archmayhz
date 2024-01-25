@@ -20,6 +20,7 @@ FILESYSTEM=(
 GRAPHICS_DRIVERS=(
     intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
     libva-mesa-driver
+    libva-utils
     mesa             # An open-source implementation of the OpenGL specification
     onevpl-intel-gpu # runtime for Tiger Lake and newer GPUs
     vulkan-intel
