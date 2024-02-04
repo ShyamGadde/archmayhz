@@ -49,14 +49,20 @@ chmod 0440 /etc/sudoers.d/$USERNAME
 echo "Defaults pwfeedback" >>/etc/sudoers.d/pwfeedback
 echo "Defaults insults" >>/etc/sudoers.d/insults
 
-# ---------------------------- #
-# ------- Initramfs ---------- #
-# ---------------------------- #
+# --------------------------------------- #
+# ------- Initramfs and Modules---------- #
+# --------------------------------------- #
 print_info "CONFIGURING VCONSOLE..."
 if [ -f /etc/vconsole.conf ]; then
 	backup_file /etc/vconsole.conf
 fi
 apply_config /etc/vconsole.conf
+
+# Make wireless mouse work
+apply_config /etc/modprobe.d/psmouse.conf
+
+# Enable GuC and HuC
+apply_config /etc/modprobe.d/i915.conf
 
 print_info "CONFIGURING MKINITCPIO..."
 backup_file /etc/mkinitcpio.conf
@@ -134,9 +140,6 @@ curl -fsS https://raw.githubusercontent.com/xero/figlet-fonts/master/ANSI%20Shad
 
 # So that I can open a file with neovim from the file manager context menu without getting an error
 ln -s /usr/bin/kitty /usr/bin/xdg-terminal-exec
-
-# Make wireless mouse work
-apply_config /etc/modprobe.d/psmouse.conf
 
 # TODO: Apply SDDM theme
 
