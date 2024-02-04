@@ -18,6 +18,7 @@ FILESYSTEM=(
 )
 
 GRAPHICS_DRIVERS=(
+    intel-gpu-tools    # Tools for development and testing of the Intel DRM driver (intel_gpu_top)
     intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
     libva-mesa-driver
     libva-utils
