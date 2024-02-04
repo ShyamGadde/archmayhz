@@ -138,6 +138,9 @@ xdg-user-dirs-update
 # Add figlet font
 curl -fsS https://raw.githubusercontent.com/xero/figlet-fonts/master/ANSI%20Shadow.flf >/usr/share/figlet/fonts/ansi-shadow.flf
 
+# Enable performance support for Intel GPUs using Observation Architecture
+apply_config /etc/sysctl.d/99-sysctl.conf
+
 # So that I can open a file with neovim from the file manager context menu without getting an error
 ln -s /usr/bin/kitty /usr/bin/xdg-terminal-exec
 
