@@ -90,7 +90,9 @@ UTILITIES=(
     bat
     brightnessctl
     btop
-    duf # Disk Usage/Free Utility
+    duf   # Disk Usage/Free Utility
+    dunst # A lightweight replacement for the notification-daemons provided by most desktop environments
+    fd    # A simple, fast and user-friendly alternative to find
     fzf
     github-cli
     gnome-keyring # Stores passwords and encryption keys
@@ -109,6 +111,7 @@ UTILITIES=(
     ripgrep
     smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
     speedtest-cli # Command line interface for testing internet bandwidth using speedtest.net
+    sysfsutils    # System Utilities Based on Sysfs
     tlp           # Advanced power management tool for Linux
     ufw           # Uncomplicated Firewall
     unzip
@@ -126,6 +129,7 @@ UTILITIES=(
 DEVELOPMENT=(
     base-devel
     git
+    jdk-openjdk
     linux-headers
     linux-lts-headers
     linux-zen-headers
@@ -145,6 +149,7 @@ EXTRA=(
     kitty
     libxcrypt-compat # For fixing error with the sourcery extension in VSCode
     obsidian
+    seahorse # GNOME application for managing PGP keys
     tealdeer
     thunar
     thunar-archive-plugin    # Create and extract archives in Thunar
