@@ -61,15 +61,20 @@ sudo systemctl enable --now evremap
 # Theming
 papirus-folders -C cat-mocha-blue --theme Papirus-Dark
 
-# TODO: Configure Snapper
-# 1. Root config
-# 2. Home config
-
 # TODO: Downlaod dotfiles
 
 # TODO: Setup GitHub CLI
-# 1. GitHub Copilot CLI
-# 2. GH Download
+print_info "SETTING UP GITHUB CLI..."
+export BW_SESSION=$(bw login --raw)
+echo $(bw get notes 1eddda1b-662d-462e-b0f5-b0eb00618b7e) | gh auth login -p ssh --with-token
+gh auth setup-git
+# Download extensions:
+gh extension install github/gh-copilot
+gh extension install yuler/gh-download
+
+# TODO: Configure Snapper
+# 1. Root config
+# 2. Home config
 
 # TODO: Create root and home snapshots of **Base System Installation**
 
