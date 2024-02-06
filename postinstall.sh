@@ -65,8 +65,7 @@ papirus-folders -C cat-mocha-blue --theme Papirus-Dark
 
 # TODO: Setup GitHub CLI
 print_info "SETTING UP GITHUB CLI..."
-export BW_SESSION=$(bw login --raw)
-echo $(bw get notes 1eddda1b-662d-462e-b0f5-b0eb00618b7e) | gh auth login -p ssh --with-token
+gh auth login --web -h github.com
 gh auth setup-git
 # Download extensions:
 gh extension install github/gh-copilot
