@@ -16,6 +16,9 @@ systemctl --user enable --now pipewire
 systemctl --user enable --now pipewire-pulse
 systemctl --user enable --now wireplumber
 
+print_info "ENABLING SSH AGENT..."
+systemctl --user enable --now gcr-ssh-agent
+
 # ---------------------------- #
 # ---------- AUR ------------- #
 # ---------------------------- #
@@ -62,6 +65,9 @@ sudo systemctl enable --now evremap
 papirus-folders -C cat-mocha-blue --theme Papirus-Dark
 
 # TODO: Downlaod dotfiles
+
+print_info "SETTING UP SSH..."
+ssh-add ~/.ssh/github-cli
 
 # TODO: Setup GitHub CLI
 print_info "SETTING UP GITHUB CLI..."
