@@ -17,7 +17,7 @@ FILESYSTEM=(
     ntfs-3g
 )
 
-GRAPHICS_DRIVERS=(
+GRAPHICS_STUFF=(
     intel-gpu-tools    # Tools for development and testing of the Intel DRM driver (intel_gpu_top)
     intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
     libva-mesa-driver
@@ -184,7 +184,7 @@ FUN=(
 PACMAN_PACKAGES=(
     "${BASE_SYSTEM[@]}"
     "${FILESYSTEM[@]}"
-    "${GRAPHICS_DRIVERS[@]}"
+    "${GRAPHICS_STUFF[@]}"
     "${NETWORKING[@]}"
     "${BLUETOOTH[@]}"
     "${FONTS[@]}"
