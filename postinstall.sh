@@ -31,6 +31,7 @@ cd ~
 
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/aur-package-list.sh)
 
+# TODO: Skip review and password prompt
 print_info "INSTALLING AUR PACKAGES..."
 for package in "${AUR_PACKAGES[@]}"; do
     echo "${package}" | figlet
@@ -39,9 +40,6 @@ done
 
 print_info "INSTALLING PYENV AND FRIENDS..."
 curl https://pyenv.run | bash # The pyenv package in the Arch Linux repositories doesn't install shell completions for some reason
-
-print_info "SETTING UP NVM..."
-git clone https://github.com/lukechilds/zsh-nvm.git $HOME/.config/zsh/plugins/zsh-nvm
 
 print_info "CONFIGURING APPLICATIONS..."
 # `locate` database
@@ -61,6 +59,16 @@ sudo systemctl enable --now evremap
 papirus-folders -C cat-mocha-blue --theme Papirus-Dark
 
 # TODO: Downlaod dotfiles
+
+print_info "SETTING UP ZSH..."
+git clone https://github.com/lukechilds/zsh-nvm.git $HOME/.config/zsh/plugins/zsh-nvm
+
+mkdir -p $HOME/.config/zsh/plugins
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting $HOME/.config/zsh/plugins/fast-syntax-highlighting
+
+zsh
+fast-theme XDG:catppuccin-mocha # Set the theme for fast-syntax-highlighting
+exit
 
 print_info "SETTING UP SSH..."
 ssh-add ~/.ssh/github-cli
