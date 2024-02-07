@@ -82,7 +82,7 @@ exit
 print_info "SETTING UP SSH..."
 ssh-add ~/.ssh/github-cli
 
-# TODO: Setup GitHub CLI
+# Setup GitHub CLI
 print_info "SETTING UP GITHUB CLI..."
 gh auth login --web -h github.com
 gh auth setup-git
