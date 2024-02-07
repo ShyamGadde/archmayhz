@@ -112,6 +112,7 @@ systemctl enable fstrim.timer
 systemctl enable gpm
 systemctl enable NetworkManager
 systemctl enable paccache.timer
+systemctl enable pacman-filesdb-refresh.timer
 systemctl enable pkgfile-update.timer
 systemctl enable reflector.timer
 systemctl enable sddm
