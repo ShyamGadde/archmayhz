@@ -2,9 +2,11 @@ AUR_PACKAGES=(
     #iwgtk # GUI for iwctl
     anki-bin
     btrfs-assistant
+    carbonyl # Chromium based browser built to run in a terminal
     catppuccin-cursors-mocha
     catppuccin-gtk-theme-mocha
-    evremap-git # A keyboard input remapper for Linux/Wayland systems
+    evremap-git      # A keyboard input remapper for Linux/Wayland systems
+    find-the-command # Advanced command-not-found hook
     fontpreview
     hollywood
     lf-bin

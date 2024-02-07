@@ -28,6 +28,7 @@ GRAPHICS_STUFF=(
 )
 
 NETWORKING=(
+    gnu-netcat # GNU rewrite of netcat, the network piping application
     iwd
     network-manager-applet # System tray applet for connecting to Internet
     networkmanager
@@ -93,6 +94,8 @@ UTILITIES=(
     btop
     duf   # Disk Usage/Free Utility
     dunst # A lightweight replacement for the notification-daemons provided by most desktop environments
+    expac # alpm data (pacman database) extraction utility
+    eza   # A modern replacement for ls (community fork of exa)
     fd    # A simple, fast and user-friendly alternative to find
     fzf
     github-cli
@@ -115,6 +118,7 @@ UTILITIES=(
     sysfsutils    # System Utilities Based on Sysfs
     tlp           # Advanced power management tool for Linux
     ufw           # Uncomplicated Firewall
+    ugrep         # Ultra fast grep with interactive TUI, fuzzy search, boolean queries, hexdumps and more
     unzip
     unrar # The RAR uncompression program
     vi
@@ -161,7 +165,6 @@ EXTRA=(
     zsh-autosuggestions
     zsh-completions
     zsh-history-substring-search
-    zsh-syntax-highlighting
 )
 
 EYE_CANDY=(
