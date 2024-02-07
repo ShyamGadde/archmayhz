@@ -44,10 +44,6 @@ print_info "SETTING UP NVM..."
 git clone https://github.com/lukechilds/zsh-nvm.git $HOME/.config/zsh/plugins/zsh-nvm
 
 print_info "CONFIGURING APPLICATIONS..."
-# Fix Anki text pixelated on wayland by using xwayland (Probably a problem with QT apps on wayland, having similar problems with Telegram-Desktop)
-apply_config /usr/local/bin/anki
-chmod +x /usr/local/bin/anki
-
 # `locate` database
 backup_file /etc/updatedb.conf
 sudo sed -i '/^PRUNENAMES/s/"$/ .snapshots"/' /etc/updatedb.conf # Ignore BTRFS snapshots
