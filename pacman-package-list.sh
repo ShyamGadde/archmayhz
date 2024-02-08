@@ -138,7 +138,6 @@ DEVELOPMENT=(
     linux-headers
     linux-lts-headers
     linux-zen-headers
-    python-pip
     tk  # A basic toolkit extension to Tcl (for python tkinter)
     wev # A tool for debugging and observing input events
 )
