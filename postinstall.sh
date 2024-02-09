@@ -38,6 +38,9 @@ for package in "${AUR_PACKAGES[@]}"; do
     paru -S "${package}"
 done
 
+# Setup `auto-cpufreq` daemon
+systemctl enable --now auto-cpufreq
+
 print_info "INSTALLING PYENV AND FRIENDS..."
 curl https://pyenv.run | bash # The pyenv package in the Arch Linux repositories doesn't install shell completions for some reason
 

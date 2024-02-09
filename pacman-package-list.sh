@@ -119,10 +119,11 @@ UTILITIES=(
     smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
     speedtest-cli # Command line interface for testing internet bandwidth using speedtest.net
     sysfsutils    # System Utilities Based on Sysfs
+    thermald      # Thermal Daemon Service
     ufw           # Uncomplicated Firewall
     ugrep         # Ultra fast grep with interactive TUI, fuzzy search, boolean queries, hexdumps and more
+    unrar         # The RAR uncompression program
     unzip
-    unrar # The RAR uncompression program
     vi
     vim
     xdg-user-dirs # Creates user directories (e.g. Desktop dir) automatically

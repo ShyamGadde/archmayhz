@@ -119,7 +119,7 @@ systemctl enable sddm
 systemctl enable smartd
 systemctl enable sshd
 systemctl enable systemd-timesyncd # For time synchronization using NTP
-systemctl enable tlp
+systemctl enable thermald
 systemctl enable ufw
 
 # ---------------------------- #

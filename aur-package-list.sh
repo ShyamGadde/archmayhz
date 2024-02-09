@@ -1,6 +1,7 @@
 AUR_PACKAGES=(
     #iwgtk # GUI for iwctl
     anki-bin
+    auto-cpufreq # Automatic CPU speed & power optimizer for Linux
     btrfs-assistant
     carbonyl # Chromium based browser built to run in a terminal
     catppuccin-cursors-mocha
