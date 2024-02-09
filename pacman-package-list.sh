@@ -68,8 +68,10 @@ HYPRLAND=(
     qt6-wayland
     sddm
     swaybg
+    swaync # A notification center for Sway
     waybar
     wofi
+    xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
 )
 
@@ -101,6 +103,7 @@ UTILITIES=(
     github-cli
     gnome-keyring # Stores passwords and encryption keys
     gpm           # General Purpose Mouse Interface (for mouse support in the tty)
+    hwinfo        # Hardware detection tool used in SuSE Linux
     lazygit
     less
     man-db
@@ -116,7 +119,6 @@ UTILITIES=(
     smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
     speedtest-cli # Command line interface for testing internet bandwidth using speedtest.net
     sysfsutils    # System Utilities Based on Sysfs
-    tlp           # Advanced power management tool for Linux
     ufw           # Uncomplicated Firewall
     ugrep         # Ultra fast grep with interactive TUI, fuzzy search, boolean queries, hexdumps and more
     unzip
@@ -138,6 +140,8 @@ DEVELOPMENT=(
     linux-headers
     linux-lts-headers
     linux-zen-headers
+    python
+    python-pip
     tk  # A basic toolkit extension to Tcl (for python tkinter)
     wev # A tool for debugging and observing input events
 )
