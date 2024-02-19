@@ -47,10 +47,11 @@ FONTS=(
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
-    noto-fonts-extra
     otf-font-awesome
     terminus-font
+    font-manager
     fontconfig
+    otf-monaspace
     ttf-cascadia-code-nerd
     ttf-dejavu
     ttf-droid
@@ -76,6 +77,7 @@ HYPRLAND=(
 )
 
 MULTIMEDIA=(
+    gnome-sound-recorder
     gst-plugin-pipewire
     mpv
     pavucontrol
