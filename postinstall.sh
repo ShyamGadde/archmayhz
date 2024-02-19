@@ -49,9 +49,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-PYTHON_LATEST=$(pyenv install --list | grep -E '^\s+[0-9.]+$' | tail -n 1)
-pyenv install -v $PYTHON_LATEST # Install the latest version of Python
-pyenv global $PYTHON_LATEST     # Set the global version of Python to the latest version
+pyenv install -v $(pyenv install --list | grep -E '^\s+[0-9.]+$' | tail -n 1) # Install the latest version of Python
+pyenv global system                                                           # Set the global version of Python to the latest version
 
 print_info "CONFIGURING APPLICATIONS..."
 # `locate` database
