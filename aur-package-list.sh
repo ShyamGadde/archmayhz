@@ -12,8 +12,8 @@ AUR_PACKAGES=(
     hollywood
     lf-bin
     microsoft-edge-stable-bin
-    notion-app-electron
     nwg-look-bin
+    otf-monocraft
     papirus-folders-catppuccin-git
     pfetch-rs-bin
     reflector-simple
