@@ -18,6 +18,7 @@ AUR_PACKAGES=(
     pfetch-rs-bin
     reflector-simple
     selectdefaultapplication-git
+    snapd
     snapper-support
     ttf-recursive
     visual-studio-code-bin
