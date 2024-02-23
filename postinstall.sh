@@ -44,6 +44,7 @@ systemctl enable --now auto-cpufreq
 # Enable snapd
 sudo systemctl enable --now snapd.socket
 sudo ln -s /var/lib/snapd/snap /snap
+sudo systemctl enable --now snapd.apparmor
 
 print_info "INSTALLING PYENV AND FRIENDS..."
 curl https://pyenv.run | bash # The pyenv package in the Arch Linux repositories doesn't install shell completions for some reason
