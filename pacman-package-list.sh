@@ -178,7 +178,8 @@ EYE_CANDY=(
     qt5-graphicaleffects
     qt5-quickcontrols2
     qt5-svg
-    qt5ct
+    qt5ct # A Qt5 configuration utility
+    qt6ct # A Qt6 configuration utility
     starship
 )
 

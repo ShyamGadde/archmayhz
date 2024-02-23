@@ -13,6 +13,7 @@ AUR_PACKAGES=(
     lf-bin
     microsoft-edge-stable-bin
     nwg-look-bin
+    onlyoffice-bin
     otf-monocraft
     papirus-folders-catppuccin-git
     pfetch-rs-bin
