@@ -71,8 +71,8 @@ HYPRLAND=(
     swaybg
     swaync # A notification center for Sway
     waybar
-    wofi
-    xdg-desktop-portal-gtk
+    wl-clipboard
+    xdg-desktop-portal-gtk # For file picker as xdg-desktop-portal-hyprland doesn't implement it
     xdg-desktop-portal-hyprland
 )
 

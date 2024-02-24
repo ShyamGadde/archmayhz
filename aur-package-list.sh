@@ -10,6 +10,7 @@ AUR_PACKAGES=(
     find-the-command # Advanced command-not-found hook
     fontpreview
     hollywood
+    hyprpicker # A wlroots-compatible Wayland color picker that does not suck.
     lf-bin
     microsoft-edge-stable-bin
     nwg-look-bin
