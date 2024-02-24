@@ -85,6 +85,7 @@ MULTIMEDIA=(
     pipewire-alsa
     pipewire-jack
     pipewire-pulse
+    playerctl    # mpris command-line controller and library for spotify, vlc, audacious, bmp, xmms2, and others
     sof-firmware # Sound Open Firmware
     wireplumber
 )
@@ -160,7 +161,7 @@ EXTRA=(
     kitty
     libxcrypt-compat # For fixing error with the sourcery extension in VSCode
     obsidian
-    seahorse # GNOME application for managing PGP keys
+    seahorse         # GNOME application for managing PGP keys
     tealdeer
     thunar
     thunar-archive-plugin    # Create and extract archives in Thunar
