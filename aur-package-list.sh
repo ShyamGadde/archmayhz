@@ -18,6 +18,7 @@ AUR_PACKAGES=(
     papirus-folders-catppuccin-git
     pfetch-rs-bin
     reflector-simple
+    rofi-lbonn-wayland-git
     selectdefaultapplication-git
     snapd
     snapper-support
