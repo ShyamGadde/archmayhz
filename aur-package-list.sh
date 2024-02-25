@@ -10,7 +10,9 @@ AUR_PACKAGES=(
     find-the-command # Advanced command-not-found hook
     fontpreview
     hollywood
-    hyprpicker # A wlroots-compatible Wayland color picker that does not suck.
+    hypridle     # Hyprland's idle daemon
+    hyprlock-git # Hyprland's GPU-accelerated screen locking utility
+    hyprpicker   # A wlroots-compatible Wayland color picker that does not suck.
     lf-bin
     microsoft-edge-stable-bin
     nwg-look-bin
@@ -23,6 +25,7 @@ AUR_PACKAGES=(
     selectdefaultapplication-git
     snapd
     snapper-support
+    sway-audio-idle-inhibit-git
     ttf-recursive
     visual-studio-code-bin
 )

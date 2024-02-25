@@ -157,7 +157,7 @@ EXTRA=(
     ffmpegthumbnailer # Lightweight video thumbnailer that can be used by file managers (for Thunar)
     firefox
     foot
-    gvfs # Virtual filesystem implementation for GIO (for mounting USB drives in Thunar)
+    gvfs                     # Virtual filesystem implementation for GIO (for mounting USB drives in Thunar)
     kitty
     libxcrypt-compat # For fixing error with the sourcery extension in VSCode
     obsidian
