@@ -77,6 +77,7 @@ HYPRLAND=(
 )
 
 MULTIMEDIA=(
+    cliphist # A clipboard history manager
     gnome-sound-recorder
     grim # Screenshot utility for Wayland
     gst-plugin-pipewire
@@ -90,6 +91,7 @@ MULTIMEDIA=(
     slurp        # Select a region in a Wayland compositor
     sof-firmware # Sound Open Firmware
     wireplumber
+    wl-clipboard
 )
 
 UTILITIES=(
