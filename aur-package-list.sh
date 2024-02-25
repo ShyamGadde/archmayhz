@@ -26,7 +26,6 @@ AUR_PACKAGES=(
     selectdefaultapplication-git
     snapd
     snapper-support
-    sway-audio-idle-inhibit # Inhibit audio idle suspend
     ttf-recursive
     visual-studio-code-bin
     waypaper-git
