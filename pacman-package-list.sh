@@ -77,7 +77,7 @@ HYPRLAND=(
 )
 
 MULTIMEDIA=(
-    cliphist # A clipboard history manager
+    copyq # Clipboard manager with advanced features
     gnome-sound-recorder
     grim # Screenshot utility for Wayland
     gst-plugin-pipewire
