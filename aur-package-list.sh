@@ -25,7 +25,6 @@ AUR_PACKAGES=(
     selectdefaultapplication-git
     snapd
     snapper-support
-    sway-audio-idle-inhibit-git
     ttf-recursive
     visual-studio-code-bin
 )
