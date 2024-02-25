@@ -89,6 +89,7 @@ MULTIMEDIA=(
     pipewire-pulse
     playerctl    # mpris command-line controller and library for spotify, vlc, audacious, bmp, xmms2, and others
     slurp        # Select a region in a Wayland compositor
+    snapshot     # Take pictures and videos (GNOME)
     sof-firmware # Sound Open Firmware
     wireplumber
     wl-clipboard
@@ -161,9 +162,13 @@ EXTRA=(
     ffmpegthumbnailer # Lightweight video thumbnailer that can be used by file managers (for Thunar)
     firefox
     foot
+    gnome-calculator
+    gnome-characters # Unicode character map for GNOME
+    gnome-clocks
     gvfs                     # Virtual filesystem implementation for GIO (for mounting USB drives in Thunar)
     kitty
     libxcrypt-compat # For fixing error with the sourcery extension in VSCode
+    loupe            # A simple image viewer for GNOME
     obsidian
     seahorse         # GNOME application for managing PGP keys
     tealdeer

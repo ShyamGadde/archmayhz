@@ -15,6 +15,7 @@ AUR_PACKAGES=(
     hyprpicker   # A wlroots-compatible Wayland color picker that does not suck.
     lf-bin
     microsoft-edge-stable-bin
+    noisetorch # Real-time microphone noise suppression on Linux
     nwg-look-bin
     onlyoffice-bin
     otf-monocraft
