@@ -27,4 +27,5 @@ AUR_PACKAGES=(
     snapper-support
     ttf-recursive
     visual-studio-code-bin
+    waypaper-git
 )
