@@ -10,7 +10,7 @@ AUR_PACKAGES=(
     find-the-command # Advanced command-not-found hook
     fontpreview
     hollywood
-    hypridle     # Hyprland's idle daemon
+    hypridle-git # Hyprland's idle daemon
     hyprlock-git # Hyprland's GPU-accelerated screen locking utility
     hyprpicker   # A wlroots-compatible Wayland color picker that does not suck.
     lf-bin
