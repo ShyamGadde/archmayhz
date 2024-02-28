@@ -32,6 +32,7 @@ NETWORKING=(
     iwd
     network-manager-applet # System tray applet for connecting to Internet
     networkmanager
+    socat # Multipurpose relay (SOcket CAT)
     wget
     whois
     wireless_tools
@@ -166,12 +167,12 @@ EXTRA=(
     gnome-calculator
     gnome-characters # Unicode character map for GNOME
     gnome-clocks
-    gvfs                     # Virtual filesystem implementation for GIO (for mounting USB drives in Thunar)
+    gvfs # Virtual filesystem implementation for GIO (for mounting USB drives in Thunar)
     kitty
     libxcrypt-compat # For fixing error with the sourcery extension in VSCode
     loupe            # A simple image viewer for GNOME
     obsidian
-    seahorse         # GNOME application for managing PGP keys
+    seahorse # GNOME application for managing PGP keys
     tealdeer
     thunar
     thunar-archive-plugin    # Create and extract archives in Thunar
