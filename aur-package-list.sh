@@ -17,6 +17,7 @@ AUR_PACKAGES=(
     microsoft-edge-stable-bin
     noisetorch # Real-time microphone noise suppression on Linux
     nwg-look-bin
+    nwg-drawer-bin
     onlyoffice-bin
     otf-monocraft
     papirus-folders-catppuccin-git

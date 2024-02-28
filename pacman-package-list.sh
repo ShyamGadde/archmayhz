@@ -62,7 +62,6 @@ FONTS=(
 )
 
 HYPRLAND=(
-    cliphist
     hyprland
     polkit-kde-agent
     qt5-wayland
@@ -103,7 +102,7 @@ UTILITIES=(
     brightnessctl
     btop
     duf   # Disk Usage/Free Utility
-    dunst # A lightweight replacement for the notification-daemons provided by most desktop environments
+    dust  # A more intuitive version of du in rust
     expac # alpm data (pacman database) extraction utility
     eza   # A modern replacement for ls (community fork of exa)
     fd    # A simple, fast and user-friendly alternative to find
@@ -122,6 +121,7 @@ UTILITIES=(
     pacman-contrib
     pkgfile
     plocate   # A much faster locate(1) implementation
+    powertop  # Linux tool to find out what is using power on a laptop
     reflector # A Python 3 module and script to retrieve and filter the latest Pacman mirror list.
     ripgrep
     smartmontools # Control and monitor S.M.A.R.T. enabled ATA and SCSI Hard Drives
@@ -146,6 +146,7 @@ DEVELOPMENT=(
     base-devel
     git
     jdk-openjdk
+    jq
     linux-headers
     linux-lts-headers
     linux-zen-headers
