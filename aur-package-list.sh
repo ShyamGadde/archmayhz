@@ -9,6 +9,8 @@ AUR_PACKAGES=(
     evremap-git      # A keyboard input remapper for Linux/Wayland systems
     find-the-command # Advanced command-not-found hook
     fontpreview
+    gitkraken
+    google-chrome
     hollywood
     hypridle-git # Hyprland's idle daemon
     hyprlock-git # Hyprland's GPU-accelerated screen locking utility
@@ -16,8 +18,8 @@ AUR_PACKAGES=(
     lf-bin
     microsoft-edge-stable-bin
     noisetorch # Real-time microphone noise suppression on Linux
-    nwg-look-bin
     nwg-drawer-bin
+    nwg-look-bin
     onlyoffice-bin
     otf-monocraft
     papirus-folders-catppuccin-git
@@ -27,7 +29,10 @@ AUR_PACKAGES=(
     selectdefaultapplication-git
     snapd
     snapper-support
+    swaync # A notification center for Sway
     ttf-recursive
     visual-studio-code-bin
     waypaper-git
+    zoom
+    zotero-bin
 )

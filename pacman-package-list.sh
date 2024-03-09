@@ -69,7 +69,6 @@ HYPRLAND=(
     qt6-wayland
     sddm
     swaybg
-    swaync # A notification center for Sway
     waybar
     wl-clipboard
     xdg-desktop-portal-gtk # For file picker as xdg-desktop-portal-hyprland doesn't implement it
@@ -153,7 +152,8 @@ DEVELOPMENT=(
     linux-zen-headers
     python
     python-pip
-    tk  # A basic toolkit extension to Tcl (for python tkinter)
+    tk # A basic toolkit extension to Tcl (for python tkinter)
+    tmux
     wev # A tool for debugging and observing input events
 )
 
