@@ -146,6 +146,9 @@ apply_config /etc/sysctl.d/99-sysctl.conf
 # So that I can open a file with neovim from the file manager context menu without getting an error
 ln -s /usr/bin/kitty /usr/bin/xdg-terminal-exec
 
+# Enable native overlay diff for docker
+apply_config /etc/modprobe.d/disable-overlay-redirect-dir.conf
+
 # TODO: Apply SDDM theme
 
 # TODO: Setup Plymouth and Plymouth theme
