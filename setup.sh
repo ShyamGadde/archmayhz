@@ -36,7 +36,7 @@ print_info "SETTING ROOT PASSWORD..."
 echo "root:${ROOT_PASSWORD}" | chpasswd
 
 print_info "CREATING USER..."
-useradd -m -g users -G wheel,audio,video,input,optical,storage,sys,log,network,power,rfkill,adm -s /bin/zsh -c "$FULLNAME" "$USERNAME"
+useradd -m -g users -G adm,audio,docker,input,kvm,log,network,optical,power,rfkill,storage,sys,video,wheel -s /bin/zsh -c "$FULLNAME" "$USERNAME"
 echo "${USERNAME}:${USER_PASSWORD}" | chpasswd
 
 print_info "CONFIGURING SUDO FOR USER..."
@@ -108,6 +108,7 @@ apply_config /etc/xdg/reflector/reflector.conf
 print_info "ENABLING SERVICES..."
 systemctl enable acpid
 systemctl enable bluetooth
+systemctl enable docker.socket
 systemctl enable fstrim.timer
 systemctl enable gpm
 systemctl enable NetworkManager

@@ -144,6 +144,7 @@ UTILITIES=(
 
 DEVELOPMENT=(
     base-devel
+    docker
     git
     jdk-openjdk
     jq
