@@ -63,7 +63,6 @@ FONTS=(
 )
 
 HYPRLAND=(
-    hyprland
     polkit-kde-agent
     qt5-wayland
     qt6-wayland
@@ -72,7 +71,6 @@ HYPRLAND=(
     waybar
     wl-clipboard
     xdg-desktop-portal-gtk # For file picker as xdg-desktop-portal-hyprland doesn't implement it
-    xdg-desktop-portal-hyprland
 )
 
 MULTIMEDIA=(

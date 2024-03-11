@@ -13,6 +13,8 @@ AUR_PACKAGES=(
     google-chrome
     hollywood
     hypridle-git # Hyprland's idle daemon
+    hyprland-cmake-git
+    hyprlang-git # Implementation library for the hypr config language
     hyprlock-git # Hyprland's GPU-accelerated screen locking utility
     hyprpicker   # A wlroots-compatible Wayland color picker that does not suck.
     lf-bin
@@ -33,6 +35,7 @@ AUR_PACKAGES=(
     ttf-recursive
     visual-studio-code-bin
     waypaper-git
+    xdg-desktop-portal-hyprland-git
     zoom
     zotero-bin
 )
