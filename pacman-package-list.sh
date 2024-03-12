@@ -73,6 +73,10 @@ HYPRLAND=(
     xdg-desktop-portal-gtk # For file picker as xdg-desktop-portal-hyprland doesn't implement it
 )
 
+GNOME=(
+    gnome
+)
+
 MULTIMEDIA=(
     copyq # Clipboard manager with advanced features
     gnome-sound-recorder
@@ -86,7 +90,6 @@ MULTIMEDIA=(
     pipewire-pulse
     playerctl    # mpris command-line controller and library for spotify, vlc, audacious, bmp, xmms2, and others
     slurp        # Select a region in a Wayland compositor
-    snapshot     # Take pictures and videos (GNOME)
     sof-firmware # Sound Open Firmware
     wireplumber
     wl-clipboard
@@ -160,25 +163,17 @@ EXTRA=(
     bash-completion
     bitwarden
     bitwarden-cli
-    ffmpegthumbnailer # Lightweight video thumbnailer that can be used by file managers (for Thunar)
     firefox
     foot
     gnome-calculator
     gnome-characters # Unicode character map for GNOME
     gnome-clocks
-    gvfs # Virtual filesystem implementation for GIO (for mounting USB drives in Thunar)
     kitty
     libxcrypt-compat # For fixing error with the sourcery extension in VSCode
     loupe            # A simple image viewer for GNOME
     obsidian
     seahorse # GNOME application for managing PGP keys
     tealdeer
-    thunar
-    thunar-archive-plugin    # Create and extract archives in Thunar
-    thunar-media-tags-plugin # Adds special features for media files to the Thunar File Manager
-    thunar-volman            # Automatic management of removeable devices in Thunar
-    tumbler                  # D-Bus service for applications to request thumbnails (for Thunar)
-    xarchiver                # GTK+ frontend for most used compression formats (for Thunar)
     zsh-autosuggestions
     zsh-completions
     zsh-history-substring-search
@@ -210,6 +205,7 @@ PACMAN_PACKAGES=(
     "${BLUETOOTH[@]}"
     "${FONTS[@]}"
     "${HYPRLAND[@]}"
+    "${GNOME[@]}"
     "${MULTIMEDIA[@]}"
     "${UTILITIES[@]}"
     "${DEVELOPMENT[@]}"
