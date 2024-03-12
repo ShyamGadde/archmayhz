@@ -74,13 +74,20 @@ HYPRLAND=(
 )
 
 GNOME=(
+    file-roller # Archive manager for GNOME
     gnome
+    gnome-calculator
+    gnome-characters # Unicode character map for GNOME
+    gnome-clocks
+    gnome-keyring # Stores passwords and encryption keys
+    gnome-sound-recorder
+    loupe    # A simple image viewer for GNOME
+    seahorse # GNOME application for managing PGP keys
 )
 
 MULTIMEDIA=(
     copyq # Clipboard manager with advanced features
-    gnome-sound-recorder
-    grim # Screenshot utility for Wayland
+    grim  # Screenshot utility for Wayland
     gst-plugin-pipewire
     mpv
     pavucontrol
@@ -109,9 +116,8 @@ UTILITIES=(
     fd    # A simple, fast and user-friendly alternative to find
     fzf
     github-cli
-    gnome-keyring # Stores passwords and encryption keys
-    gpm           # General Purpose Mouse Interface (for mouse support in the tty)
-    hwinfo        # Hardware detection tool used in SuSE Linux
+    gpm    # General Purpose Mouse Interface (for mouse support in the tty)
+    hwinfo # Hardware detection tool used in SuSE Linux
     lazygit
     less
     man-db
@@ -165,14 +171,9 @@ EXTRA=(
     bitwarden-cli
     firefox
     foot
-    gnome-calculator
-    gnome-characters # Unicode character map for GNOME
-    gnome-clocks
     kitty
     libxcrypt-compat # For fixing error with the sourcery extension in VSCode
-    loupe            # A simple image viewer for GNOME
     obsidian
-    seahorse # GNOME application for managing PGP keys
     tealdeer
     zsh-autosuggestions
     zsh-completions

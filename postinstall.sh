@@ -101,6 +101,11 @@ gh extension install yuler/gh-download
 # 1. Root config
 # 2. Home config
 
+# Restart Nautilus to load the new extensions
+nautilus -q
+
+gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
+
 # TODO: Create root and home snapshots of **Base System Installation**
 
 echo "DONE!" | figlet -f ansi-shadow | lolcat
