@@ -74,6 +74,7 @@ HYPRLAND=(
 )
 
 GNOME=(
+    evince      # Document viewer (thumbnails for .pdf files in file managers)
     file-roller # Archive manager for GNOME
     gnome
     gnome-calculator
@@ -169,7 +170,6 @@ EXTRA=(
     bash-completion
     bitwarden
     bitwarden-cli
-    evince            # Document viewer (thumbnails for .pdf files in file managers)
     ffmpegthumbnailer # Lightweight video thumbnailer that can be used by file managers
     firefox
     foot
@@ -180,6 +180,7 @@ EXTRA=(
     kitty
     libgsf           # Extensible I/O abstraction library for dealing with structured file formats (.odf thumbnails in file managers)
     libxcrypt-compat # For fixing error with the sourcery extension in VSCode
+    nautlius         # GNOME Files file manager
     obsidian
     poppler-glib # Poppler glib bindings (thumbnails for .pdf files in file managers)
     tealdeer
