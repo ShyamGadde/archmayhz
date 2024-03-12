@@ -169,12 +169,23 @@ EXTRA=(
     bash-completion
     bitwarden
     bitwarden-cli
+    evince            # Document viewer (thumbnails for .pdf files in file managers)
+    ffmpegthumbnailer # Lightweight video thumbnailer that can be used by file managers
     firefox
     foot
+    freetype2              # Font rasterization library (thumbnails for fonts in file managers)
+    gnome-epub-thumbnailer # Thumbnailer for EPUB files (.epub and .mobi)
+    gst-libav              # Multimedia graph framework - libav plugin (video thumbnails for file managers)
+    gst-plugins-ugly       # Multimedia graph framework - ugly plugins (video thumbnails for file managers)
     kitty
+    libgsf           # Extensible I/O abstraction library for dealing with structured file formats (.odf thumbnails in file managers)
     libxcrypt-compat # For fixing error with the sourcery extension in VSCode
     obsidian
+    poppler-glib # Poppler glib bindings (thumbnails for .pdf files in file managers)
     tealdeer
+    totem              # Movie player for the GNOME desktop based on GStreamer (thumbnails video files and tagged audio files in GNOME Files and Caja only)
+    tumbler            # Thumbnail service implementing the thumbnail management D-Bus specification (Image file thumbnails in file managers)
+    webp-pixbuf-loader # WebM GDK Pixbuf Loader library (thumbnails for .webp files in file managers)
     zsh-autosuggestions
     zsh-completions
     zsh-history-substring-search
