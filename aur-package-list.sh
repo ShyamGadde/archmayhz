@@ -12,7 +12,8 @@ AUR_PACKAGES=(
     gitkraken
     google-chrome
     hollywood
-    hypridle-git # Hyprland's idle daemon
+    hyprcursor-git # The hyprland cursor format, library and utilities
+    hypridle-git   # Hyprland's idle daemon
     hyprland-cmake-git
     hyprlang-git # Implementation library for the hypr config language
     hyprlock-git # Hyprland's GPU-accelerated screen locking utility
