@@ -106,6 +106,9 @@ nautilus -q
 
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
 
+# Download tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # TODO: Create root and home snapshots of **Base System Installation**
 
 echo "DONE!" | figlet -f ansi-shadow | lolcat
