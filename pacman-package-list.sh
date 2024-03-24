@@ -166,6 +166,21 @@ DEVELOPMENT=(
     wev # A tool for debugging and observing input events
 )
 
+VIRTUALIZATION=(
+    bridge-utils # Utilities for configuring the Linux ethernet bridge
+    dmidecode    # Desktop Management Interface table related utilities
+    dnsmasq      # Lightweight, easy to configure DNS forwarder and DHCP server
+    edk2-ovmf    # Firmware for Virtual Machines (x86_64, i686)
+    iptables-nft # Linux kernel packet control tool (using nft interface)
+    libguestfs   # Access and modify virtual machine disk images
+    nftables     # Netfilter tables userspace tools
+    qemu         # A generic and open source machine emulator and virtualizer
+    swtpm        # Libtpms-based TPM emulator with socket, character device, and Linux CUSE interface
+    vde2         # Virtual Distributed Ethernet for emulators like qemu
+    virt-manager # Desktop user interface for managing virtual machines
+    virt-viewer  # A lightweight interface for interacting with the graphical display of virtualized guest OS.
+)
+
 EXTRA=(
     bash-completion
     bitwarden
@@ -222,6 +237,7 @@ PACMAN_PACKAGES=(
     "${MULTIMEDIA[@]}"
     "${UTILITIES[@]}"
     "${DEVELOPMENT[@]}"
+    "${VIRTUALIZATION[@]}"
     "${EXTRA[@]}"
     "${EYE_CANDY[@]}"
     "${FUN[@]}"

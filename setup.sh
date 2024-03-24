@@ -36,7 +36,7 @@ print_info "SETTING ROOT PASSWORD..."
 echo "root:${ROOT_PASSWORD}" | chpasswd
 
 print_info "CREATING USER..."
-useradd -m -g users -G adm,audio,docker,input,kvm,log,network,optical,power,rfkill,storage,sys,video,wheel -s /bin/zsh -c "$FULLNAME" "$USERNAME"
+useradd -m -g users -G adm,audio,docker,input,kvm,libvirt,log,network,optical,power,rfkill,storage,sys,video,wheel -s /bin/zsh -c "$FULLNAME" "$USERNAME"
 echo "${USERNAME}:${USER_PASSWORD}" | chpasswd
 
 print_info "CONFIGURING SUDO FOR USER..."
@@ -44,6 +44,7 @@ print_info "CONFIGURING SUDO FOR USER..."
 # The first ALL specifies all hosts, the (ALL:ALL) specifies all users and all groups, and the final ALL specifies all commands.
 echo "${USERNAME} ALL=(ALL:ALL) ALL" >/etc/sudoers.d/$USERNAME
 #echo "${USERNAME} ALL=(ALL:ALL) NOPASSWD ALL" >/etc/sudoers.d/$USERNAME
+
 # Setting the permissions of the file to read-only for owner and group for security reasons.
 chmod 0440 /etc/sudoers.d/$USERNAME
 echo "Defaults pwfeedback" >>/etc/sudoers.d/pwfeedback
@@ -111,6 +112,7 @@ systemctl enable bluetooth
 systemctl enable docker.socket
 systemctl enable fstrim.timer
 systemctl enable gpm
+systemctl enable libvirtd
 systemctl enable NetworkManager
 systemctl enable paccache.timer
 systemctl enable pacman-filesdb-refresh.timer
@@ -148,6 +150,13 @@ ln -s /usr/bin/kitty /usr/bin/xdg-terminal-exec
 
 # Enable native overlay diff for docker
 apply_config /etc/modprobe.d/disable-overlay-redirect-dir.conf
+
+# Setup QEMU
+apply_config /etc/libvirt/qemu.conf
+
+# Setup libvirt
+apply_config /etc/libvirt/libvirtd.conf
+virsh net-autostart default
 
 # TODO: Apply SDDM theme
 
