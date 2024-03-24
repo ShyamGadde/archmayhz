@@ -158,6 +158,10 @@ apply_config /etc/libvirt/qemu.conf
 apply_config /etc/libvirt/libvirtd.conf
 virsh net-autostart default
 
+# Turn off CoW for libvirt images and docker volumes
+chattr +C /var/lib/libvirt/images
+chattr +C /var/lib/docker/volumes
+
 # TODO: Apply SDDM theme
 
 # TODO: Setup Plymouth and Plymouth theme
