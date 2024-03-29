@@ -63,6 +63,11 @@ backup_file /etc/updatedb.conf
 sudo sed -i '/^PRUNENAMES/s/"$/ .snapshots"/' /etc/updatedb.conf # Ignore BTRFS snapshots
 sudo updatedb
 
+# Setup tuned
+sudo systemctl enable --now tuned
+sudo tuned-adm profile virtual-host
+sudo tuned-adm verify
+
 # Setup tldr database
 tldr --update
 
