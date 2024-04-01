@@ -39,7 +39,7 @@ for package in "${AUR_PACKAGES[@]}"; do
 done
 
 # Setup `auto-cpufreq` daemon
-systemctl enable --now auto-cpufreq
+sudo systemctl enable --now auto-cpufreq
 
 # Enable snapd
 sudo systemctl enable --now snapd.socket
