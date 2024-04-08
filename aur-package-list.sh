@@ -20,6 +20,7 @@ AUR_PACKAGES=(
     hyprlock-git # Hyprland's GPU-accelerated screen locking utility
     hyprpicker   # A wlroots-compatible Wayland color picker that does not suck.
     jetbrains-toolbox
+    lazydocker-bin
     lf-bin
     microsoft-edge-stable-bin
     nautilus-hide              # A simple Nautilus extension that adds "Hide" and "Unhide" to Nautilus right-click menu
