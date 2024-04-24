@@ -7,6 +7,7 @@ AUR_PACKAGES=(
     catppuccin-cursors-mocha
     catppuccin-gtk-theme-mocha
     code-nautilus-git
+    docker-desktop
     evremap-git      # A keyboard input remapper for Linux/Wayland systems
     find-the-command # Advanced command-not-found hook
     fontpreview

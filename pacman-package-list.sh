@@ -80,10 +80,12 @@ GNOME=(
     gnome-calculator
     gnome-characters # Unicode character map for GNOME
     gnome-clocks
-    gnome-keyring # Stores passwords and encryption keys
+    gnome-keyring                      # Stores passwords and encryption keys
+    gnome-shell-extension-appindicator # For docker-desktop
     gnome-sound-recorder
-    loupe    # A simple image viewer for GNOME
-    seahorse # GNOME application for managing PGP keys
+    gnome-terminal # For docker-desktop
+    loupe          # A simple image viewer for GNOME
+    seahorse       # GNOME application for managing PGP keys
 )
 
 MULTIMEDIA=(
@@ -153,6 +155,7 @@ UTILITIES=(
 DEVELOPMENT=(
     base-devel
     docker
+    docker-compose
     git
     jdk-openjdk
     jq

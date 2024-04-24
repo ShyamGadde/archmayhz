@@ -116,4 +116,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # TODO: Create root and home snapshots of **Base System Installation**
 
+print_info "Initial 'pass' by using gpg key to sign into Docker Desktop."
+print_info "Visit https://docs.docker.com/desktop/get-started/#credentials-management-for-linux-users for more info on how to do that."
+
 echo "DONE!" | figlet -f ansi-shadow | lolcat
