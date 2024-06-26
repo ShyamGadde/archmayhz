@@ -68,6 +68,15 @@ sudo systemctl enable --now tuned
 sudo tuned-adm profile virtual-host
 sudo tuned-adm verify
 
+# Set ACL on the Libvirt Images Directory...
+# Recursively remove any existing ACL permissions on the directory.
+sudo setfacl -R -b /var/lib/libvirt/images
+# Grant regular user permission to the directory recursively.
+sudo setfacl -R -m u:"$USER":rwX /var/lib/libvirt/images
+# Enable 'default' special permissions so that any new directories created
+# inside the directory will inherit the ACL permissions.
+sudo setfacl -m d:u:"$USER":rwx /var/lib/libvirt/images
+
 # Setup tldr database
 tldr --update
 
