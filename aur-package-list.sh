@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 AUR_PACKAGES=(
     #iwgtk # GUI for iwctl
     anki-bin
@@ -14,12 +16,7 @@ AUR_PACKAGES=(
     gitkraken
     google-chrome
     hollywood
-    hyprcursor-git # The hyprland cursor format, library and utilities
-    hypridle-git   # Hyprland's idle daemon
-    hyprland-cmake-git
-    hyprlang-git # Implementation library for the hypr config language
-    hyprlock-git # Hyprland's GPU-accelerated screen locking utility
-    hyprpicker   # A wlroots-compatible Wayland color picker that does not suck.
+    hyprpicker # A wlroots-compatible Wayland color picker that does not suck.
     jetbrains-toolbox
     lazydocker-bin
     lf-bin
@@ -34,7 +31,6 @@ AUR_PACKAGES=(
     papirus-folders-catppuccin-git
     pfetch-rs-bin
     reflector-simple
-    rofi-lbonn-wayland-git
     selectdefaultapplication-git
     snapd
     snapper-support
@@ -43,7 +39,11 @@ AUR_PACKAGES=(
     tuned # Daemon that performs monitoring and adaptive configuration of devices in the system (kvm/qemu)
     visual-studio-code-bin
     waypaper-git
-    xdg-desktop-portal-hyprland-git
+    wl-clip-persist
     zoom
     zotero-bin
 )
+
+export AUR_PACKAGES
+
+# vim: ft=sh ts=4 sts=4 sw=4 et
