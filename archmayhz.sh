@@ -30,7 +30,7 @@ read -p "User Password: " USER_PASSWORD
 # ---------------------------- #
 # ------- Disk Setup --------- #
 # ---------------------------- #
-print_info "PARTIONING THE DISKS..."
+print_info "PARTITIONING THE DISKS..."
 print_warning "WARNING: This script will erase all data on the selected disk."
 
 lsblk -d
