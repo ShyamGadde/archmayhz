@@ -46,9 +46,12 @@ echo "${USERNAME} ALL=(ALL:ALL) ALL" >/etc/sudoers.d/$USERNAME
 #echo "${USERNAME} ALL=(ALL:ALL) NOPASSWD ALL" >/etc/sudoers.d/$USERNAME
 
 # Setting the permissions of the file to read-only for owner and group for security reasons.
-chmod 0440 /etc/sudoers.d/$USERNAME
-echo "Defaults pwfeedback" >>/etc/sudoers.d/pwfeedback
-echo "Defaults insults" >>/etc/sudoers.d/insults
+chmod 0440 /etc/sudoers.d/"$USERNAME"
+echo "Defaults pwfeedback" >> /etc/sudoers.d/pwfeedback
+echo "Defaults insults" >> /etc/sudoers.d/insults
+
+# Automatically change the default keyring password with user password
+apply_config /etc/pam.d/passwd
 
 # --------------------------------------- #
 # ------- Initramfs and Modules---------- #
