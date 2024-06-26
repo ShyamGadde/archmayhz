@@ -115,7 +115,6 @@ systemctl enable bluetooth
 systemctl enable docker.socket
 systemctl enable fstrim.timer
 systemctl enable gpm
-systemctl enable libvirtd
 systemctl enable NetworkManager
 systemctl enable paccache.timer
 systemctl enable pacman-filesdb-refresh.timer
@@ -127,6 +126,10 @@ systemctl enable sshd
 systemctl enable systemd-timesyncd # For time synchronization using NTP
 systemctl enable thermald
 systemctl enable ufw
+for drv in qemu interface network nodedev nwfilter secret storage; do
+    sudo systemctl enable virt${drv}d.service
+    sudo systemctl enable virt${drv}d{,-ro,-admin}.socket
+done
 
 # ---------------------------- #
 # ------- VM Specific -------- #
