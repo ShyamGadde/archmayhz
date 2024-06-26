@@ -104,6 +104,14 @@ gh auth setup-git
 gh extension install github/gh-copilot
 gh extension install yuler/gh-download
 
+# Setup Grimblast
+print_info "SETTING UP GRIMBLAST..."
+mkdir -p "$HOME/workspace/github.com"
+cd "$HOME/workspace/github.com"
+git clone "https://github.com/hyprwm/contrib.git" hyprwm-contrib
+cd hyprwm-contrib/grimblast
+make install
+
 # TODO: Configure Snapper
 # 1. Root config
 # 2. Home config
