@@ -121,8 +121,8 @@ nautilus -q
 
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
 
-# Download tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# Install hyprls
+go install github.com/ewen-lbh/hyprls/cmd/hyprls@latest
 
 # TODO: Create root and home snapshots of **Base System Installation**
 
