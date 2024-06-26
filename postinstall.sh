@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -e
 
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/utils.sh)
@@ -54,8 +56,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-pyenv install -v $(pyenv install --list | grep -E '^\s+[0-9.]+$' | tail -n 1) # Install the latest version of Python
-pyenv global system                                                           # Set the global version of Python to the latest version
+pyenv install -v "$(pyenv install --list | grep -E '^\s+[0-9.]+$' | tail -n 1)" # Install the latest version of Python
+pyenv global system                                                             # Set the global version of Python to the latest version
 
 print_info "CONFIGURING APPLICATIONS..."
 # `locate` database
@@ -93,8 +95,11 @@ print_info "SETTING UP DOTFILES..."
 GITHUB_USERNAME=ShyamGadde
 chezmoi init --apply "$GITHUB_USERNAME"
 
+# TODO: Add all keys instead
 print_info "SETTING UP SSH..."
 ssh-add ~/.ssh/github-cli
+
+# TODO: Move this to chezmoi scripts instead
 
 # Setup GitHub CLI
 print_info "SETTING UP GITHUB CLI..."
@@ -130,3 +135,5 @@ print_info "Initial 'pass' by using gpg key to sign into Docker Desktop."
 print_info "Visit https://docs.docker.com/desktop/get-started/#credentials-management-for-linux-users for more info on how to do that."
 
 echo "DONE!" | figlet -f ansi-shadow | lolcat
+
+# vim: ft=sh ts=4 sts=4 sw=4 et

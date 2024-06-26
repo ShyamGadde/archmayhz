@@ -1,3 +1,5 @@
+#!/bin/bash
+
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 LIGHTBLUE='\033[1;34m'
@@ -47,7 +49,12 @@ backup_file() {
 }
 
 apply_config() {
-    local filename = $1
-    local url = "https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs${filename}"
-    curl -fsSL $url >$filename
+    local filename=$1
+
+    backup_file "$filename"
+
+    local url="https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/configs${filename}"
+    curl -fsSL "$url" > "$filename"
 }
+
+# vim: ft=sh ts=4 sts=4 sw=4 et
