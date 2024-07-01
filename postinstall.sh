@@ -95,12 +95,13 @@ print_info "SETTING UP DOTFILES..."
 GITHUB_USERNAME=ShyamGadde
 chezmoi init --apply "$GITHUB_USERNAME"
 
+# TODO: Download wallpapers
+
 # TODO: Add all keys instead
 print_info "SETTING UP SSH..."
 ssh-add ~/.ssh/github-cli
 
 # TODO: Move this to chezmoi scripts instead
-
 # Setup GitHub CLI
 print_info "SETTING UP GITHUB CLI..."
 gh auth login --web -h github.com
