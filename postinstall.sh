@@ -48,17 +48,6 @@ sudo systemctl enable --now snapd.socket
 sudo ln -s /var/lib/snapd/snap /snap
 sudo systemctl enable --now snapd.apparmor
 
-print_info "INSTALLING PYENV AND FRIENDS..."
-curl https://pyenv.run | bash # The pyenv package in the Arch Linux repositories doesn't install shell completions for some reason
-
-# Initialize pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-pyenv install -v "$(pyenv install --list | grep -E '^\s+[0-9.]+$' | tail -n 1)" # Install the latest version of Python
-pyenv global system                                                             # Set the global version of Python to the latest version
-
 print_info "CONFIGURING APPLICATIONS..."
 # `locate` database
 backup_file /etc/updatedb.conf
@@ -96,19 +85,6 @@ GITHUB_USERNAME=ShyamGadde
 chezmoi init --apply "$GITHUB_USERNAME"
 
 # TODO: Download wallpapers
-
-# TODO: Add all keys instead
-print_info "SETTING UP SSH..."
-ssh-add ~/.ssh/github-cli
-
-# TODO: Move this to chezmoi scripts instead
-# Setup GitHub CLI
-print_info "SETTING UP GITHUB CLI..."
-gh auth login --web -h github.com
-gh auth setup-git
-# Download extensions:
-gh extension install github/gh-copilot
-gh extension install yuler/gh-download
 
 # Setup Grimblast
 print_info "SETTING UP GRIMBLAST..."
