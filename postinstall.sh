@@ -83,7 +83,8 @@ print_info "SETTING UP DOTFILES..."
 GITHUB_USERNAME=ShyamGadde
 chezmoi init --apply "$GITHUB_USERNAME"
 
-# TODO: Download wallpapers
+# Download wallpapers
+gh repo clone ShyamGadde/wallpapers ~/Pictures/wallpapers
 
 # Setup Grimblast
 print_info "SETTING UP GRIMBLAST..."
