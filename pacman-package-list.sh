@@ -122,12 +122,10 @@ UTILITIES=(
     acpi_call # A linux kernel module that enables calls to ACPI methods through /proc/acpi/call
     acpid     # Advanced Configuration and Power Interface event daemon
     brightnessctl
-    btop
-    chezmoi # Manage your dotfiles across multiple machines, securely
-    duf     # Disk Usage/Free Utility
-    dust    # A more intuitive version of du in rust
-    expac   # alpm data (pacman database) extraction utility
-    gpm     # General Purpose Mouse Interface (for mouse support in the tty)
+    duf   # Disk Usage/Free Utility
+    dust  # A more intuitive version of du in rust
+    expac # alpm data (pacman database) extraction utility
+    gpm   # General Purpose Mouse Interface (for mouse support in the tty)
     htop
     hwinfo    # Hardware detection tool used in SuSE Linux
     i2c-tools # Heterogeneous set of I2C tools for Linux that used to be part of lm-sensors
@@ -163,6 +161,7 @@ DEVELOPMENT=(
     linux-headers
     linux-lts-headers
     linux-zen-headers
+    php
     python
     python-pip
     tk  # A basic toolkit extension to Tcl (for python tkinter)
