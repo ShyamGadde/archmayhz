@@ -33,11 +33,10 @@ cd ~
 
 source <(curl -fsSL https://raw.githubusercontent.com/ShyamGadde/archmayhz/main/aur-package-list.sh)
 
-# TODO: Skip review and password prompt
 print_info "INSTALLING AUR PACKAGES..."
 for package in "${AUR_PACKAGES[@]}"; do
     echo "${package}" | figlet
-    paru -S "${package}"
+    paru -S --noconfirm "${package}"
 done
 
 # Setup `auto-cpufreq` daemon
@@ -101,6 +100,7 @@ make install
 # Restart Nautilus to load the new extensions
 nautilus -q
 
+# Setup Nautilus extensions
 gsettings set com.github.stunkymonkey.nautilus-open-any-terminal terminal kitty
 
 # Install hyprls
