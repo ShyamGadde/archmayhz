@@ -161,7 +161,6 @@ DEVELOPMENT=(
     linux-headers
     linux-lts-headers
     linux-zen-headers
-    php
     python
     python-pip
     tk  # A basic toolkit extension to Tcl (for python tkinter)
