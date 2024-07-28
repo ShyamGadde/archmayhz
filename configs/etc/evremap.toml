@@ -8,3 +8,19 @@ tap = ["KEY_ESC"]
 [[remap]]
 input = ["KEY_ESC"]
 output = ["KEY_CAPSLOCK"]
+
+[[remap]]
+input = ["KEY_RIGHTALT", "KEY_H"]
+output = ["KEY_LEFT"]
+
+[[remap]]
+input = ["KEY_RIGHTALT", "KEY_J"]
+output = ["KEY_DOWN"]
+
+[[remap]]
+input = ["KEY_RIGHTALT", "KEY_K"]
+output = ["KEY_UP"]
+
+[[remap]]
+input = ["KEY_RIGHTALT", "KEY_L"]
+output = ["KEY_RIGHT"]
