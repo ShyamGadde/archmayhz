@@ -5,11 +5,6 @@ input = "KEY_CAPSLOCK"
 hold = ["KEY_LEFTCTRL"]
 tap = ["KEY_ESC"]
 
-[[dual_role]]
-input = "KEY_LEFTALT"
-hold = ["KEY_LEFTCTRL"]
-tap = ["KEY_LEFTALT"]
-
 [[remap]]
 input = ["KEY_ESC"]
 output = ["KEY_CAPSLOCK"]
@@ -29,12 +24,3 @@ output = ["KEY_UP"]
 [[remap]]
 input = ["KEY_RIGHTALT", "KEY_L"]
 output = ["KEY_RIGHT"]
-
-# LEFTALT is now LEFTCTRL because of the previous dual_role
-[[remap]]
-input = ["KEY_LEFTCTRL", "KEY_J"]
-output = ["KEY_LEFTALT", "KEY_J"]
-
-[[remap]]
-input = ["KEY_LEFTCTRL", "KEY_K"]
-output = ["KEY_LEFTALT", "KEY_K"]
