@@ -5,6 +5,11 @@ input = "KEY_CAPSLOCK"
 hold = ["KEY_LEFTCTRL"]
 tap = ["KEY_ESC"]
 
+[[dual_role]]
+input = "KEY_LEFTALT"
+hold = ["KEY_LEFTCTRL"]
+tap = ["KEY_LEFTALT"]
+
 [[remap]]
 input = ["KEY_ESC"]
 output = ["KEY_CAPSLOCK"]
@@ -25,58 +30,35 @@ output = ["KEY_UP"]
 input = ["KEY_RIGHTALT", "KEY_L"]
 output = ["KEY_RIGHT"]
 
+# LEFTALT is now LEFTCTRL because of the previous dual_role
 [[remap]]
-input = ["KEY_LEFTALT", "KEY_Q"]
-output = ["KEY_LEFTCTRL", "KEY_Q"]
+input = ["KEY_LEFTCTRL", "KEY_J"]
+output = ["KEY_LEFTALT", "KEY_J"]
 
 [[remap]]
-input = ["KEY_LEFTALT", "KEY_W"]
-output = ["KEY_LEFTCTRL", "KEY_W"]
+input = ["KEY_LEFTCTRL", "KEY_K"]
+output = ["KEY_LEFTALT", "KEY_K"]
 
 [[remap]]
-input = ["KEY_LEFTALT", "KEY_E"]
-output = ["KEY_LEFTCTRL", "KEY_E"]
+input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_B"]
+output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_B"]
 
 [[remap]]
-input = ["KEY_LEFTALT", "KEY_R"]
-output = ["KEY_LEFTCTRL", "KEY_R"]
+input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_D"]
+output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_D"]
 
 [[remap]]
-input = ["KEY_LEFTALT", "KEY_T"]
-output = ["KEY_LEFTCTRL", "KEY_T"]
+input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_F"]
+output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_F"]
 
 [[remap]]
-input = ["KEY_LEFTALT", "KEY_A"]
-output = ["KEY_LEFTCTRL", "KEY_A"]
+input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_N"]
+output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_N"]
 
 [[remap]]
-input = ["KEY_LEFTALT", "KEY_S"]
-output = ["KEY_LEFTCTRL", "KEY_S"]
+input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_R"]
+output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_R"]
 
 [[remap]]
-input = ["KEY_LEFTALT", "KEY_D"]
-output = ["KEY_LEFTCTRL", "KEY_D"]
-
-[[remap]]
-input = ["KEY_LEFTALT", "KEY_F"]
-output = ["KEY_LEFTCTRL", "KEY_F"]
-
-[[remap]]
-input = ["KEY_LEFTALT", "KEY_Z"]
-output = ["KEY_LEFTCTRL", "KEY_Z"]
-
-[[remap]]
-input = ["KEY_LEFTALT", "KEY_X"]
-output = ["KEY_LEFTCTRL", "KEY_X"]
-
-[[remap]]
-input = ["KEY_LEFTALT", "KEY_C"]
-output = ["KEY_LEFTCTRL", "KEY_C"]
-
-[[remap]]
-input = ["KEY_LEFTALT", "KEY_V"]
-output = ["KEY_LEFTCTRL", "KEY_V"]
-
-[[remap]]
-input = ["KEY_LEFTALT", "KEY_W"]
-output = ["KEY_LEFTCTRL", "KEY_W"]
+input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_T"]
+output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_T"]
