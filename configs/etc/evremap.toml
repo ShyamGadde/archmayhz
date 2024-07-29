@@ -38,27 +38,3 @@ output = ["KEY_LEFTALT", "KEY_J"]
 [[remap]]
 input = ["KEY_LEFTCTRL", "KEY_K"]
 output = ["KEY_LEFTALT", "KEY_K"]
-
-[[remap]]
-input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_B"]
-output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_B"]
-
-[[remap]]
-input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_D"]
-output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_D"]
-
-[[remap]]
-input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_F"]
-output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_F"]
-
-[[remap]]
-input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_N"]
-output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_N"]
-
-[[remap]]
-input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_R"]
-output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_R"]
-
-[[remap]]
-input = ["KEY_LEFTCTRL", "KEY_LEFTSHIFT", "KEY_T"]
-output = ["KEY_LEFTALT", "KEY_LEFTSHIFT", "KEY_T"]
