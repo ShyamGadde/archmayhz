@@ -24,7 +24,6 @@ AUR_PACKAGES=(
     nautilus-open-any-terminal # A simple Nautilus extension that adds "Open in terminal" to Nautilus right-click menu
     noisetorch                 # Real-time microphone noise suppression on Linux
     nwg-drawer-bin
-    nwg-look-bin
     onlyoffice-bin
     otf-monocraft
     papirus-folders-catppuccin-git

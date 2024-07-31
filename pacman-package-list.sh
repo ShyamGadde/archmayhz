@@ -69,6 +69,7 @@ HYPRLAND=(
     hypridle
     hyprland
     hyprlock
+    nwg-look
     polkit-gnome
     qt5-wayland
     qt6-wayland
