@@ -24,3 +24,39 @@ output = ["KEY_UP"]
 [[remap]]
 input = ["KEY_RIGHTALT", "KEY_L"]
 output = ["KEY_RIGHT"]
+
+[[remap]]
+input = ["KEY_LEFTALT", "KEY_Q"]
+output = ["KEY_LEFTCTRL", "KEY_Q"]
+
+[[remap]]
+input = ["KEY_LEFTALT", "KEY_W"]
+output = ["KEY_LEFTCTRL", "KEY_W"]
+
+[[remap]]
+input = ["KEY_LEFTALT", "KEY_E"]
+output = ["KEY_LEFTCTRL", "KEY_E"]
+
+[[remap]]
+input = ["KEY_LEFTALT", "KEY_A"]
+output = ["KEY_LEFTCTRL", "KEY_A"]
+
+[[remap]]
+input = ["KEY_LEFTALT", "KEY_S"]
+output = ["KEY_LEFTCTRL", "KEY_S"]
+
+[[remap]]
+input = ["KEY_LEFTALT", "KEY_Z"]
+output = ["KEY_LEFTCTRL", "KEY_Z"]
+
+[[remap]]
+input = ["KEY_LEFTALT", "KEY_X"]
+output = ["KEY_LEFTCTRL", "KEY_X"]
+
+[[remap]]
+input = ["KEY_LEFTALT", "KEY_C"]
+output = ["KEY_LEFTCTRL", "KEY_C"]
+
+[[remap]]
+input = ["KEY_LEFTALT", "KEY_V"]
+output = ["KEY_LEFTCTRL", "KEY_V"]
