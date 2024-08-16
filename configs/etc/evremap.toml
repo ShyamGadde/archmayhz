@@ -9,6 +9,7 @@ tap = ["KEY_ESC"]
 input = ["KEY_ESC"]
 output = ["KEY_CAPSLOCK"]
 
+# Remap right alt + hjkl to arrow keys
 [[remap]]
 input = ["KEY_RIGHTALT", "KEY_H"]
 output = ["KEY_LEFT"]
@@ -25,6 +26,7 @@ output = ["KEY_UP"]
 input = ["KEY_RIGHTALT", "KEY_L"]
 output = ["KEY_RIGHT"]
 
+# Remap left ctrl + some hard to reach keys to more accessible keys
 [[remap]]
 input = ["KEY_LEFTALT", "KEY_Q"]
 output = ["KEY_LEFTCTRL", "KEY_Q"]
@@ -60,3 +62,11 @@ output = ["KEY_LEFTCTRL", "KEY_C"]
 [[remap]]
 input = ["KEY_LEFTALT", "KEY_V"]
 output = ["KEY_LEFTCTRL", "KEY_V"]
+
+[[remap]]
+input = ["KEY_LEFTALT", "KEY_TAB"]
+output = ["KEY_LEFTCTRL", "KEY_TAB"]
+
+[[remap]]
+input = ["KEY_LEFTALT", "KEY_GRAVE"]
+output = ["KEY_LEFTCTRL", "KEY_GRAVE"]
