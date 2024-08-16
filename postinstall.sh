@@ -109,6 +109,25 @@ go install github.com/ewen-lbh/hyprls/cmd/hyprls@latest
 
 # TODO: Create root and home snapshots of **Base System Installation**
 
+# Display instructions to the user
+cat << EOF
+
+=====================================
+Manual DNS Configuration Instructions
+=====================================
+
+To change your DNS settings manually, follow these steps:
+
+1. Run the following command, replacing 'Your Connection Name' with your actual connection name:
+   sudo nmcli connection modify "Your Connection Name" ipv4.dns "1.1.1.1 1.0.0.1"
+
+2. Then, apply the changes with:
+   sudo nmcli connection up "Your Connection Name"
+
+Make sure to replace "Your Connection Name" with your actual connection name in both commands.
+
+EOF
+
 print_info "Initial 'pass' by using gpg key to sign into Docker Desktop."
 print_info "Visit https://docs.docker.com/desktop/get-started/#credentials-management-for-linux-users for more info on how to do that."
 

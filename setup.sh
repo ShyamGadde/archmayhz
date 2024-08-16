@@ -119,12 +119,23 @@ systemctl enable sddm
 systemctl enable smartd
 systemctl enable sshd
 systemctl enable systemd-timesyncd # For time synchronization using NTP
+systemctl enable systemd-resolved  # For DNS resolution
 systemctl enable thermald
 systemctl enable ufw
 for drv in qemu interface network nodedev nwfilter secret storage; do
     sudo systemctl enable virt${drv}d.service
     sudo systemctl enable virt${drv}d{,-ro,-admin}.socket
 done
+
+# ---------------------------- #
+# ------- Networking --------- #
+# ---------------------------- #
+backup_file /etc/resolv.conf
+rm -f /etc/resolv.conf
+sudo ln -s /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
+apply_config /etc/NetworkManager/conf.d/wifi_backend.conf
+apply_config /etc/NetworkManager/conf.d/dns.conf
 
 # ---------------------------- #
 # ------- VM Specific -------- #
