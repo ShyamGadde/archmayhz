@@ -29,6 +29,7 @@ AUR_PACKAGES=(
     pfetch-rs-bin
     reflector-simple
     selectdefaultapplication-git
+    slack-desktop-wayland
     snapd
     snapper-support
     swaync # A notification center for Sway
