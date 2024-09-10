@@ -2,6 +2,7 @@
 
 AUR_PACKAGES=(
     #iwgtk # GUI for iwctl
+    1password
     anki-bin
     auto-cpufreq # Automatic CPU speed & power optimizer for Linux
     btrfs-assistant
