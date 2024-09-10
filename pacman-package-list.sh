@@ -196,11 +196,14 @@ EXTRA=(
     gnome-epub-thumbnailer # Thumbnailer for EPUB files (.epub and .mobi)
     gst-libav              # Multimedia graph framework - libav plugin (video thumbnails for file managers)
     gst-plugins-ugly       # Multimedia graph framework - ugly plugins (video thumbnails for file managers)
+    hunspell-en_us         # English (US) dictionary for hunspell (thunderbird dependency)
     kitty
     libgsf           # Extensible I/O abstraction library for dealing with structured file formats (.odf thumbnails in file managers)
+    libotr           # Off-The-Record Messaging library and toolkit (thunderbird dependency)
     libxcrypt-compat # For fixing error with the sourcery extension in VSCode
     obsidian
-    poppler-glib       # Poppler glib bindings (thumbnails for .pdf files in file managers)
+    poppler-glib # Poppler glib bindings (thumbnails for .pdf files in file managers)
+    thunderbird
     tumbler            # Thumbnail service implementing the thumbnail management D-Bus specification (Image file thumbnails in file managers)
     webp-pixbuf-loader # WebM GDK Pixbuf Loader library (thumbnails for .webp files in file managers)
 )
