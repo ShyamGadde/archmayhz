@@ -83,8 +83,9 @@ HYPRLAND=(
 )
 
 GNOME=(
-    evince      # Document viewer (thumbnails for .pdf files in file managers)
-    file-roller # Archive manager for GNOME
+    dconf-editor # Graphical editor for the dconf configuration system
+    evince       # Document viewer (thumbnails for .pdf files in file managers)
+    file-roller  # Archive manager for GNOME
     gnome
     gnome-calculator
     gnome-characters # Unicode character map for GNOME
@@ -112,10 +113,11 @@ MULTIMEDIA=(
     pipewire-pulse
     playerctl    # mpris command-line controller and library for spotify, vlc, audacious, bmp, xmms2, and others
     slurp        # Select a region in a Wayland compositor
-    swappy       # A Wayland native snapshot tool
     sof-firmware # Sound Open Firmware
+    swappy       # A Wayland native snapshot tool
     wireplumber
     wl-clipboard
+    xwaylandvideobridge # Utility to allow streaming Wayland windows to X applications
 )
 
 UTILITIES=(
