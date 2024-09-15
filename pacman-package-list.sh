@@ -156,6 +156,7 @@ UTILITIES=(
 )
 
 DEVELOPMENT=(
+    act # Run your GitHub Actions locally
     dbeaver
     docker
     docker-compose
