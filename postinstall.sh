@@ -25,8 +25,8 @@ systemctl --user enable --now gcr-ssh-agent
 # ---------- AUR ------------- #
 # ---------------------------- #
 print_info "INSTALLING PARU..."
-git clone https://aur.archlinux.org/paru-bin.git ~/repos/paru-bin
-cd ~/repos/paru-bin
+git clone https://aur.archlinux.org/paru-bin.git /tmp/paru-bin
+cd /tmp/paru-bin
 makepkg -si --noconfirm
 apply_config /etc/paru.conf
 cd ~
