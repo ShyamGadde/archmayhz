@@ -23,7 +23,6 @@ AUR_PACKAGES=(
     microsoft-edge-stable-bin
     nautilus-hide              # A simple Nautilus extension that adds "Hide" and "Unhide" to Nautilus right-click menu
     nautilus-open-any-terminal # A simple Nautilus extension that adds "Open in terminal" to Nautilus right-click menu
-    nwg-drawer-bin
     onlyoffice-bin
     otf-monocraft
     papirus-folders-catppuccin-git

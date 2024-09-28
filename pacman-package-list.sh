@@ -204,6 +204,7 @@ EXTRA=(
     libgsf           # Extensible I/O abstraction library for dealing with structured file formats (.odf thumbnails in file managers)
     libotr           # Off-The-Record Messaging library and toolkit (thunderbird dependency)
     libxcrypt-compat # For fixing error with the sourcery extension in VSCode
+    nwg-drawer       # A GTK3-based application drawer and launcher
     obsidian
     poppler-glib # Poppler glib bindings (thumbnails for .pdf files in file managers)
     thunderbird
