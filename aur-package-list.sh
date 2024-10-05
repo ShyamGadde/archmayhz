@@ -16,7 +16,6 @@ AUR_PACKAGES=(
     fontpreview
     gitkraken
     google-chrome
-    hyprpicker # A wlroots-compatible Wayland color picker that does not suck.
     jetbrains-toolbox
     lazydocker-bin
     lf-bin

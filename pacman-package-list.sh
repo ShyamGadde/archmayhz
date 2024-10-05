@@ -69,6 +69,7 @@ HYPRLAND=(
     hypridle
     hyprland
     hyprlock
+    hyprpicker # A wlroots-compatible Wayland color picker that does not suck.
     nwg-look
     polkit-gnome
     qt5-wayland
