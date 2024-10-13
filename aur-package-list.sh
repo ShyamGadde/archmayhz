@@ -33,7 +33,6 @@ AUR_PACKAGES=(
     snapper-support
     swaync # A notification center for Sway
     ttf-recursive
-    tuned # Daemon that performs monitoring and adaptive configuration of devices in the system (kvm/qemu)
     visual-studio-code-bin
     waybar-module-pacman-updates-git
     waypaper-git

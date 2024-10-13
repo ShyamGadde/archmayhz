@@ -144,6 +144,7 @@ UTILITIES=(
     speedtest-cli # Command line interface for testing internet bandwidth using speedtest.net
     sysfsutils    # System Utilities Based on Sysfs
     thermald      # Thermal Daemon Service
+    tuned         # Daemon that performs monitoring and adaptive configuration of devices in the system (kvm/qemu)
     ufw           # Uncomplicated Firewall
     unrar         # The RAR uncompression program
     unzip
