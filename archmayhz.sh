@@ -21,11 +21,11 @@ fi
 # ------- User Setup --------- #
 # ---------------------------- #
 print_info "GATHERING SETUP INFORMATION..."
-read -p "Hostname     : " HOSTNAME
-read -p "Root Password: " ROOT_PASSWORD
-read -p "Username     : " USERNAME
-read -p "Full Name    : " FULLNAME
-read -p "User Password: " USER_PASSWORD
+read -r -p "Hostname     : " HOSTNAME
+read -r -p "Root Password: " ROOT_PASSWORD
+read -r -p "Username     : " USERNAME
+read -r -p "Full Name    : " FULLNAME
+read -r -p "User Password: " USER_PASSWORD
 
 # ---------------------------- #
 # ------- Disk Setup --------- #
@@ -35,7 +35,7 @@ print_warning "WARNING: This script will erase all data on the selected disk."
 
 lsblk -d
 echo -e "\nPlease select the disk you want to install Arch Linux on.\nExample: nvme0n1\n"
-read -p "Disk: " DISK
+read -r -p "Disk: " DISK
 DISK=/dev/"${DISK}"
 
 if mount | grep /mnt > /dev/null; then
@@ -46,7 +46,7 @@ sgdisk -a 2048 -o "${DISK}"             # Create a new GPT disklabel (partition 
 sgdisk -n 1:0:+512M -t 1:ef00 "${DISK}" # Create a new EFI partition of 512MB
 
 echo -e "\nEnter the size of the root partition (e.g., 900G for 900 Gigabytes)"
-read -p "Root Size (default=full): " ROOT_SIZE
+read -r -p "Root Size (default=full): " ROOT_SIZE
 if [ -z "$ROOT_SIZE" ]; then
     echo "Creating a root partition with the entire remaining disk space..."
     sgdisk -n 2:0:0 -t 2:8300 "${DISK}" # Create a new Linux partition with the rest of the space
@@ -150,7 +150,7 @@ set +e
 # ---------------------------- #
 # ------- Rebooting ---------- #
 # ---------------------------- #
-read -p "Press enter to reboot..."
+read -r -p "Press enter to reboot..."
 print_info "REBOOTING..."
 umount -R /mnt
 reboot
