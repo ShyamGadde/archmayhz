@@ -22,7 +22,6 @@ FILESYSTEM=(
 GRAPHICS_STUFF=(
     intel-gpu-tools    # Tools for development and testing of the Intel DRM driver (intel_gpu_top)
     intel-media-driver # Intel Media Driver for VAAPI — Broadwell+ iGPUs
-    libva-mesa-driver
     libva-utils
     mesa       # An open-source implementation of the OpenGL specification
     vpl-gpu-rt # Intel VPL runtime implementation for Intel GPUs (Tiger Lake and newer)
