@@ -4,10 +4,10 @@ AUR_PACKAGES=(
     #iwgtk # GUI for iwctl
     1password
     anki-bin
+    apple_cursor
     auto-cpufreq # Automatic CPU speed & power optimizer for Linux
     btrfs-assistant
     carbonyl # Chromium based browser built to run in a terminal
-    catppuccin-cursors-mocha
     catppuccin-gtk-theme-mocha
     code-nautilus-git
     docker-desktop
