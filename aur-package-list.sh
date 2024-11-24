@@ -6,6 +6,7 @@ AUR_PACKAGES=(
     anki-bin
     apple_cursor
     auto-cpufreq # Automatic CPU speed & power optimizer for Linux
+    bibata-cursor-theme-bin
     btrfs-assistant
     carbonyl # Chromium based browser built to run in a terminal
     catppuccin-gtk-theme-mocha
