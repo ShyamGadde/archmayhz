@@ -70,11 +70,6 @@ sudo setfacl -m d:u:"$USER":rwx /var/lib/libvirt/images
 # Setup tldr database
 tldr --update
 
-# Make CapsLock useful (Single tap for Escape, hold for Left Control)
-apply_config /etc/evremap.toml
-sudo systemctl daemon-reload
-sudo systemctl enable --now evremap
-
 # Theming
 papirus-folders -C cat-mocha-blue --theme Papirus-Dark
 
@@ -93,6 +88,13 @@ cd "$HOME/workspace/github.com"
 git clone "https://github.com/hyprwm/contrib.git" hyprwm-contrib
 cd hyprwm-contrib/grimblast
 make install
+
+# Setup Kanata
+apply_config /etc/udev/rules.d/99-input.rules
+sudo udevadm control --reload-rules && sudo udevadm trigger
+sudo modprobe uinput
+systemctl --user daemon-reload
+systemctl --user enable --now kanata.service
 
 # TODO: Configure Snapper
 # 1. Root config

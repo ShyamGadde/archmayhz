@@ -38,7 +38,21 @@ print_info "SETTING ROOT PASSWORD..."
 echo "root:${ROOT_PASSWORD}" | chpasswd
 
 print_info "CREATING USER..."
-useradd -m -g users -G adm,audio,docker,input,kvm,libvirt,log,network,optical,power,rfkill,storage,sys,video,wheel -s /bin/zsh -c "$FULLNAME" "$USERNAME"
+# Define the groups in an array
+groups=(adm audio docker input kvm libvirt log network optical power rfkill storage sys uinput video wheel)
+
+# Loop through the array and create any missing groups
+for group in "${groups[@]}"; do
+    if ! getent group "$group" > /dev/null; then
+        groupadd "$group"
+    fi
+done
+
+# Add the user to the groups, using IFS to join the array elements with commas
+useradd -m -g users -G "$(
+    IFS=,
+    echo "${groups[*]}"
+)" -s /bin/zsh -c "$FULLNAME" "$USERNAME"
 echo "${USERNAME}:${USER_PASSWORD}" | chpasswd
 
 print_info "CONFIGURING SUDO FOR USER..."

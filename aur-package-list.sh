@@ -18,6 +18,7 @@ AUR_PACKAGES=(
     gitkraken
     google-chrome
     jetbrains-toolbox
+    kanata-bin # Keyboard remapper
     lazydocker-bin
     lf-bin
     microsoft-edge-stable-bin
