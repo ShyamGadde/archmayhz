@@ -37,7 +37,7 @@ AUR_PACKAGES=(
     ttf-recursive
     visual-studio-code-bin
     waybar-module-pacman-updates-git
-    waypaper-git
+    waypaper
     wl-clip-persist
     zoom
     zotero-bin
