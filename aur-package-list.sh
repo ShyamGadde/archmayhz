@@ -9,7 +9,6 @@ AUR_PACKAGES=(
     bibata-cursor-theme-bin
     btrfs-assistant
     carbonyl # Chromium based browser built to run in a terminal
-    catppuccin-gtk-theme-mocha
     code-nautilus-git
     docker-desktop
     evremap-git      # A keyboard input remapper for Linux/Wayland systems
