@@ -128,6 +128,7 @@ UTILITIES=(
     duf   # Disk Usage/Free Utility
     dust  # A more intuitive version of du in rust
     expac # alpm data (pacman database) extraction utility
+    flite # A lightweight speech synthesis engine (for Minecraft narrator)
     gpm   # General Purpose Mouse Interface (for mouse support in the tty)
     htop
     hwinfo    # Hardware detection tool used in SuSE Linux
