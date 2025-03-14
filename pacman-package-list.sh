@@ -134,6 +134,7 @@ UTILITIES=(
     hwinfo    # Hardware detection tool used in SuSE Linux
     i2c-tools # Heterogeneous set of I2C tools for Linux that used to be part of lm-sensors
     less
+    lf # A terminal file manager inspired by ranger
     nano
     pacman-contrib
     pkgfile

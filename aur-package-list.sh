@@ -19,7 +19,6 @@ AUR_PACKAGES=(
     jetbrains-toolbox
     kanata-bin # Keyboard remapper
     lazydocker-bin
-    lf-bin
     microsoft-edge-stable-bin
     nautilus-hide              # A simple Nautilus extension that adds "Hide" and "Unhide" to Nautilus right-click menu
     nautilus-open-any-terminal # A simple Nautilus extension that adds "Open in terminal" to Nautilus right-click menu
